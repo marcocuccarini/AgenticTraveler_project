@@ -40,7 +40,7 @@ sys.path.append(str(script_dir / "KG"))
 try:
     # Import the three main components
     from agent_base_optim import create_agent
-    from rag_sytem import RAG
+    from rag_system_smolagent import RAGSmolagent
     from ARCO_access import query_by_name
 except ImportError as e:
     print(f"❌ Import error: {e}")
@@ -123,10 +123,10 @@ class AgenticTravelerCLI:
                 if self.verbose or attempt > 0:
                     print(f"🔄 Initializing RAG system (attempt {attempt + 1}/{max_retries})...")
                 
-                self.rag_system = RAG(
+                self.rag_system = RAGSmolagent(
                     embed_model_name="all-MiniLM-L6-v2",
                     use_cross_encoder=False,
-                    ollama_url="http://localhost:11434/api/generate"
+                    model_id="Qwen/Qwen2.5-Coder-32B-Instruct"
                 )
                 self.logger.info("RAG system initialized successfully")
                 print("✅ RAG system initialized successfully")
@@ -302,20 +302,19 @@ class AgenticTravelerCLI:
                     system_prompt = ("You are a helpful assistant specializing in monuments and cultural heritage. "
                                    "Use the provided context to answer the user's question about the monument or landmark.")
                     
-                    ollama_answer = self.rag_system.generate_with_ollama(
+                    smolagent_answer = self.rag_system.generate_with_smolagent(
                         system_prompt=system_prompt,
                         user_query=question,
-                        context_passages=context_passages,
-                        model="llama3.1"
+                        context_passages=context_passages
                     )
                     
-                    rag_output += f"🧠 Generated Answer:\n{ollama_answer}"
-                    self.logger.info("RAG processing completed successfully with Ollama generation")
+                    rag_output += f"🧠 Generated Answer:\n{smolagent_answer}"
+                    self.logger.info("RAG processing completed successfully with Smolagents generation")
                     
-                except Exception as ollama_error:
-                    self.logger.warning(f"Ollama generation failed: {ollama_error}")
-                    rag_output += f"\n⚠️ Note: Could not generate answer with Ollama: {ollama_error}"
-                    rag_output += f"\n💡 Tip: Ensure Ollama is running locally at http://localhost:11434"
+                except Exception as smolagent_error:
+                    self.logger.warning(f"Smolagents generation failed: {smolagent_error}")
+                    rag_output += f"\n⚠️ Note: Could not generate answer with Smolagents: {smolagent_error}"
+                    rag_output += f"\n💡 Tip: Ensure HF_TOKEN is set and Smolagents models are available"
                 
                 print("✅ RAG processing complete")
                 return rag_output
@@ -330,7 +329,7 @@ class AgenticTravelerCLI:
                     error_details += f"Error Message: {str(e)}\n\n"
                     error_details += "Possible Solutions:\n"
                     error_details += "- Check if agent output contains meaningful text\n"
-                    error_details += "- Ensure Ollama is running locally for answer generation\n"
+                    error_details += "- Ensure HF_TOKEN is set and Smolagents models are available\n"
                     error_details += "- Verify sentence-transformers models are available\n"
                     error_details += "- Check available memory for FAISS indexing\n"
                     if self.verbose:
