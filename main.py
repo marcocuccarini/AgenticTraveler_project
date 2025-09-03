@@ -124,9 +124,10 @@ class AgenticTravelerCLI:
                     print(f"🔄 Initializing RAG system (attempt {attempt + 1}/{max_retries})...")
                 
                 self.rag_system = RAGSmolagent(
-                    embed_model_name="all-MiniLM-L6-v2",
+                    embed_model_name="/leonardo_work/uTS25_Pinna/phd_proj/TurismAgent/TurismAgent/model/all-MiniLM-L6-v2",
                     use_cross_encoder=False,
-                    model_id="Qwen/Qwen2.5-Coder-32B-Instruct"
+                    model_id="/leonardo_work/uTS25_Pinna/phd_proj/TurismAgent/TurismAgent/model/Qwen2.5-Coder-14B-Instruct",
+                    device="cuda"
                 )
                 self.logger.info("RAG system initialized successfully")
                 print("✅ RAG system initialized successfully")
