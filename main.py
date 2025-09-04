@@ -383,6 +383,337 @@ class AgenticTravelerCLI:
             
         return coordinates
     
+    def generate_query_rewrites(self, monument_name, monument_description, question, max_retries=2):
+        """Genera 2 riscritture della query usando LLM per migliorare i risultati RAG"""
+        if not self.rag_system:
+            self.logger.error("RAG system not available for query rewriting")
+            return []
+        
+        print("🔄 Generating query rewrites using LLM...")
+        
+        for attempt in range(max_retries + 1):
+            try:
+                self.logger.info(f"Generating query rewrites (attempt {attempt + 1}/{max_retries + 1})")
+                
+                # Query originale che normalmente useremo per RAG
+                original_query = f"Monument: {monument_name}. Description: {monument_description}"
+                
+                # System prompt per generare riscritture
+                system_prompt = (
+                    "You are an expert in information retrieval and query rewriting. "
+                    "Your task is to rewrite the given monument search query into 2 different alternative versions "
+                    "that could help find more relevant historical and cultural information. "
+                    "Each rewrite should interpret the user's question and monument information from a different angle "
+                    "to maximize information retrieval coverage. "
+                    "Focus on: historical context, architectural details, cultural significance, geographical context, "
+                    "construction details, historical events, and tourist information. "
+                    "Respond with exactly 2 alternative queries, one per line, without numbering or formatting."
+                )
+                
+                # User prompt con contesto completo
+                user_prompt = (
+                    f"Original monument query: '{original_query}'\n"
+                    f"User question: '{question}'\n\n"
+                    f"Generate 2 alternative search queries that could retrieve relevant information "
+                    f"to answer the user's question about this monument. Each query should focus on different aspects "
+                    f"(e.g., historical context, architectural style, cultural significance, construction details, etc.)."
+                )
+                
+                if self.verbose:
+                    print(f"🏛️ Original query: {original_query}")
+                    print(f"❓ User question: {question}")
+                
+                # Genera le riscritture usando Smolagents
+                try:
+                    rewrite_response = self.rag_system.generate_with_smolagent(
+                        system_prompt=system_prompt,
+                        user_query=user_prompt,
+                        context_passages=[]  # Non servono passage per questa task
+                    )
+                    
+                    # Parse delle riscritture (una per riga)
+                    rewrites = []
+                    for line in rewrite_response.strip().split('\n'):
+                        line = line.strip()
+                        if line and len(line) > 10:  # Filtra linee vuote e troppo corte
+                            # Rimuovi numerazione se presente
+                            if line.startswith(('1.', '2.', '3.', '•', '-', '*')):
+                                line = line.split('.', 1)[1].strip() if '.' in line else line[2:].strip()
+                            rewrites.append(line)
+                    
+                    # Prendi solo le prime 2 riscritture
+                    rewrites = rewrites[:2]
+                    
+                    if len(rewrites) >= 2:
+                        self.logger.info(f"Successfully generated {len(rewrites)} query rewrites")
+                        if self.verbose:
+                            for i, rewrite in enumerate(rewrites, 1):
+                                print(f"🔄 Rewrite {i}: {rewrite}")
+                        
+                        print(f"✅ Generated {len(rewrites)} query rewrites")
+                        return rewrites
+                    else:
+                        raise ValueError(f"Only {len(rewrites)} rewrites generated, need 2")
+                        
+                except Exception as smolagent_error:
+                    self.logger.warning(f"Smolagents rewrite generation failed: {smolagent_error}")
+                    
+                    # Fallback: genera riscritture semplici basate su template
+                    fallback_rewrites = [
+                        f"Historical architecture and construction of {monument_name} monument cultural heritage site",
+                        f"Tourist information cultural significance events {monument_name} geographical location historical context"
+                    ]
+                    
+                    self.logger.info("Using fallback template-based rewrites")
+                    print("⚠️ Using fallback template-based rewrites")
+                    return fallback_rewrites
+                
+            except Exception as e:
+                self.logger.error(f"Query rewrite generation failed (attempt {attempt + 1}): {str(e)}")
+                
+                if attempt == max_retries:
+                    self.logger.warning("All rewrite attempts failed, returning empty list")
+                    print("❌ Query rewrite generation failed - will use original query only")
+                    return []
+                else:
+                    print(f"⚠️ Rewrite generation failed, retrying in {1 + attempt} seconds...")
+                    time.sleep(1 + attempt)
+        
+        return []
+    
+    def process_with_voting_rag(self, monument_name, monument_description, question, max_retries=2):
+        """Process with RAG using voting mechanism with query rewrites"""
+        if not self.rag_system:
+            error_msg = "❌ RAG system not available - initialization failed"
+            self.logger.error(error_msg)
+            return error_msg
+        
+        print("🗳️ Processing with RAG system using voting mechanism...")
+        
+        for attempt in range(max_retries + 1):
+            try:
+                self.logger.info(f"Processing with voting RAG (attempt {attempt + 1}/{max_retries + 1})")
+                
+                # Validate inputs
+                if not monument_name or monument_name.strip() == "" or monument_name == "Unknown":
+                    raise ValueError("Monument name is empty or unknown")
+                
+                if not question or question.strip() == "":
+                    raise ValueError("Question is empty or invalid")
+                
+                # Database di testi separati per ogni monumento (stesso del metodo originale)
+                monument_texts_database = {
+                    "Colosseo": [
+                        "The Colosseum is an oval amphitheatre in the centre of Rome, Italy. Built of travertine limestone, tuff, and brick-faced concrete, it was the largest amphitheatre ever built. The Colosseum is situated just east of the Roman Forum. Construction began under the emperor Vespasian in AD 72 and was completed in AD 80 under his successor and heir, Titus.",
+                        "The image shows the Colosseum in Rome, Italy, under a clear blue sky. The ancient amphitheater, built of stone and concrete, stands majestically with its iconic arches and partially ruined outer walls. Tourists are gathered around the base, some taking photographs, while others listen to guides explaining the history of the site.",
+                        "The Colosseum could hold an estimated 50,000 to 80,000 spectators at various points in its history, having an average audience of some 65,000. It was used for gladiatorial contests and public spectacles including animal hunts, executions, re-enactments of famous battles, and dramas based on Classical mythology.",
+                        "The building ceased to be used for entertainment in the early medieval era. It was later reused for various purposes such as housing, workshops, quarters for a religious order, a fortress, a quarry, and a Christian shrine. The Colosseum is now a major tourist attraction in Rome with thousands of tourists each year."
+                    ],
+                    "Tour Eiffel": [
+                        "The Eiffel Tower is a wrought-iron lattice tower on the Champ de Mars in Paris, France. It is named after the engineer Gustave Eiffel, whose company designed and built the tower. Constructed from 1887 to 1889 as the entrance to the 1889 World's Fair, it was initially criticized by some of France's leading artists and intellectuals.",
+                        "The Eiffel Tower stands 324 metres (1,063 ft) tall, about the same height as an 81-storey building, and is the tallest structure in Paris. Its base is square, measuring 125 metres (410 ft) on each side. During its construction, the Eiffel Tower surpassed the Washington Monument to become the tallest man-made structure in the world.",
+                        "The tower has three levels for visitors, with restaurants on the first and second levels. The top level's upper platform is 276 m (906 ft) above the ground – the highest observation deck accessible to the public in the European Union. Tickets can be purchased to ascend by stairs or lift to the first and second levels.",
+                        "The Eiffel Tower has become the global cultural icon of France and one of the most recognizable structures in the world. The tower has been visited by over 250 million people since its construction. The tower receives around 6 million visitors annually, making it the most-visited paid monument in the world."
+                    ],
+                    "Statua della Libertà": [
+                        "The Statue of Liberty is a neoclassical sculpture on Liberty Island in New York Harbor in New York City, United States. The copper statue, a gift from the people of France to the people of the United States, was designed by French sculptor Frédéric Auguste Bartholdi and its metal framework was built by Gustave Eiffel.",
+                        "The statue is a figure of Libertas, a robed Roman liberty goddess. She holds a torch above her head with her right hand, and in her left hand carries a tabula ansata inscribed JULY IV MDCCLXXVI (July 4, 1776 in Roman numerals), the date of the U.S. Declaration of Independence.",
+                        "The Statue of Liberty was dedicated on October 28, 1886. The statue became an icon of freedom and of the United States, seen as a symbol of welcome to immigrants arriving by sea. Bartholdi was inspired by a French law professor and politician, Édouard René de Laboulaye, who is said to have commented in 1865 that any monument raised to U.S. independence would properly be a joint project of the French and American peoples.",
+                        "Standing 305 feet tall including its pedestal, the Statue of Liberty has welcomed millions of immigrants to the United States since 1886. The statue's torch-bearing arm was displayed at the Centennial Exposition in Philadelphia in 1876, and in Madison Square Park in Manhattan from 1876 to 1882."
+                    ],
+                    "Big Ben": [
+                        "Big Ben is the nickname for the Great Bell of the Great Clock of Westminster, and, by extension, for the clock tower itself, which stands at the north end of the Palace of Westminster in London, England. Officially, the tower is called Elizabeth Tower, renamed to celebrate the Diamond Jubilee of Elizabeth II in 2012.",
+                        "The tower was designed by Augustus Pugin in a neo-Gothic style. When completed in 1859, its clock was the largest and most accurate four-faced striking and chiming clock in the world. The tower stands 316 feet (96 m) tall, and the climb from ground level to the belfry is 334 steps.",
+                        "The clock and dials were designed by Augustus Pugin. The clock dials are set in an iron framework 23 feet (7.0 m) in diameter, supporting 312 pieces of opal glass, rather like a stained-glass window. Some of the glass pieces may be removed for maintenance of the hands.",
+                        "Big Ben is one of London's most famous landmarks and has appeared in many films. The sound of Big Ben chiming has become associated with London and Britain in general, often used by broadcasters as an audio symbol for London or as a time signal before news broadcasts."
+                    ],
+                    "Cristo Redentore": [
+                        "Christ the Redeemer is an Art Deco statue of Jesus Christ in Rio de Janeiro, Brazil, created by French sculptor Paul Landowski and built by Brazilian engineer Heitor da Silva Costa, in collaboration with French engineer Albert Caquot. Romanian sculptor Gheorghe Leonida fashioned the face.",
+                        "The statue is 30 metres (98 ft) tall, excluding its 8-metre (26 ft) pedestal. The arms stretch 28 metres (92 ft) wide. It is made of reinforced concrete and soapstone. Christ the Redeemer weighs 635 tonnes (625 long tons; 700 short tons), and is located at the peak of the 700-metre (2,300 ft) Corcovado mountain.",
+                        "Construction of Christ the Redeemer began in 1922 and was completed in 1931. The monument was opened on October 12, 1931. The statue has become a cultural icon of both Rio de Janeiro and Brazil, and is listed as one of the New Seven Wonders of the World.",
+                        "The statue overlooks the city of Rio de Janeiro from the summit of Mount Corcovado in the Tijuca National Park. It has become a symbol of Christianity across the world and is often considered the largest Art Deco statue in the world. The statue is illuminated every night and can be seen from many parts of the city."
+                    ]
+                }
+                
+                # Raccoglie tutti i testi del database
+                all_monument_texts = []
+                for monument, texts in monument_texts_database.items():
+                    all_monument_texts.extend(texts)
+                
+                if self.verbose:
+                    print(f"📚 Created RAG database with {len(all_monument_texts)} texts")
+                
+                # Build index with all monument texts (una volta sola)
+                self.rag_system.build_index(all_monument_texts)
+                
+                # Query originale
+                original_query = f"Monument: {monument_name}. Description: {monument_description}"
+                
+                # Genera le riscritture
+                query_rewrites = self.generate_query_rewrites(monument_name, monument_description, question)
+                
+                # Tutte le query da testare (originale + riscritture)
+                all_queries = [original_query] + query_rewrites
+                
+                if self.verbose:
+                    print(f"🔍 Testing {len(all_queries)} queries total")
+                    for i, q in enumerate(all_queries):
+                        query_type = "Original" if i == 0 else f"Rewrite {i}"
+                        print(f"  {query_type}: {q}")
+                
+                # Risultati per ogni query
+                all_results = {}
+                
+                for i, query in enumerate(all_queries):
+                    query_name = "original" if i == 0 else f"rewrite_{i}"
+                    
+                    try:
+                        results = self.rag_system.query(query, top_k=5)  # Prendiamo più risultati per il voting
+                        all_results[query_name] = results
+                        
+                        if self.verbose:
+                            query_type = "Original" if i == 0 else f"Rewrite {i}"
+                            print(f"🎯 {query_type} found {len(results)} results")
+                            
+                    except Exception as query_error:
+                        self.logger.warning(f"Query {query_name} failed: {query_error}")
+                        all_results[query_name] = []
+                
+                # Sistema di voting per trovare i migliori testi
+                voted_results = self.vote_for_best_passages(all_results, top_k=3)
+                
+                if not voted_results:
+                    raise ValueError("No results found after voting mechanism")
+                
+                # Prepara informazioni per LLM
+                top_3_texts = [passage for _, passage in voted_results]
+                
+                if self.verbose:
+                    print(f"🗳️ Voting selected top {len(voted_results)} texts:")
+                    for i, (score, passage) in enumerate(voted_results, 1):
+                        print(f"  {i}. Score: {score:.4f} - {passage[:60]}...")
+                
+                # Genera la risposta finale con Smolagents
+                try:
+                    system_prompt = (
+                        f"You are a knowledgeable tourist guide specializing in monuments and cultural heritage. "
+                        f"Based on image analysis, the identified monument is: '{monument_name}' with description: '{monument_description}'. "
+                        f"You have been provided with the top 3 most relevant texts selected through an advanced voting mechanism "
+                        f"from multiple query interpretations. Use ALL the provided information to answer comprehensively and accurately."
+                    )
+                    
+                    enhanced_query = (
+                        f"User Question: {question}\n\n"
+                        f"Monument Identified: {monument_name}\n"
+                        f"Monument Description: {monument_description}\n\n"
+                        f"Answer using both the monument identification and the retrieved contextual information."
+                    )
+                    
+                    smolagent_answer = self.rag_system.generate_with_smolagent(
+                        system_prompt=system_prompt,
+                        user_query=enhanced_query,
+                        context_passages=top_3_texts
+                    )
+                    
+                    result = f"🗳️ **RAG Analysis with Voting Mechanism**\n\n"
+                    result += f"**Identified Monument:** {monument_name}\n"
+                    result += f"**Monument Description:** {monument_description}\n"
+                    result += f"**User Question:** {question}\n\n"
+                    result += f"**Query Rewriting Process:**\n"
+                    result += f"• Original query used\n"
+                    result += f"• {len(query_rewrites)} alternative interpretations generated\n"
+                    result += f"• Voting mechanism applied to select best passages\n\n"
+                    result += f"**Top 3 Selected Texts (via voting):**\n"
+                    for i, (score, passage) in enumerate(voted_results, 1):
+                        result += f"**{i}. Confidence: {score:.4f}**\n{passage}\n\n"
+                    result += f"**🧠 AI Answer:**\n{smolagent_answer}"
+                    
+                    self.logger.info("Voting RAG processing completed successfully")
+                    print("✅ Voting RAG processing complete")
+                    return result
+                    
+                except Exception as smolagent_error:
+                    self.logger.warning(f"Smolagents generation failed: {smolagent_error}")
+                    # Fallback senza Smolagents
+                    result = f"🗳️ **RAG Analysis with Voting Mechanism**\n\n"
+                    result += f"**Identified Monument:** {monument_name}\n"
+                    result += f"**Monument Description:** {monument_description}\n"
+                    result += f"**User Question:** {question}\n\n"
+                    result += f"**Query Rewriting Process:**\n"
+                    result += f"• Original query used\n"
+                    result += f"• {len(query_rewrites)} alternative interpretations generated\n"
+                    result += f"• Voting mechanism applied to select best passages\n\n"
+                    result += f"**Top 3 Selected Texts (via voting):**\n"
+                    for i, (score, passage) in enumerate(voted_results, 1):
+                        result += f"**{i}. Confidence: {score:.4f}**\n{passage}\n\n"
+                    result += f"⚠️ **Note**: Could not generate AI answer with Smolagents: {smolagent_error}\n"
+                    result += f"💡 **Tip**: The voted texts above contain the most relevant information."
+                    
+                    return result
+                
+            except Exception as e:
+                self.logger.error(f"Voting RAG processing failed (attempt {attempt + 1}): {str(e)}")
+                
+                if attempt == max_retries:
+                    error_details = f"❌ **Voting RAG Error** (after {max_retries + 1} attempts)\n\n"
+                    error_details += f"**Error Type:** {type(e).__name__}\n"
+                    error_details += f"**Error Message:** {str(e)}\n\n"
+                    error_details += "**Possible Solutions:**\n"
+                    error_details += "- Check if monument information is valid\n"
+                    error_details += "- Ensure HF_TOKEN is set and Smolagents models are available\n"
+                    error_details += "- Verify sentence-transformers models are available\n"
+                    if self.verbose:
+                        error_details += f"\nTraceback:\n{traceback.format_exc()}"
+                    return error_details
+                else:
+                    print(f"⚠️ Voting RAG processing failed, retrying in {1 + attempt} seconds...")
+                    time.sleep(1 + attempt)
+    
+    def vote_for_best_passages(self, all_results, top_k=3):
+        """Implementa il sistema di voting per selezionare i migliori passaggi"""
+        # Dizionario per contare i voti per ogni passaggio
+        passage_votes = {}
+        passage_scores = {}
+        
+        # Assegna voti basati sulla posizione nei risultati
+        for query_name, results in all_results.items():
+            is_original = (query_name == "original")
+            
+            for rank, (score, passage) in enumerate(results):
+                # Peso basato sulla posizione: primi risultati valgono di più
+                position_weight = max(0, top_k - rank)  
+                
+                # Bonus per risultati della query originale (tiebreaker)
+                original_bonus = 0.1 if is_original else 0.0
+                
+                if passage in passage_votes:
+                    passage_votes[passage] += position_weight
+                    # Mantiene il punteggio più alto
+                    passage_scores[passage] = max(passage_scores[passage], score + original_bonus)
+                else:
+                    passage_votes[passage] = position_weight
+                    passage_scores[passage] = score + original_bonus
+        
+        # Ordina per numero di voti, poi per punteggio
+        sorted_passages = sorted(
+            passage_votes.items(), 
+            key=lambda x: (x[1], passage_scores[x[0]]), 
+            reverse=True
+        )
+        
+        # Restituisce i top_k passaggi con i loro punteggi finali
+        final_results = []
+        for passage, votes in sorted_passages[:top_k]:
+            final_score = passage_scores[passage]
+            final_results.append((final_score, passage))
+        
+        if self.verbose:
+            print(f"🗳️ Voting results summary:")
+            for i, (passage, votes) in enumerate(sorted_passages[:top_k], 1):
+                print(f"  {i}. Votes: {votes}, Score: {passage_scores[passage]:.4f}")
+        
+        return final_results
+
     def process_with_monument_rag_predefined(self, monument_name, monument_description, question, max_retries=2):
         """Process with RAG system using predefined texts from rag_system_smolagent.py"""
         if not self.rag_system:
@@ -686,6 +1017,224 @@ class AgenticTravelerCLI:
             return "Brasile"
         
         return None
+    
+    def generate_final_response(self, monument_name, monument_description, coordinates, 
+                               rag_result, arco_result, user_question, max_retries=2):
+        """Genera una risposta finale combinando tutte le informazioni trovate"""
+        if not self.rag_system:
+            error_msg = "❌ RAG system not available for final response generation"
+            self.logger.error(error_msg)
+            return error_msg
+        
+        print("🧠 Generating final AI response using all collected information...")
+        
+        # Controlla se ARCO ha avuto successo
+        arco_success = self.check_arco_success(arco_result)
+        
+        if not arco_success:
+            print("⚠️ ARCO search was not successful - skipping final response generation")
+            return ("❌ **Final Response Skipped**\n\n"
+                   "The final AI response is only generated when ARCO database search is successful.\n"
+                   "ARCO search did not find sufficient results, so no final synthesis will be provided.\n\n"
+                   "💡 **Tip**: The individual results from each step above contain detailed information about your query.")
+        
+        for attempt in range(max_retries + 1):
+            try:
+                self.logger.info(f"Generating final response (attempt {attempt + 1}/{max_retries + 1})")
+                
+                # Estrai informazioni dalla localizzazione
+                location_info = self.extract_location_info(coordinates)
+                
+                # Estrai testi brevi dall'image RAG (monument recognition)
+                short_texts = self.extract_short_texts_from_monument_result(monument_description)
+                
+                # Estrai testi lunghi dal text RAG
+                long_texts = self.extract_long_texts_from_rag_result(rag_result)
+                
+                # Estrai informazioni ARCO
+                arco_info = self.extract_arco_info(arco_result)
+                
+                if self.verbose:
+                    print(f"🏛️ Monument: {monument_name}")
+                    print(f"📍 Location: {location_info}")
+                    print(f"📝 Short texts: {len(short_texts)} items")
+                    print(f"📚 Long texts: {len(long_texts)} items") 
+                    print(f"🏛️ ARCO info: {len(arco_info)} items")
+                
+                # Costruisci il prompt completo per il final LLM
+                system_prompt = self.build_final_system_prompt()
+                user_prompt = self.build_final_user_prompt(
+                    monument_name, monument_description, location_info,
+                    short_texts, long_texts, arco_info, user_question
+                )
+                
+                # Genera la risposta finale
+                try:
+                    final_answer = self.rag_system.generate_with_smolagent(
+                        system_prompt=system_prompt,
+                        user_query=user_prompt,
+                        context_passages=long_texts  # Usa i testi lunghi come context principale
+                    )
+                    
+                    result = f"🤖 **FINAL AI RESPONSE**\n\n"
+                    result += f"**Question:** {user_question}\n"
+                    result += f"**Monument:** {monument_name} ({location_info})\n\n"
+                    result += f"**🎯 Comprehensive Answer:**\n{final_answer}\n\n"
+                    result += f"**📋 Information Sources Used:**\n"
+                    result += f"• Monument Recognition: {monument_name}\n"
+                    result += f"• Geolocation: {location_info}\n"
+                    result += f"• Text Database: {len(long_texts)} relevant passages\n"
+                    result += f"• ARCO Database: {len(arco_info)} cultural heritage entries\n"
+                    
+                    self.logger.info("Final response generated successfully")
+                    print("✅ Final response generation complete")
+                    return result
+                    
+                except Exception as smolagent_error:
+                    self.logger.warning(f"Smolagents generation failed for final response: {smolagent_error}")
+                    # Fallback response
+                    result = f"🤖 **FINAL RESPONSE (Structured Summary)**\n\n"
+                    result += f"**Question:** {user_question}\n"
+                    result += f"**Monument:** {monument_name} ({location_info})\n\n"
+                    result += f"**Key Information Found:**\n"
+                    result += f"• Monument: {monument_description}\n"
+                    result += f"• Location: {location_info}\n"
+                    
+                    if long_texts:
+                        result += f"• Historical Details: {len(long_texts)} detailed texts retrieved\n"
+                        result += f"  - {long_texts[0][:100]}...\n"
+                    
+                    if arco_info:
+                        result += f"• Related Heritage Sites: {len(arco_info)} entries from ARCO database\n"
+                        result += f"  - {'; '.join(arco_info[:2])}\n"
+                    
+                    result += f"\n⚠️ **Note**: AI synthesis unavailable ({smolagent_error})\n"
+                    result += f"💡 **Tip**: The information above provides comprehensive details to answer your question."
+                    
+                    return result
+                
+            except Exception as e:
+                self.logger.error(f"Final response generation failed (attempt {attempt + 1}): {str(e)}")
+                
+                if attempt == max_retries:
+                    error_details = f"❌ **Final Response Error** (after {max_retries + 1} attempts)\n\n"
+                    error_details += f"**Error Type:** {type(e).__name__}\n"
+                    error_details += f"**Error Message:** {str(e)}\n\n"
+                    error_details += "**Available Information:**\n"
+                    error_details += f"• Monument: {monument_name}\n"
+                    error_details += f"• Location: {location_info if 'location_info' in locals() else 'Unknown'}\n"
+                    error_details += "• Individual step results are available above\n"
+                    if self.verbose:
+                        error_details += f"\nTraceback:\n{traceback.format_exc()}"
+                    return error_details
+                else:
+                    print(f"⚠️ Final response generation failed, retrying in {1 + attempt} seconds...")
+                    time.sleep(1 + attempt)
+    
+    def check_arco_success(self, arco_result):
+        """Controlla se la ricerca ARCO ha avuto successo"""
+        if not arco_result or "❌" in arco_result:
+            return False
+        
+        # Cerca indicatori di successo
+        success_indicators = ["✅ Found", "results by monument name", "results by location"]
+        return any(indicator in arco_result for indicator in success_indicators)
+    
+    def extract_location_info(self, coordinates):
+        """Estrae informazioni sulla localizzazione"""
+        if coordinates.get("lat") and coordinates.get("lon"):
+            location_name = self.get_location_name_from_coordinates(coordinates)
+            if location_name:
+                return f"{location_name} (Lat: {coordinates['lat']:.4f}, Lon: {coordinates['lon']:.4f})"
+            else:
+                return f"Lat: {coordinates['lat']:.4f}, Lon: {coordinates['lon']:.4f}"
+        return "Location unknown"
+    
+    def extract_short_texts_from_monument_result(self, monument_description):
+        """Estrae testi brevi dal riconoscimento monumenti"""
+        return [monument_description] if monument_description else []
+    
+    def extract_long_texts_from_rag_result(self, rag_result):
+        """Estrae testi lunghi dal risultato RAG"""
+        import re
+        long_texts = []
+        
+        # Cerca pattern dei testi nel risultato RAG
+        # Pattern per "**1. Similarity: 0.XXXX**\nTESTO"
+        pattern = r'\*\*\d+\.\s*Similarity:\s*[\d.]+\*\*\n(.*?)(?=\n\*\*\d+\.|$)'
+        matches = re.findall(pattern, rag_result, re.DOTALL)
+        
+        for match in matches:
+            text = match.strip()
+            if len(text) > 50:  # Solo testi significativi
+                long_texts.append(text)
+        
+        return long_texts[:3]  # Max 3 testi
+    
+    def extract_arco_info(self, arco_result):
+        """Estrae informazioni ARCO (nomi di monumenti correlati)"""
+        import re
+        arco_info = []
+        
+        # Cerca pattern "**Nome Monumento**" nel risultato ARCO
+        pattern = r'\*\*(.*?)\*\*'
+        matches = re.findall(pattern, arco_result)
+        
+        for match in matches:
+            # Filtra solo i nomi di monumenti/luoghi (non headers)
+            if (not match.startswith("Primary Search") and 
+                not match.startswith("Fallback Search") and
+                not match.startswith("ARCO") and
+                len(match) > 5 and len(match) < 100):
+                arco_info.append(match.strip())
+        
+        return list(set(arco_info))  # Rimuovi duplicati
+    
+    def build_final_system_prompt(self):
+        """Costruisce il system prompt per la risposta finale"""
+        return (
+            "You are an expert tourist guide and cultural heritage specialist. "
+            "You have been provided with comprehensive information about a monument from multiple sources: "
+            "image recognition, geolocation, historical texts, and cultural heritage databases. "
+            "Your task is to provide a complete, engaging answer to the user's question using all available information. "
+            "Use the ARCO database findings sparingly and as 'curious extras' to intrigue the user to ask more questions. "
+            "Focus primarily on the monument identification and historical texts, with location context. "
+            "Be informative, accurate, and slightly enticing about related discoveries."
+        )
+    
+    def build_final_user_prompt(self, monument_name, monument_description, location_info,
+                               short_texts, long_texts, arco_info, user_question):
+        """Costruisce il prompt utente completo per la risposta finale"""
+        prompt = f"""User Question: {user_question}
+
+MONUMENT IDENTIFIED:
+- Name: {monument_name}
+- Description: {monument_description}
+- Location: {location_info}
+
+SHORT TEXTS (from image recognition):
+"""
+        for i, text in enumerate(short_texts, 1):
+            prompt += f"{i}. {text}\n"
+        
+        prompt += f"\nLONG TEXTS (from historical database):\n"
+        for i, text in enumerate(long_texts, 1):
+            prompt += f"{i}. {text}\n"
+        
+        if arco_info:
+            prompt += f"\nRELATED HERITAGE SITES (from ARCO - use sparingly as curious extras):\n"
+            for i, info in enumerate(arco_info, 1):
+                prompt += f"{i}. {info}\n"
+        
+        prompt += f"""
+Please provide a comprehensive answer to the user's question using:
+1. PRIMARY FOCUS: Monument identification + historical texts + location
+2. SECONDARY: Mention ARCO findings briefly as "interesting related sites" to spark curiosity
+3. Make the response engaging and informative
+4. End with a subtle hint about the related sites that might interest them for further exploration
+"""
+        
+        return prompt
     
     def process_with_monument_arco(self, monument_name, max_retries=2):
         """Process with ARCO knowledge graph using monument name"""
@@ -1098,12 +1647,16 @@ class AgenticTravelerCLI:
             print(f"❌ Export failed: {e}")
             return None
     
-    def analyze_image(self, image_path, question, export_file=None):
+    def analyze_image(self, image_path, question, export_file=None, use_rewrite=False):
         """Main analysis function using the NEW WORKFLOW"""
         start_time = time.time()
         
         print(f"🖼️ Analyzing image: {image_path}")
         print(f"❓ Question: {question}")
+        if use_rewrite:
+            print("🔄 Mode: Enhanced RAG with Query Rewriting & Voting")
+        else:
+            print("📖 Mode: Standard RAG with Predefined Texts")
         print("=" * 80)
         
         # Validate image exists
@@ -1141,11 +1694,16 @@ class AgenticTravelerCLI:
             # Extract coordinates from localization result
             coordinates = self.extract_coordinates_from_localization(localization_result)
             
-            # Step 3: RAG Processing con informazioni monumento (usa testi predefiniti)
+            # Step 3: RAG Processing con informazioni monumento
             print("\n" + "=" * 80)
-            print("🎯 STEP 3: RAG Analysis with Predefined Texts")
-            print("-" * 40)
-            rag_result = self.process_with_monument_rag_predefined(monument_name, monument_description, question)
+            if use_rewrite:
+                print("🎯 STEP 3: RAG Analysis with Query Rewriting & Voting")
+                print("-" * 40)
+                rag_result = self.process_with_voting_rag(monument_name, monument_description, question)
+            else:
+                print("🎯 STEP 3: RAG Analysis with Predefined Texts")
+                print("-" * 40)
+                rag_result = self.process_with_monument_rag_predefined(monument_name, monument_description, question)
             print(f"📊 RAG SYSTEM RESULTS:")
             print(rag_result)
             
@@ -1156,6 +1714,17 @@ class AgenticTravelerCLI:
             arco_result = self.process_with_arco_and_coordinates(monument_name, coordinates)
             print(f"📊 ARCO DATABASE RESULTS:")
             print(arco_result)
+            
+            # Step 5: Final AI Response (solo se ARCO ha successo)
+            print("\n" + "=" * 80)
+            print("🎯 STEP 5: Final AI Response")
+            print("-" * 40)
+            final_response = self.generate_final_response(
+                monument_name, monument_description, coordinates, 
+                rag_result, arco_result, question
+            )
+            print(f"📊 FINAL AI RESPONSE:")
+            print(final_response)
             
             # Export results if requested
             if export_file:
@@ -1177,6 +1746,7 @@ class AgenticTravelerCLI:
                 "rag_result": rag_result,
                 "arco_result": arco_result,
                 "localization_result": localization_result,
+                "final_response": final_response,
                 "processing_time": processing_time
             }
             
@@ -1201,6 +1771,7 @@ Examples:
     python main.py --image tower.png --question "What is the architectural style?"
     python main.py --image landmark.jpg --export results.json
     python main.py --image monument.jpg --question "Tell me about its history" --export analysis.json --verbose
+    python main.py --image monument.jpg --question "Tell me about its history" --rewrite --verbose
     
 For more information, visit: https://github.com/your-repo/AgenticTraveler
         """
@@ -1235,6 +1806,12 @@ For more information, visit: https://github.com/your-repo/AgenticTraveler
     )
     
     parser.add_argument(
+        '--rewrite', '-r',
+        action='store_true',
+        help='Enable query rewriting with LLM to generate alternative interpretations and improve RAG results'
+    )
+    
+    parser.add_argument(
         '--version',
         action='version',
         version='AgenticTraveler CLI v1.0 - Enhanced Edition'
@@ -1251,7 +1828,8 @@ For more information, visit: https://github.com/your-repo/AgenticTraveler
         results = app.analyze_image(
             image_path=args.image,
             question=args.question,
-            export_file=args.export
+            export_file=args.export,
+            use_rewrite=args.rewrite
         )
         
         if results:

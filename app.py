@@ -587,6 +587,210 @@ class AgenticTravelerApp:
         
         return None
 
+    def generate_final_response(self, monument_name, monument_description, coordinates, 
+                               rag_result, arco_result, user_question, max_retries=2):
+        """Genera una risposta finale combinando tutte le informazioni trovate"""
+        if not self.rag_system:
+            error_msg = "❌ RAG system not available for final response generation"
+            self.logger.error(error_msg)
+            return error_msg
+        
+        # Controlla se ARCO ha avuto successo
+        arco_success = self.check_arco_success(arco_result)
+        
+        if not arco_success:
+            return ("❌ **Final Response Skipped**\n\n"
+                   "The final AI response is only generated when ARCO database search is successful.\n"
+                   "ARCO search did not find sufficient results, so no final synthesis will be provided.\n\n"
+                   "💡 **Tip**: The individual results from each step above contain detailed information about your query.")
+        
+        for attempt in range(max_retries + 1):
+            try:
+                self.logger.info(f"Generating final response (attempt {attempt + 1}/{max_retries + 1})")
+                
+                # Estrai informazioni dalla localizzazione
+                location_info = self.extract_location_info(coordinates)
+                
+                # Estrai testi brevi dall'image RAG (monument recognition)
+                short_texts = self.extract_short_texts_from_monument_result(monument_description)
+                
+                # Estrai testi lunghi dal text RAG
+                long_texts = self.extract_long_texts_from_rag_result(rag_result)
+                
+                # Estrai informazioni ARCO
+                arco_info = self.extract_arco_info(arco_result)
+                
+                # Costruisci il prompt completo per il final LLM
+                system_prompt = self.build_final_system_prompt()
+                user_prompt = self.build_final_user_prompt(
+                    monument_name, monument_description, location_info,
+                    short_texts, long_texts, arco_info, user_question
+                )
+                
+                # Genera la risposta finale
+                try:
+                    final_answer = self.rag_system.generate_with_smolagent(
+                        system_prompt=system_prompt,
+                        user_query=user_prompt,
+                        context_passages=long_texts  # Usa i testi lunghi come context principale
+                    )
+                    
+                    result = f"🤖 **FINAL AI RESPONSE**\n\n"
+                    result += f"**Question:** {user_question}\n"
+                    result += f"**Monument:** {monument_name} ({location_info})\n\n"
+                    result += f"**🎯 Comprehensive Answer:**\n{final_answer}\n\n"
+                    result += f"**📋 Information Sources Used:**\n"
+                    result += f"• Monument Recognition: {monument_name}\n"
+                    result += f"• Geolocation: {location_info}\n"
+                    result += f"• Text Database: {len(long_texts)} relevant passages\n"
+                    result += f"• ARCO Database: {len(arco_info)} cultural heritage entries\n"
+                    
+                    self.logger.info("Final response generated successfully")
+                    return result
+                    
+                except Exception as smolagent_error:
+                    self.logger.warning(f"Smolagents generation failed for final response: {smolagent_error}")
+                    # Fallback response
+                    result = f"🤖 **FINAL RESPONSE (Structured Summary)**\n\n"
+                    result += f"**Question:** {user_question}\n"
+                    result += f"**Monument:** {monument_name} ({location_info})\n\n"
+                    result += f"**Key Information Found:**\n"
+                    result += f"• Monument: {monument_description}\n"
+                    result += f"• Location: {location_info}\n"
+                    
+                    if long_texts:
+                        result += f"• Historical Details: {len(long_texts)} detailed texts retrieved\n"
+                        result += f"  - {long_texts[0][:100]}...\n"
+                    
+                    if arco_info:
+                        result += f"• Related Heritage Sites: {len(arco_info)} entries from ARCO database\n"
+                        result += f"  - {'; '.join(arco_info[:2])}\n"
+                    
+                    result += f"\n⚠️ **Note**: AI synthesis unavailable ({smolagent_error})\n"
+                    result += f"💡 **Tip**: The information above provides comprehensive details to answer your question."
+                    
+                    return result
+                
+            except Exception as e:
+                self.logger.error(f"Final response generation failed (attempt {attempt + 1}): {str(e)}")
+                
+                if attempt == max_retries:
+                    error_details = f"❌ **Final Response Error** (after {max_retries + 1} attempts)\n\n"
+                    error_details += f"**Error Type:** {type(e).__name__}\n"
+                    error_details += f"**Error Message:** {str(e)}\n\n"
+                    error_details += "**Available Information:**\n"
+                    error_details += f"• Monument: {monument_name}\n"
+                    error_details += f"• Location: {location_info if 'location_info' in locals() else 'Unknown'}\n"
+                    error_details += "• Individual step results are available above\n"
+                    return error_details
+                else:
+                    time.sleep(1 + attempt)
+
+    def check_arco_success(self, arco_result):
+        """Controlla se la ricerca ARCO ha avuto successo"""
+        if not arco_result or "❌" in arco_result:
+            return False
+        
+        # Cerca indicatori di successo
+        success_indicators = ["✅ Found", "results by monument name", "results by location"]
+        return any(indicator in arco_result for indicator in success_indicators)
+    
+    def extract_location_info(self, coordinates):
+        """Estrae informazioni sulla localizzazione"""
+        if coordinates.get("lat") and coordinates.get("lon"):
+            location_name = self.get_location_name_from_coordinates(coordinates)
+            if location_name:
+                return f"{location_name} (Lat: {coordinates['lat']:.4f}, Lon: {coordinates['lon']:.4f})"
+            else:
+                return f"Lat: {coordinates['lat']:.4f}, Lon: {coordinates['lon']:.4f}"
+        return "Location unknown"
+    
+    def extract_short_texts_from_monument_result(self, monument_description):
+        """Estrae testi brevi dal riconoscimento monumenti"""
+        return [monument_description] if monument_description else []
+    
+    def extract_long_texts_from_rag_result(self, rag_result):
+        """Estrae testi lunghi dal risultato RAG"""
+        import re
+        long_texts = []
+        
+        # Cerca pattern dei testi nel risultato RAG
+        # Pattern per "**1. Similarity: 0.XXXX**\nTESTO"
+        pattern = r'\*\*\d+\.\s*Similarity:\s*[\d.]+\*\*\n(.*?)(?=\n\*\*\d+\.|$)'
+        matches = re.findall(pattern, rag_result, re.DOTALL)
+        
+        for match in matches:
+            text = match.strip()
+            if len(text) > 50:  # Solo testi significativi
+                long_texts.append(text)
+        
+        return long_texts[:3]  # Max 3 testi
+    
+    def extract_arco_info(self, arco_result):
+        """Estrae informazioni ARCO (nomi di monumenti correlati)"""
+        import re
+        arco_info = []
+        
+        # Cerca pattern "**Nome Monumento**" nel risultato ARCO
+        pattern = r'\*\*(.*?)\*\*'
+        matches = re.findall(pattern, arco_result)
+        
+        for match in matches:
+            # Filtra solo i nomi di monumenti/luoghi (non headers)
+            if (not match.startswith("Primary Search") and 
+                not match.startswith("Fallback Search") and
+                not match.startswith("ARCO") and
+                len(match) > 5 and len(match) < 100):
+                arco_info.append(match.strip())
+        
+        return list(set(arco_info))  # Rimuovi duplicati
+    
+    def build_final_system_prompt(self):
+        """Costruisce il system prompt per la risposta finale"""
+        return (
+            "You are an expert tourist guide and cultural heritage specialist. "
+            "You have been provided with comprehensive information about a monument from multiple sources: "
+            "image recognition, geolocation, historical texts, and cultural heritage databases. "
+            "Your task is to provide a complete, engaging answer to the user's question using all available information. "
+            "Use the ARCO database findings sparingly and as 'curious extras' to intrigue the user to ask more questions. "
+            "Focus primarily on the monument identification and historical texts, with location context. "
+            "Be informative, accurate, and slightly enticing about related discoveries."
+        )
+    
+    def build_final_user_prompt(self, monument_name, monument_description, location_info,
+                               short_texts, long_texts, arco_info, user_question):
+        """Costruisce il prompt utente completo per la risposta finale"""
+        prompt = f"""User Question: {user_question}
+
+MONUMENT IDENTIFIED:
+- Name: {monument_name}
+- Description: {monument_description}
+- Location: {location_info}
+
+SHORT TEXTS (from image recognition):
+"""
+        for i, text in enumerate(short_texts, 1):
+            prompt += f"{i}. {text}\n"
+        
+        prompt += f"\nLONG TEXTS (from historical database):\n"
+        for i, text in enumerate(long_texts, 1):
+            prompt += f"{i}. {text}\n"
+        
+        if arco_info:
+            prompt += f"\nRELATED HERITAGE SITES (from ARCO - use sparingly as curious extras):\n"
+            for i, info in enumerate(arco_info, 1):
+                prompt += f"{i}. {info}\n"
+        
+        prompt += f"""
+Please provide a comprehensive answer to the user's question using:
+1. PRIMARY FOCUS: Monument identification + historical texts + location
+2. SECONDARY: Mention ARCO findings briefly as "interesting related sites" to spark curiosity
+3. Make the response engaging and informative
+4. End with a subtle hint about the related sites that might interest them for further exploration
+"""
+        
+        return prompt
+
     # === METODI VECCHI (NON PIU' UTILIZZATI) ===
     def OLD_process_with_agent(self, image_path, question, max_retries=2):
         """Process image with the agent system with enhanced error handling"""
@@ -898,7 +1102,7 @@ def optimize_image_for_processing(image, max_size=(1024, 1024), quality=85):
 def process_image_and_question(image, question, progress=gr.Progress()):
     """Main processing function for Gradio interface with NEW WORKFLOW"""
     if image is None:
-        return "❌ Please upload an image", "❌ No image provided", "❌ No image provided", "❌ No image provided"
+        return "❌ Please upload an image", "❌ No image provided", "❌ No image provided", "❌ No image provided", "❌ No image provided"
     
     if not question or question.strip() == "":
         question = "What monument or landmark is shown in this image?"
@@ -948,15 +1152,23 @@ def process_image_and_question(image, question, progress=gr.Progress()):
         # Step 4: ARCO Database Query with coordinate fallback
         progress(0.8, desc="🎯 Step 4: ARCO Database...")
         arco_result = app_instance.process_with_arco_and_coordinates(monument_name, coordinates)
+        progress(0.9, desc="ARCO query complete")
+        
+        # Step 5: Final AI Response (solo se ARCO ha successo)
+        progress(0.9, desc="🎯 Step 5: Final AI Response...")
+        final_response = app_instance.generate_final_response(
+            monument_name, monument_description, coordinates, 
+            rag_result, arco_result, question
+        )
         progress(1.0, desc="All processing complete!")
         
-        app_instance.logger.info("Successfully completed all four processing stages")
-        return monument_result, rag_result, arco_result, localization_result
+        app_instance.logger.info("Successfully completed all five processing stages")
+        return monument_result, rag_result, arco_result, localization_result, final_response
     
     except Exception as e:
         error_msg = f"❌ **Processing Error**\n\nUnexpected error during processing: {str(e)}"
         app_instance.logger.error(f"Processing failed: {e}")
-        return error_msg, error_msg, error_msg, error_msg
+        return error_msg, error_msg, error_msg, error_msg, error_msg
     
     finally:
         # Clean up temporary file
@@ -972,12 +1184,13 @@ with gr.Blocks(title="AgenticTraveler - AI Tourist Guide", theme=gr.themes.Soft(
     gr.Markdown("""
     # 🗺️ AgenticTraveler - AI Tourist Guide
     
-    Upload an image of a monument or landmark and ask a question about it. The system will analyze the image using four sequential steps:
+    Upload an image of a monument or landmark and ask a question about it. The system will analyze the image using five sequential steps:
     
     1. **🎯 Monument Recognition**: Image segmentation and embedding matching to identify monuments
     2. **🌍 Geolocation**: Geographic location detection using StreetCLIP and GeoCLIP
     3. **🔍 RAG System**: Semantic search using predefined monument texts and identified information  
     4. **🏛️ ARCO Database**: Query the Italian cultural heritage database (with coordinate fallback)
+    5. **🤖 Final AI Response**: Comprehensive answer combining all information sources (only if ARCO succeeds)
     """)
     
     with gr.Row():
@@ -1059,6 +1272,14 @@ with gr.Blocks(title="AgenticTraveler - AI Tourist Guide", theme=gr.themes.Soft(
                 max_lines=12,
                 show_copy_button=True
             )
+        
+        with gr.Row():
+            final_output = gr.Textbox(
+                label="🤖 Final AI Response (Comprehensive Analysis)",
+                lines=12,
+                max_lines=20,
+                show_copy_button=True
+            )
     
     # Export functionality section
     with gr.Row():
@@ -1066,7 +1287,7 @@ with gr.Blocks(title="AgenticTraveler - AI Tourist Guide", theme=gr.themes.Soft(
         export_btn = gr.Button("📄 Export to JSON", variant="secondary")
         export_file = gr.File(label="Download Results", visible=False)
         
-    def export_results(monument_res, rag_res, arco_res, location_res):
+    def export_results(monument_res, rag_res, arco_res, location_res, final_res):
         """Export analysis results to JSON file"""
         try:
             timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -1076,12 +1297,13 @@ with gr.Blocks(title="AgenticTraveler - AI Tourist Guide", theme=gr.themes.Soft(
                     "monument_recognition": monument_res,
                     "rag_system": rag_res,
                     "arco_database": arco_res,
-                    "geolocation": location_res
+                    "geolocation": location_res,
+                    "final_response": final_res
                 },
                 "metadata": {
-                    "export_version": "2.0",
-                    "app_version": "AgenticTraveler Enhanced - New Workflow",
-                    "components": ["Monument Recognition", "RAG System", "ARCO Database", "Geolocation"]
+                    "export_version": "3.0",
+                    "app_version": "AgenticTraveler Enhanced - Complete Workflow",
+                    "components": ["Monument Recognition", "RAG System", "ARCO Database", "Geolocation", "Final AI Response"]
                 }
             }
             
@@ -1100,7 +1322,7 @@ with gr.Blocks(title="AgenticTraveler - AI Tourist Guide", theme=gr.themes.Soft(
     
     export_btn.click(
         fn=export_results,
-        inputs=[agent_output, rag_output, arco_output, localization_output],
+        inputs=[agent_output, rag_output, arco_output, localization_output, final_output],
         outputs=export_file
     )
     
@@ -1108,7 +1330,7 @@ with gr.Blocks(title="AgenticTraveler - AI Tourist Guide", theme=gr.themes.Soft(
     submit_btn.click(
         fn=process_image_and_question,
         inputs=[image_input, question_input],
-        outputs=[agent_output, rag_output, arco_output, localization_output],
+        outputs=[agent_output, rag_output, arco_output, localization_output, final_output],
         show_progress=True
     )
     
