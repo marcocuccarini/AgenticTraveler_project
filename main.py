@@ -150,7 +150,7 @@ class AgenticTravelerCLI:
                     print(f"🔄 Initializing RAG system (attempt {attempt + 1}/{max_retries})...")
                 
                 # Usa path configurabili
-                embed_model_path = os.environ.get('EMBED_MODEL_PATH', "all-MiniLM-L6-v2")
+                embed_model_path = os.environ.get('EMBED_MODEL_PATH', "/leonardo_work/uTS25_Pinna/phd_proj/TurismAgent/TurismAgent/model/all-MiniLM-L6-v2")
                 qwen_model_path = os.environ.get('QWEN_MODEL_PATH', "/leonardo_work/uTS25_Pinna/phd_proj/TurismAgent/TurismAgent/model/Qwen2.5-Coder-7B-Instruct")
                 
                 self.rag_system = RAGSmolagent(
