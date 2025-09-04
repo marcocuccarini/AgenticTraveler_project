@@ -52,10 +52,15 @@ try:
     print()
     print("📋 New functionality summary:")
     print("  • --rewrite flag added to CLI")
+    print("  • --top-k flag added to CLI (default: 5)")
     print("  • generate_query_rewrites() method: Uses LLM to create 2 alternative queries")
     print("  • process_with_voting_rag() method: Searches with all queries and uses voting")
-    print("  • vote_for_best_passages() method: Implements voting with original query tiebreaker")
-    print("  • Enhanced workflow: Original + 2 rewrites -> Multiple searches -> Voting -> Best results")
+    print("  • vote_for_best_passages() method: Advanced voting system with prioritization:")
+    print("    1. Frequency (texts found by more queries)")
+    print("    2. Average position (better ranked texts)")  
+    print("    3. Original accuracy (tiebreaker from original query)")
+    print("  • Enhanced workflow: Original + 2 rewrites -> Multiple searches -> Voting -> Top-K results")
+    print("  • Configurable top-k parameter for result customization")
     
 except ImportError as e:
     print(f"❌ Import error: {e}")

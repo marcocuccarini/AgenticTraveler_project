@@ -47,6 +47,16 @@ python main.py --image monument.jpg --question "Tell me about this monument" --r
 python main.py --image monument.jpg --question "What's the history?" --rewrite --verbose
 ```
 
+### Con Top-K personalizzato
+```bash
+python main.py --image monument.jpg --question "What's the history?" --rewrite --top-k 7
+```
+
+### Combinando tutte le opzioni
+```bash
+python main.py --image monument.jpg --question "What's the history?" --rewrite --top-k 10 --verbose --export results.json
+```
+
 ## Esempio di Output
 
 ```
@@ -66,10 +76,12 @@ python main.py --image monument.jpg --question "What's the history?" --rewrite -
 🎯 Rewrite 1 found 5 results
 🎯 Rewrite 2 found 5 results
 
-🗳️ Voting results summary:
-  1. Votes: 9, Score: 0.8756
-  2. Votes: 7, Score: 0.8234  
-  3. Votes: 6, Score: 0.8123
+🗳️ Voting results summary (top 5):
+  1. Freq: 3, Avg.Pos: 0.7, Orig: ✓ (0.8756)
+  2. Freq: 2, Avg.Pos: 1.5, Orig: ✓ (0.8234)  
+  3. Freq: 2, Avg.Pos: 2.0, Orig: ✗ (0.0000)
+  4. Freq: 1, Avg.Pos: 1.0, Orig: ✓ (0.8123)
+  5. Freq: 1, Avg.Pos: 2.0, Orig: ✗ (0.0000)
 
 🗳️ RAG Analysis with Voting Mechanism
 
@@ -97,26 +109,42 @@ The Colosseum has a rich history spanning nearly 2000 years...
 ## Algoritmo di Voting
 
 ```python
-# Per ogni passaggio trovato:
-for rank, (score, passage) in enumerate(results):
-    position_weight = max(0, top_k - rank)  # 3, 2, 1, 0, 0...
-    original_bonus = 0.1 if is_original_query else 0.0
-    
-    passage_votes[passage] += position_weight
-    passage_scores[passage] = max(current_score, score + original_bonus)
+# Per ogni passaggio trovato, traccia:
+passage_stats[passage] = {
+    'frequency': 0,          # Quante query l'hanno trovato
+    'positions': [],         # Posizioni in cui è stato trovato
+    'scores': [],            # Tutti i punteggi ottenuti
+    'original_score': 0.0,   # Miglior punteggio dalla query originale
+}
 
-# Ordinamento finale per:
-# 1. Numero di voti (primario)
-# 2. Punteggio similarity (secondario)  
-# 3. Bonus query originale (tiebreaker)
+# Ordinamento finale per PRIORITÀ:
+# 1. Frequenza (decrescente) - testi trovati più volte  
+# 2. Posizione media (crescente) - testi in posizioni migliori
+# 3. Punteggio originale (decrescente) - migliore accuratezza dall'originale
+
+sorted_passages = sorted(
+    final_passages,
+    key=lambda x: (-x['frequency'], x['avg_position'], -x['original_score'])
+)
 ```
 
 ## Configurazione
 
+### Parametri Disponibili
+
+- `--rewrite` / `-r`: Attiva il sistema di query rewriting e voting
+- `--top-k` / `-k`: Numero di passaggi da selezionare (default: 5)
+- `--verbose` / `-v`: Mostra dettagli del processo di rewriting e voting
+- `--export` / `-e`: Esporta i risultati in formato JSON
+
+### Sistema Base
 Nessuna configurazione aggiuntiva richiesta. Il sistema utilizza:
 - Stesso RAG system (rag_system_smolagent.py)
 - Stessi modelli embedding
-- Stesso database di testi predefiniti
+- Stesso database di testi predefiniti  
 - Stessa infrastruttura Smolagents
 
-L'unica differenza è l'aggiunta del flag `--rewrite` che attiva il processo avanzato.
+### Comportamento Top-K
+- **Default**: 5 passaggi selezionati
+- **Range consigliato**: 3-10 per risultati ottimali
+- **Comportamento**: Il sistema cerca sempre almeno 5 passaggi per query per garantire varietà nel voting, poi seleziona i top-k migliori

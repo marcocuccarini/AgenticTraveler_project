@@ -481,7 +481,7 @@ class AgenticTravelerCLI:
         
         return []
     
-    def process_with_voting_rag(self, monument_name, monument_description, question, max_retries=2):
+    def process_with_voting_rag(self, monument_name, monument_description, question, top_k=5, max_retries=2):
         """Process with RAG using voting mechanism with query rewrites"""
         if not self.rag_system:
             error_msg = "❌ RAG system not available - initialization failed"
@@ -568,7 +568,7 @@ class AgenticTravelerCLI:
                     query_name = "original" if i == 0 else f"rewrite_{i}"
                     
                     try:
-                        results = self.rag_system.query(query, top_k=5)  # Prendiamo più risultati per il voting
+                        results = self.rag_system.query(query, top_k=max(5, top_k))  # Prendiamo almeno 5 o top_k se maggiore
                         all_results[query_name] = results
                         
                         if self.verbose:
@@ -580,13 +580,13 @@ class AgenticTravelerCLI:
                         all_results[query_name] = []
                 
                 # Sistema di voting per trovare i migliori testi
-                voted_results = self.vote_for_best_passages(all_results, top_k=3)
+                voted_results = self.vote_for_best_passages(all_results, top_k=top_k)
                 
                 if not voted_results:
                     raise ValueError("No results found after voting mechanism")
                 
                 # Prepara informazioni per LLM
-                top_3_texts = [passage for _, passage in voted_results]
+                top_k_texts = [passage for _, passage in voted_results]
                 
                 if self.verbose:
                     print(f"🗳️ Voting selected top {len(voted_results)} texts:")
@@ -612,7 +612,7 @@ class AgenticTravelerCLI:
                     smolagent_answer = self.rag_system.generate_with_smolagent(
                         system_prompt=system_prompt,
                         user_query=enhanced_query,
-                        context_passages=top_3_texts
+                        context_passages=top_k_texts
                     )
                     
                     result = f"🗳️ **RAG Analysis with Voting Mechanism**\n\n"
@@ -623,7 +623,7 @@ class AgenticTravelerCLI:
                     result += f"• Original query used\n"
                     result += f"• {len(query_rewrites)} alternative interpretations generated\n"
                     result += f"• Voting mechanism applied to select best passages\n\n"
-                    result += f"**Top 3 Selected Texts (via voting):**\n"
+                    result += f"**Top {len(voted_results)} Selected Texts (via voting):**\n"
                     for i, (score, passage) in enumerate(voted_results, 1):
                         result += f"**{i}. Confidence: {score:.4f}**\n{passage}\n\n"
                     result += f"**🧠 AI Answer:**\n{smolagent_answer}"
@@ -643,7 +643,7 @@ class AgenticTravelerCLI:
                     result += f"• Original query used\n"
                     result += f"• {len(query_rewrites)} alternative interpretations generated\n"
                     result += f"• Voting mechanism applied to select best passages\n\n"
-                    result += f"**Top 3 Selected Texts (via voting):**\n"
+                    result += f"**Top {len(voted_results)} Selected Texts (via voting):**\n"
                     for i, (score, passage) in enumerate(voted_results, 1):
                         result += f"**{i}. Confidence: {score:.4f}**\n{passage}\n\n"
                     result += f"⚠️ **Note**: Could not generate AI answer with Smolagents: {smolagent_error}\n"
@@ -669,52 +669,92 @@ class AgenticTravelerCLI:
                     print(f"⚠️ Voting RAG processing failed, retrying in {1 + attempt} seconds...")
                     time.sleep(1 + attempt)
     
-    def vote_for_best_passages(self, all_results, top_k=3):
-        """Implementa il sistema di voting per selezionare i migliori passaggi"""
-        # Dizionario per contare i voti per ogni passaggio
-        passage_votes = {}
-        passage_scores = {}
+    def vote_for_best_passages(self, all_results, top_k=5):
+        """Implementa il sistema di voting per selezionare i migliori passaggi
         
-        # Assegna voti basati sulla posizione nei risultati
+        Priorità di ordinamento:
+        1. Numero di query che hanno trovato il testo (frequenza)
+        2. Posizione media nelle ricerche (qualità)
+        3. Punteggio di accuratezza più alto dall'originale (tiebreaker)
+        """
+        # Dizionario per tracciare le statistiche di ogni passaggio
+        passage_stats = {}
+        
+        # Raccoglie statistiche per ogni passaggio
         for query_name, results in all_results.items():
             is_original = (query_name == "original")
             
             for rank, (score, passage) in enumerate(results):
-                # Peso basato sulla posizione: primi risultati valgono di più
-                position_weight = max(0, top_k - rank)  
+                if passage not in passage_stats:
+                    passage_stats[passage] = {
+                        'frequency': 0,          # Quante query l'hanno trovato
+                        'positions': [],         # Posizioni in cui è stato trovato
+                        'scores': [],            # Tutti i punteggi ottenuti
+                        'original_score': 0.0,   # Miglior punteggio dalla query originale
+                        'found_by_original': False
+                    }
                 
-                # Bonus per risultati della query originale (tiebreaker)
-                original_bonus = 0.1 if is_original else 0.0
+                # Incrementa frequenza
+                passage_stats[passage]['frequency'] += 1
                 
-                if passage in passage_votes:
-                    passage_votes[passage] += position_weight
-                    # Mantiene il punteggio più alto
-                    passage_scores[passage] = max(passage_scores[passage], score + original_bonus)
-                else:
-                    passage_votes[passage] = position_weight
-                    passage_scores[passage] = score + original_bonus
+                # Aggiungi posizione (0-indexed)
+                passage_stats[passage]['positions'].append(rank)
+                
+                # Aggiungi punteggio
+                passage_stats[passage]['scores'].append(score)
+                
+                # Traccia se trovato dalla query originale e il suo punteggio
+                if is_original:
+                    passage_stats[passage]['found_by_original'] = True
+                    passage_stats[passage]['original_score'] = max(
+                        passage_stats[passage]['original_score'], score
+                    )
         
-        # Ordina per numero di voti, poi per punteggio
+        # Calcola metriche finali per ogni passaggio
+        final_passages = []
+        for passage, stats in passage_stats.items():
+            frequency = stats['frequency']
+            avg_position = sum(stats['positions']) / len(stats['positions'])
+            max_score = max(stats['scores'])
+            original_score = stats['original_score'] if stats['found_by_original'] else 0.0
+            
+            final_passages.append({
+                'passage': passage,
+                'frequency': frequency,
+                'avg_position': avg_position,
+                'max_score': max_score,
+                'original_score': original_score,
+                'found_by_original': stats['found_by_original']
+            })
+        
+        # Ordinamento con le priorità richieste:
+        # 1. Frequenza (decrescente) - testi trovati più volte
+        # 2. Posizione media (crescente) - testi in posizioni migliori
+        # 3. Punteggio originale (decrescente) - migliore accuratezza dall'originale
         sorted_passages = sorted(
-            passage_votes.items(), 
-            key=lambda x: (x[1], passage_scores[x[0]]), 
-            reverse=True
+            final_passages,
+            key=lambda x: (-x['frequency'], x['avg_position'], -x['original_score'])
         )
         
-        # Restituisce i top_k passaggi con i loro punteggi finali
+        # Prepara i risultati finali
         final_results = []
-        for passage, votes in sorted_passages[:top_k]:
-            final_score = passage_scores[passage]
-            final_results.append((final_score, passage))
+        for item in sorted_passages[:top_k]:
+            # Usa il punteggio massimo ottenuto come punteggio finale
+            final_score = item['max_score']
+            final_results.append((final_score, item['passage']))
         
         if self.verbose:
-            print(f"🗳️ Voting results summary:")
-            for i, (passage, votes) in enumerate(sorted_passages[:top_k], 1):
-                print(f"  {i}. Votes: {votes}, Score: {passage_scores[passage]:.4f}")
+            print(f"🗳️ Voting results summary (top {top_k}):")
+            for i, item in enumerate(sorted_passages[:top_k], 1):
+                freq = item['frequency']
+                avg_pos = item['avg_position']
+                orig_score = item['original_score']
+                found_by_orig = "✓" if item['found_by_original'] else "✗"
+                print(f"  {i}. Freq: {freq}, Avg.Pos: {avg_pos:.1f}, Orig: {found_by_orig} ({orig_score:.4f})")
         
         return final_results
 
-    def process_with_monument_rag_predefined(self, monument_name, monument_description, question, max_retries=2):
+    def process_with_monument_rag_predefined(self, monument_name, monument_description, question, top_k=5, max_retries=2):
         """Process with RAG system using predefined texts from rag_system_smolagent.py"""
         if not self.rag_system:
             error_msg = "❌ RAG system not available - initialization failed"
@@ -792,16 +832,16 @@ class AgenticTravelerCLI:
                     print(f"📚 Built RAG index with {len(all_monument_texts)} monument texts")
                 
                 # Query the RAG system using monument name + description as query
-                top_results = self.rag_system.query(monument_query_text, top_k=3)
+                top_results = self.rag_system.query(monument_query_text, top_k=top_k)
                 
                 if not top_results:
                     raise ValueError("No relevant passages found in RAG query")
                 
                 # Prepare all information for LLM
-                top_3_texts = [passage for _, passage in top_results]
+                top_k_texts = [passage for _, passage in top_results]
                 
                 if self.verbose:
-                    print(f"🎯 Found top 3 most similar texts:")
+                    print(f"🎯 Found top {len(top_results)} most similar texts:")
                     for i, (score, passage) in enumerate(top_results, 1):
                         print(f"  {i}. Score: {score:.4f} - {passage[:60]}...")
                 
@@ -826,14 +866,14 @@ class AgenticTravelerCLI:
                     smolagent_answer = self.rag_system.generate_with_smolagent(
                         system_prompt=system_prompt,
                         user_query=enhanced_query,
-                        context_passages=top_3_texts
+                        context_passages=top_k_texts
                     )
                     
                     result = f"🔍 **RAG Analysis with Monument Texts Database**\n\n"
                     result += f"**Identified Monument:** {monument_name}\n"
                     result += f"**Monument Description:** {monument_description}\n"
                     result += f"**User Question:** {question}\n\n"
-                    result += f"**Top 3 Retrieved Texts:**\n"
+                    result += f"**Top {len(top_results)} Retrieved Texts:**\n"
                     for i, (score, passage) in enumerate(top_results, 1):
                         result += f"**{i}. Similarity: {score:.4f}**\n{passage}\n\n"
                     result += f"**🧠 AI Answer:**\n{smolagent_answer}"
@@ -847,7 +887,7 @@ class AgenticTravelerCLI:
                     result += f"**Identified Monument:** {monument_name}\n"
                     result += f"**Monument Description:** {monument_description}\n"
                     result += f"**User Question:** {question}\n\n"
-                    result += f"**Top 3 Retrieved Texts:**\n"
+                    result += f"**Top {len(top_results)} Retrieved Texts:**\n"
                     for i, (score, passage) in enumerate(top_results, 1):
                         result += f"**{i}. Similarity: {score:.4f}**\n{passage}\n\n"
                     result += f"⚠️ **Note**: Could not generate AI answer with Smolagents: {smolagent_error}\n"
@@ -1647,7 +1687,7 @@ Please provide a comprehensive answer to the user's question using:
             print(f"❌ Export failed: {e}")
             return None
     
-    def analyze_image(self, image_path, question, export_file=None, use_rewrite=False):
+    def analyze_image(self, image_path, question, export_file=None, use_rewrite=False, top_k=5):
         """Main analysis function using the NEW WORKFLOW"""
         start_time = time.time()
         
@@ -1697,13 +1737,13 @@ Please provide a comprehensive answer to the user's question using:
             # Step 3: RAG Processing con informazioni monumento
             print("\n" + "=" * 80)
             if use_rewrite:
-                print("🎯 STEP 3: RAG Analysis with Query Rewriting & Voting")
+                print(f"🎯 STEP 3: RAG Analysis with Query Rewriting & Voting (top-{top_k})")
                 print("-" * 40)
-                rag_result = self.process_with_voting_rag(monument_name, monument_description, question)
+                rag_result = self.process_with_voting_rag(monument_name, monument_description, question, top_k=top_k)
             else:
-                print("🎯 STEP 3: RAG Analysis with Predefined Texts")
+                print(f"🎯 STEP 3: RAG Analysis with Predefined Texts (top-{top_k})")
                 print("-" * 40)
-                rag_result = self.process_with_monument_rag_predefined(monument_name, monument_description, question)
+                rag_result = self.process_with_monument_rag_predefined(monument_name, monument_description, question, top_k=top_k)
             print(f"📊 RAG SYSTEM RESULTS:")
             print(rag_result)
             
@@ -1772,6 +1812,7 @@ Examples:
     python main.py --image landmark.jpg --export results.json
     python main.py --image monument.jpg --question "Tell me about its history" --export analysis.json --verbose
     python main.py --image monument.jpg --question "Tell me about its history" --rewrite --verbose
+    python main.py --image monument.jpg --question "Tell me about its history" --rewrite --top-k 7
     
 For more information, visit: https://github.com/your-repo/AgenticTraveler
         """
@@ -1812,6 +1853,13 @@ For more information, visit: https://github.com/your-repo/AgenticTraveler
     )
     
     parser.add_argument(
+        '--top-k', '-k',
+        type=int,
+        default=5,
+        help='Number of top passages to retrieve and use in RAG analysis (default: 5)'
+    )
+    
+    parser.add_argument(
         '--version',
         action='version',
         version='AgenticTraveler CLI v1.0 - Enhanced Edition'
@@ -1829,7 +1877,8 @@ For more information, visit: https://github.com/your-repo/AgenticTraveler
             image_path=args.image,
             question=args.question,
             export_file=args.export,
-            use_rewrite=args.rewrite
+            use_rewrite=args.rewrite,
+            top_k=args.top_k
         )
         
         if results:
