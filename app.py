@@ -344,76 +344,107 @@ class AgenticTravelerApp:
                 if not question or question.strip() == "":
                     raise ValueError("Question is empty or invalid")
                 
-                # Usa i testi predefiniti 
-                predefined_monument_text = """
-                The image shows the Colosseum in Rome, Italy, under a clear blue sky. 
-                The ancient amphitheater, built of stone and concrete, stands majestically with its iconic arches and partially ruined outer walls. 
-                Tourists are gathered around the base, some taking photographs, while others listen to guides explaining the history of the site. 
-                Green grass and a few scattered trees surround the monument, and the sunlight casts dramatic shadows on the structure. 
-                In the background, parts of the Roman Forum are visible, hinting at the city's rich historical past. 
-                Vendors selling souvenirs can be seen near the entrance, and a group of school children is sketching the Colosseum from a distance. 
-                The overall atmosphere is vibrant, blending the grandeur of ancient architecture with the lively presence of modern visitors.
+                # Database di testi separati per ogni monumento
+                monument_texts_database = {
+                    "Colosseo": [
+                        "The Colosseum is an oval amphitheatre in the centre of Rome, Italy. Built of travertine limestone, tuff, and brick-faced concrete, it was the largest amphitheatre ever built. The Colosseum is situated just east of the Roman Forum. Construction began under the emperor Vespasian in AD 72 and was completed in AD 80 under his successor and heir, Titus.",
+                        "The image shows the Colosseum in Rome, Italy, under a clear blue sky. The ancient amphitheater, built of stone and concrete, stands majestically with its iconic arches and partially ruined outer walls. Tourists are gathered around the base, some taking photographs, while others listen to guides explaining the history of the site.",
+                        "The Colosseum could hold an estimated 50,000 to 80,000 spectators at various points in its history, having an average audience of some 65,000. It was used for gladiatorial contests and public spectacles including animal hunts, executions, re-enactments of famous battles, and dramas based on Classical mythology.",
+                        "The building ceased to be used for entertainment in the early medieval era. It was later reused for various purposes such as housing, workshops, quarters for a religious order, a fortress, a quarry, and a Christian shrine. The Colosseum is now a major tourist attraction in Rome with thousands of tourists each year."
+                    ],
+                    "Tour Eiffel": [
+                        "The Eiffel Tower is a wrought-iron lattice tower on the Champ de Mars in Paris, France. It is named after the engineer Gustave Eiffel, whose company designed and built the tower. Constructed from 1887 to 1889 as the entrance to the 1889 World's Fair, it was initially criticized by some of France's leading artists and intellectuals.",
+                        "The Eiffel Tower stands 324 metres (1,063 ft) tall, about the same height as an 81-storey building, and is the tallest structure in Paris. Its base is square, measuring 125 metres (410 ft) on each side. During its construction, the Eiffel Tower surpassed the Washington Monument to become the tallest man-made structure in the world.",
+                        "The tower has three levels for visitors, with restaurants on the first and second levels. The top level's upper platform is 276 m (906 ft) above the ground – the highest observation deck accessible to the public in the European Union. Tickets can be purchased to ascend by stairs or lift to the first and second levels.",
+                        "The Eiffel Tower has become the global cultural icon of France and one of the most recognizable structures in the world. The tower has been visited by over 250 million people since its construction. The tower receives around 6 million visitors annually, making it the most-visited paid monument in the world."
+                    ],
+                    "Statua della Libertà": [
+                        "The Statue of Liberty is a neoclassical sculpture on Liberty Island in New York Harbor in New York City, United States. The copper statue, a gift from the people of France to the people of the United States, was designed by French sculptor Frédéric Auguste Bartholdi and its metal framework was built by Gustave Eiffel.",
+                        "The statue is a figure of Libertas, a robed Roman liberty goddess. She holds a torch above her head with her right hand, and in her left hand carries a tabula ansata inscribed JULY IV MDCCLXXVI (July 4, 1776 in Roman numerals), the date of the U.S. Declaration of Independence.",
+                        "The Statue of Liberty was dedicated on October 28, 1886. The statue became an icon of freedom and of the United States, seen as a symbol of welcome to immigrants arriving by sea. Bartholdi was inspired by a French law professor and politician, Édouard René de Laboulaye, who is said to have commented in 1865 that any monument raised to U.S. independence would properly be a joint project of the French and American peoples.",
+                        "Standing 305 feet tall including its pedestal, the Statue of Liberty has welcomed millions of immigrants to the United States since 1886. The statue's torch-bearing arm was displayed at the Centennial Exposition in Philadelphia in 1876, and in Madison Square Park in Manhattan from 1876 to 1882."
+                    ],
+                    "Big Ben": [
+                        "Big Ben is the nickname for the Great Bell of the Great Clock of Westminster, and, by extension, for the clock tower itself, which stands at the north end of the Palace of Westminster in London, England. Officially, the tower is called Elizabeth Tower, renamed to celebrate the Diamond Jubilee of Elizabeth II in 2012.",
+                        "The tower was designed by Augustus Pugin in a neo-Gothic style. When completed in 1859, its clock was the largest and most accurate four-faced striking and chiming clock in the world. The tower stands 316 feet (96 m) tall, and the climb from ground level to the belfry is 334 steps.",
+                        "The clock and dials were designed by Augustus Pugin. The clock dials are set in an iron framework 23 feet (7.0 m) in diameter, supporting 312 pieces of opal glass, rather like a stained-glass window. Some of the glass pieces may be removed for maintenance of the hands.",
+                        "Big Ben is one of London's most famous landmarks and has appeared in many films. The sound of Big Ben chiming has become associated with London and Britain in general, often used by broadcasters as an audio symbol for London or as a time signal before news broadcasts."
+                    ],
+                    "Cristo Redentore": [
+                        "Christ the Redeemer is an Art Deco statue of Jesus Christ in Rio de Janeiro, Brazil, created by French sculptor Paul Landowski and built by Brazilian engineer Heitor da Silva Costa, in collaboration with French engineer Albert Caquot. Romanian sculptor Gheorghe Leonida fashioned the face.",
+                        "The statue is 30 metres (98 ft) tall, excluding its 8-metre (26 ft) pedestal. The arms stretch 28 metres (92 ft) wide. It is made of reinforced concrete and soapstone. Christ the Redeemer weighs 635 tonnes (625 long tons; 700 short tons), and is located at the peak of the 700-metre (2,300 ft) Corcovado mountain.",
+                        "Construction of Christ the Redeemer began in 1922 and was completed in 1931. The monument was opened on October 12, 1931. The statue has become a cultural icon of both Rio de Janeiro and Brazil, and is listed as one of the New Seven Wonders of the World.",
+                        "The statue overlooks the city of Rio de Janeiro from the summit of Mount Corcovado in the Tijuca National Park. It has become a symbol of Christianity across the world and is often considered the largest Art Deco statue in the world. The statue is illuminated every night and can be seen from many parts of the city."
+                    ]
+                }
                 
-                The Colosseum is an oval amphitheatre in the centre of Rome, Italy. Built of travertine limestone, it was the largest amphitheatre ever built.
-                The Eiffel Tower is a wrought-iron lattice tower on the Champ de Mars in Paris, France. It was built in 1889 for the World's Fair.
-                The Statue of Liberty is a neoclassical sculpture on Liberty Island in New York Harbor. It was a gift from France to the United States.
-                Big Ben is a famous clock tower in London, England. It's part of the Palace of Westminster and is one of London's most iconic landmarks.
-                Christ the Redeemer is an Art Deco statue of Jesus Christ in Rio de Janeiro, Brazil. It overlooks the city from atop Mount Corcovado.
-                """
+                # Crea il query text dal monumento identificato
+                monument_query_text = f"Monument: {monument_name}. Description: {monument_description}"
                 
-                combined_text = f"""
-                IDENTIFIED MONUMENT: {monument_name}
-                DESCRIPTION: {monument_description}
+                # Raccoglie tutti i testi del database
+                all_monument_texts = []
+                for monument, texts in monument_texts_database.items():
+                    all_monument_texts.extend(texts)
                 
-                CONTEXTUAL INFORMATION:
-                {predefined_monument_text}
-                """
+                # Build index with all monument texts
+                self.rag_system.build_index(all_monument_texts)
                 
-                passages = self.rag_system.split_text(combined_text, chunk_size=200, overlap=50)
-                
-                if not passages:
-                    raise ValueError("No valid text passages found from predefined texts")
-                
-                self.rag_system.build_index(passages)
-                top_results = self.rag_system.query(question, top_k=3)
+                # Query using monument info as query text
+                top_results = self.rag_system.query(monument_query_text, top_k=3)
                 
                 if not top_results:
                     raise ValueError("No relevant passages found in RAG query")
                 
+                # Prepare all information for LLM
+                top_3_texts = [passage for _, passage in top_results]
+                
                 # Try to generate answer with Smolagents
                 try:
-                    context_passages = [passage for _, passage in top_results]
+                    # Enhanced system prompt with all information
                     system_prompt = (
                         f"You are a knowledgeable tourist guide specializing in monuments and cultural heritage. "
-                        f"You have identified the monument as '{monument_name}'. "
-                        f"Use the context information to provide detailed answers about this monument and related landmarks."
+                        f"Based on image analysis, the identified monument is: '{monument_name}' with description: '{monument_description}'. "
+                        f"You have been provided with the top 3 most relevant texts from the monument database. "
+                        f"Use ALL the provided information (monument identification + retrieved texts) to answer the user's question comprehensively and accurately."
+                    )
+                    
+                    # Enhanced user query with context
+                    enhanced_query = (
+                        f"User Question: {question}\n\n"
+                        f"Monument Identified: {monument_name}\n"
+                        f"Monument Description: {monument_description}\n\n"
+                        f"Please answer the user's question using both the monument identification and the retrieved contextual information."
                     )
                     
                     smolagent_answer = self.rag_system.generate_with_smolagent(
                         system_prompt=system_prompt,
-                        user_query=question,
-                        context_passages=context_passages
+                        user_query=enhanced_query,
+                        context_passages=top_3_texts
                     )
                     
-                    result = f"🔍 **RAG Analysis with Predefined Texts**\n\n"
-                    result += f"**Monument:** {monument_name}\n"
-                    result += f"**Query:** {question}\n\n"
-                    result += f"**Retrieved Context:**\n"
+                    result = f"🔍 **RAG Analysis with Monument Texts Database**\n\n"
+                    result += f"**Identified Monument:** {monument_name}\n"
+                    result += f"**Monument Description:** {monument_description}\n"
+                    result += f"**User Question:** {question}\n\n"
+                    result += f"**Top 3 Retrieved Texts:**\n"
                     for i, (score, passage) in enumerate(top_results, 1):
-                        result += f"{i}. Similarity: {score:.4f}\n{passage[:100]}...\n\n"
-                    result += f"**Generated Answer:**\n{smolagent_answer}"
+                        result += f"**{i}. Similarity: {score:.4f}**\n{passage}\n\n"
+                    result += f"**🧠 AI Answer:**\n{smolagent_answer}"
                     
-                    self.logger.info("RAG processing completed successfully with predefined texts")
+                    self.logger.info("RAG processing completed successfully with monument texts database")
                     
                 except Exception as smolagent_error:
                     self.logger.warning(f"Smolagents generation failed: {smolagent_error}")
-                    result = f"🔍 **RAG Analysis with Predefined Texts**\n\n"
-                    result += f"**Monument:** {monument_name}\n"
-                    result += f"**Query:** {question}\n\n"
-                    result += f"**Retrieved Context:**\n"
+                    # Fallback without Smolagents  
+                    result = f"🔍 **RAG Analysis with Monument Texts Database**\n\n"
+                    result += f"**Identified Monument:** {monument_name}\n"
+                    result += f"**Monument Description:** {monument_description}\n"
+                    result += f"**User Question:** {question}\n\n"
+                    result += f"**Top 3 Retrieved Texts:**\n"
                     for i, (score, passage) in enumerate(top_results, 1):
-                        result += f"{i}. Similarity: {score:.4f}\n{passage}\n\n"
-                    result += f"⚠️ Note: Could not generate answer with Smolagents: {smolagent_error}"
+                        result += f"**{i}. Similarity: {score:.4f}**\n{passage}\n\n"
+                    result += f"⚠️ **Note**: Could not generate AI answer with Smolagents: {smolagent_error}\n"
+                    result += f"💡 **Tip**: The retrieved texts above contain relevant information to answer your question."
                 
                 return result
                 
