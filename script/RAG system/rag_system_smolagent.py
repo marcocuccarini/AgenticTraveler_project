@@ -136,9 +136,13 @@ class RAGSmolagent:
             # Create the custom RAG tool
             rag_tool = RAGResponseTool()
             
+            # Usa path configurabile per il modello
+            import os
+            qwen_model_path = os.environ.get('QWEN_MODEL_PATH', "/leonardo_work/uTS25_Pinna/phd_proj/TurismAgent/TurismAgent/model/Qwen2.5-Coder-7B-Instruct")
+            
             # Initialize the model
             model = TransformersModel(
-                        model_id="/leonardo_work/uTS25_Pinna/phd_proj/TurismAgent/TurismAgent/model/Qwen2.5-Coder-7B-Instruct",
+                        model_id=qwen_model_path,
                         trust_remote_code=True,
                         device_map="cuda",
                         # torch_dtype=torch.float16 if torch.cuda.is_available() else torch.float32,
@@ -224,6 +228,57 @@ class RAGSmolagent:
         except Exception as e:
             print(f"❌ Error during query: {e}")
             return []
+
+    def process_monument_query(self, monument_name: str, monument_description: str, user_query: str) -> str:
+        """
+        Processa una query basata sulle informazioni del monumento identificato.
+        
+        Args:
+            monument_name: Nome del monumento identificato
+            monument_description: Descrizione del monumento 
+            user_query: Domanda dell'utente
+            
+        Returns:
+            Risposta generata dal RAG system
+        """
+        # Crea un corpus di testo basato sul monumento identificato
+        monument_passages = [
+            f"Monument Name: {monument_name}",
+            f"Description: {monument_description}",
+            f"Basic Information: {monument_name} is a significant landmark with rich cultural and historical importance.",
+        ]
+        
+        # Se abbiamo informazioni dettagliate, le aggiungiamo
+        if len(monument_description) > 50:  # Descrizione dettagliata
+            # Divide la descrizione in chunks più piccoli per il RAG
+            detail_chunks = self.split_text(monument_description, chunk_size=150, overlap=30)
+            monument_passages.extend(detail_chunks)
+        
+        # Costruisci l'indice con le informazioni del monumento
+        print(f"🔍 Costruzione indice RAG per: {monument_name}")
+        self.build_index(monument_passages)
+        
+        # Esegui la query
+        top_results = self.query(user_query, top_k=3)
+        
+        if not top_results:
+            return f"❌ No relevant information found for {monument_name} regarding: {user_query}"
+        
+        # Genera la risposta usando Smolagents
+        context_passages = [passage for _, passage in top_results]
+        system_prompt = (
+            f"You are a knowledgeable tourist guide specializing in monuments and cultural heritage. "
+            f"You have been provided with information about {monument_name}. "
+            f"Use the context information to provide detailed and accurate answers about this monument."
+        )
+        
+        try:
+            response = self.generate_with_smolagent(system_prompt, user_query, context_passages)
+            return f"🏛️ **{monument_name} - RAG Analysis**\n\n{response}"
+        except Exception as e:
+            # Fallback se Smolagents non funziona
+            formatted_context = "\n\n".join([f"• {passage}" for passage in context_passages])
+            return f"🏛️ **{monument_name} - Information Retrieved**\n\n{formatted_context}\n\n**Query**: {user_query}"
 
     def generate_with_smolagent(self, system_prompt: str, user_query: str, context_passages: List[str], 
                                **kwargs) -> str:

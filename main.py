@@ -30,6 +30,7 @@ from pathlib import Path
 from datetime import datetime
 from PIL import Image
 import tempfile
+import torch
 
 # Add script directories to Python path
 script_dir = Path(__file__).parent / "script"
@@ -39,7 +40,7 @@ sys.path.append(str(script_dir / "KG"))
 
 try:
     # Import the three main components
-    from agent_base_optim import create_agent
+    from agent_base_optim import create_agent, parse_monument_info, get_monument_coordinates, ImageRetrievalTool, Localizator
     from rag_system_smolagent import RAGSmolagent
     from ARCO_access import query_by_name
 except ImportError as e:
@@ -53,7 +54,8 @@ class AgenticTravelerCLI:
     
     def __init__(self, verbose=False):
         """Initialize the CLI application"""
-        self.agent = None
+        self.image_retrieval_tool = None
+        self.localizator = None
         self.rag_system = None
         self.verbose = verbose
         self.logger = self._setup_logging()
@@ -86,32 +88,56 @@ class AgenticTravelerCLI:
         return logging.getLogger(__name__)
     
     def _initialize_systems(self):
-        """Initialize the agent and RAG systems with retry mechanisms"""
+        """Initialize the tools and RAG systems with retry mechanisms"""
         print("🚀 Initializing AgenticTraveler CLI...")
         
-        # Initialize Agent system with retries
+        # Initialize Image Retrieval Tool
         max_retries = 3
-        agent_initialized = False
+        image_tool_initialized = False
         
         for attempt in range(max_retries):
             try:
-                self.logger.info(f"Initializing Agent system (attempt {attempt + 1}/{max_retries})")
+                self.logger.info(f"Initializing Image Retrieval Tool (attempt {attempt + 1}/{max_retries})")
                 if self.verbose or attempt > 0:
-                    print(f"🔄 Initializing Agent system (attempt {attempt + 1}/{max_retries})...")
+                    print(f"🔄 Initializing Image Retrieval Tool (attempt {attempt + 1}/{max_retries})...")
                 
-                self.agent = create_agent()
-                self.logger.info("Agent system initialized successfully")
-                print("✅ Agent system initialized successfully")
-                agent_initialized = True
+                self.image_retrieval_tool = ImageRetrievalTool()
+                self.logger.info("Image Retrieval Tool initialized successfully")
+                print("✅ Image Retrieval Tool initialized successfully")
+                image_tool_initialized = True
                 break
                 
             except Exception as e:
-                self.logger.error(f"Failed to initialize Agent system (attempt {attempt + 1}): {e}")
+                self.logger.error(f"Failed to initialize Image Retrieval Tool (attempt {attempt + 1}): {e}")
                 if attempt == max_retries - 1:
-                    print(f"❌ Failed to initialize Agent system after {max_retries} attempts: {e}")
-                    self.agent = None
+                    print(f"❌ Failed to initialize Image Retrieval Tool after {max_retries} attempts: {e}")
+                    self.image_retrieval_tool = None
                 else:
-                    print(f"⚠️ Agent initialization failed, retrying in 2 seconds...")
+                    print(f"⚠️ Image tool initialization failed, retrying in 2 seconds...")
+                    time.sleep(2)
+
+        # Initialize Localization Tool
+        localizator_initialized = False
+        
+        for attempt in range(max_retries):
+            try:
+                self.logger.info(f"Initializing Localizator (attempt {attempt + 1}/{max_retries})")
+                if self.verbose or attempt > 0:
+                    print(f"🔄 Initializing Localizator (attempt {attempt + 1}/{max_retries})...")
+                
+                self.localizator = Localizator()
+                self.logger.info("Localizator initialized successfully")
+                print("✅ Localizator initialized successfully")
+                localizator_initialized = True
+                break
+                
+            except Exception as e:
+                self.logger.error(f"Failed to initialize Localizator (attempt {attempt + 1}): {e}")
+                if attempt == max_retries - 1:
+                    print(f"❌ Failed to initialize Localizator after {max_retries} attempts: {e}")
+                    self.localizator = None
+                else:
+                    print(f"⚠️ Localizator initialization failed, retrying in 2 seconds...")
                     time.sleep(2)
         
         # Initialize RAG system with retries
@@ -123,11 +149,15 @@ class AgenticTravelerCLI:
                 if self.verbose or attempt > 0:
                     print(f"🔄 Initializing RAG system (attempt {attempt + 1}/{max_retries})...")
                 
+                # Usa path configurabili
+                embed_model_path = os.environ.get('EMBED_MODEL_PATH', "all-MiniLM-L6-v2")
+                qwen_model_path = os.environ.get('QWEN_MODEL_PATH', "/leonardo_work/uTS25_Pinna/phd_proj/TurismAgent/TurismAgent/model/Qwen2.5-Coder-7B-Instruct")
+                
                 self.rag_system = RAGSmolagent(
-                    embed_model_name="/leonardo_work/uTS25_Pinna/phd_proj/TurismAgent/TurismAgent/model/all-MiniLM-L6-v2",
+                    embed_model_name=embed_model_path,
                     use_cross_encoder=False,
-                    model_id="/leonardo_work/uTS25_Pinna/phd_proj/TurismAgent/TurismAgent/model/Qwen2.5-Coder-14B-Instruct",
-                    device="cuda"
+                    model_id=qwen_model_path,
+                    device="cuda" if torch.cuda.is_available() else "cpu"
                 )
                 self.logger.info("RAG system initialized successfully")
                 print("✅ RAG system initialized successfully")
@@ -144,8 +174,8 @@ class AgenticTravelerCLI:
                     time.sleep(2)
         
         # Summary
-        systems_ready = sum([agent_initialized, rag_initialized])
-        print(f"📊 Systems Status: {systems_ready}/3 components ready (ARCO database available with internet)")
+        systems_ready = sum([image_tool_initialized, localizator_initialized, rag_initialized])
+        print(f"📊 Systems Status: {systems_ready}/3 components ready + ARCO database")
         
         if systems_ready == 0:
             print("⚠️ Warning: No AI systems available. Only ARCO database queries will work.")
@@ -189,7 +219,209 @@ class AgenticTravelerCLI:
             print(f"⚠️ Image optimization failed, using original: {e}")
             return image_path
     
-    def process_with_agent(self, image_path, question, max_retries=2):
+    def process_monument_recognition(self, image_path, max_retries=2):
+        """Process image with monument recognition tool"""
+        if not self.image_retrieval_tool:
+            error_msg = "❌ Image Retrieval Tool not available - initialization failed"
+            self.logger.error(error_msg)
+            return error_msg
+        
+        print("🎯 Processing with Monument Recognition...")
+        
+        for attempt in range(max_retries + 1):
+            try:
+                self.logger.info(f"Processing image with monument recognition (attempt {attempt + 1}/{max_retries + 1}): {image_path}")
+                
+                # Validate image file exists and is readable
+                if not os.path.exists(image_path):
+                    raise FileNotFoundError(f"Image file not found: {image_path}")
+                
+                # Check file size (limit to 10MB)
+                file_size = os.path.getsize(image_path)
+                if file_size > 10 * 1024 * 1024:
+                    raise ValueError(f"Image file too large: {file_size / (1024*1024):.1f}MB (max 10MB)")
+                
+                if self.verbose:
+                    print(f"🔍 Processing monument recognition for: {image_path}")
+                
+                result = self.image_retrieval_tool.forward(image_path)
+                self.logger.info("Monument recognition completed successfully")
+                print("✅ Monument recognition complete")
+                return result
+                
+            except Exception as e:
+                self.logger.error(f"Monument recognition failed (attempt {attempt + 1}): {str(e)}")
+                
+                if attempt == max_retries:
+                    # Final attempt failed
+                    error_details = f"❌ Monument Recognition Error (after {max_retries + 1} attempts)\n"
+                    error_details += f"Error Type: {type(e).__name__}\n"
+                    error_details += f"Error Message: {str(e)}\n\n"
+                    error_details += "Possible Solutions:\n"
+                    error_details += "- Check if the image file is valid and not corrupted\n"
+                    error_details += "- Ensure sufficient GPU/CPU memory is available\n"
+                    error_details += "- Verify all required models are properly loaded\n"
+                    if self.verbose:
+                        error_details += f"\nTraceback:\n{traceback.format_exc()}"
+                    return error_details
+                else:
+                    # Wait before retry
+                    print(f"⚠️ Monument recognition failed, retrying in {1 + attempt} seconds...")
+                    time.sleep(1 + attempt)  # Progressive backoff
+
+    def process_localization(self, image_path, max_retries=2):
+        """Process image with localization tool"""
+        if not self.localizator:
+            error_msg = "❌ Localizator not available - initialization failed"
+            self.logger.error(error_msg)
+            return error_msg
+        
+        print("🌍 Processing with Localizator...")
+        
+        for attempt in range(max_retries + 1):
+            try:
+                self.logger.info(f"Processing localization (attempt {attempt + 1}/{max_retries + 1}): {image_path}")
+                
+                result = self.localizator.forward(image_path)
+                self.logger.info("Localization completed successfully")
+                print("✅ Localization complete")
+                return result
+                
+            except Exception as e:
+                self.logger.error(f"Localization failed (attempt {attempt + 1}): {str(e)}")
+                
+                if attempt == max_retries:
+                    error_details = f"❌ Localization Error (after {max_retries + 1} attempts)\n"
+                    error_details += f"Error Type: {type(e).__name__}\n"
+                    error_details += f"Error Message: {str(e)}\n\n"
+                    error_details += "Possible Solutions:\n"
+                    error_details += "- Check internet connectivity for GeoCLIP\n"
+                    error_details += "- Verify models are properly loaded\n"
+                    if self.verbose:
+                        error_details += f"\nTraceback:\n{traceback.format_exc()}"
+                    return error_details
+                else:
+                    print(f"⚠️ Localization failed, retrying in {1 + attempt} seconds...")
+                    time.sleep(1 + attempt)
+
+    def process_with_monument_rag(self, monument_name, monument_description, question, max_retries=2):
+        """Process with RAG system using monument info"""
+        if not self.rag_system:
+            error_msg = "❌ RAG system not available - initialization failed"
+            self.logger.error(error_msg)
+            return error_msg
+        
+        print("🔍 Processing with RAG system...")
+        
+        for attempt in range(max_retries + 1):
+            try:
+                self.logger.info(f"Processing with RAG system (attempt {attempt + 1}/{max_retries + 1})")
+                
+                # Validate inputs
+                if not monument_name or monument_name.strip() == "" or monument_name == "Unknown":
+                    raise ValueError("Monument name is empty or unknown")
+                
+                if not question or question.strip() == "":
+                    raise ValueError("Question is empty or invalid")
+                
+                if self.verbose:
+                    print(f"🏛️ Monument: {monument_name}")
+                    print(f"📝 Description: {monument_description[:100]}...")
+                
+                # Usa il nuovo metodo per processare query sui monumenti
+                result = self.rag_system.process_monument_query(monument_name, monument_description, question)
+                
+                print("✅ RAG processing complete")
+                return result
+                
+            except Exception as e:
+                self.logger.error(f"RAG processing failed (attempt {attempt + 1}): {str(e)}")
+                
+                if attempt == max_retries:
+                    error_details = f"❌ RAG Error (after {max_retries + 1} attempts)\n"
+                    error_details += f"Error Type: {type(e).__name__}\n"
+                    error_details += f"Error Message: {str(e)}\n\n"
+                    error_details += "Possible Solutions:\n"
+                    error_details += "- Check if monument information is valid\n"
+                    error_details += "- Ensure HF_TOKEN is set and Smolagents models are available\n"
+                    error_details += "- Verify sentence-transformers models are available\n"
+                    if self.verbose:
+                        error_details += f"\nTraceback:\n{traceback.format_exc()}"
+                    return error_details
+                else:
+                    print(f"⚠️ RAG processing failed, retrying in {1 + attempt} seconds...")
+                    time.sleep(1 + attempt)
+    
+    def process_with_monument_arco(self, monument_name, max_retries=2):
+        """Process with ARCO knowledge graph using monument name"""
+        print("🏛️ Processing with ARCO database...")
+        
+        for attempt in range(max_retries + 1):
+            try:
+                self.logger.info(f"Processing with ARCO database (attempt {attempt + 1}/{max_retries + 1})")
+                
+                # Validate input
+                if not monument_name or monument_name.strip() == "" or monument_name == "Unknown":
+                    self.logger.warning("Monument name is empty or unknown")
+                    return ("❌ ARCO Results: Monument name is empty or unknown\n\n"
+                           "💡 Tip: Ensure the monument recognition step successfully identified a monument")
+                
+                self.logger.info(f"Querying ARCO database for: {monument_name}")
+                if self.verbose:
+                    print(f"🏛️ Searching ARCO for: {monument_name}")
+                
+                arco_output = "🏛️ **ARCO Database Results**\n\n"
+                arco_output += f"**Searching for: {monument_name}**\n"
+                
+                try:
+                    results = query_by_name(monument_name)
+                    
+                    if results:
+                        arco_output += f"✅ Found {len(results)} results:\n"
+                        
+                        for i, result in enumerate(results[:5], 1):  # Limit to 5 results
+                            try:
+                                entity = result.get("entity", {}).get("value", "N/A")
+                                label = result.get("label", {}).get("value", "N/A")
+                                arco_output += f"  {i}. **{label}**\n"
+                                arco_output += f"     URI: {entity}\n"
+                            except Exception as result_error:
+                                self.logger.warning(f"Error processing ARCO result {i}: {result_error}")
+                                arco_output += f"  {i}. **Error processing result**\n"
+                        arco_output += "\n"
+                    else:
+                        arco_output += "❌ No results found in ARCO database\n\n"
+                        arco_output += "💡 **Suggestions:**\n"
+                        arco_output += "- Try different search terms\n"
+                        arco_output += "- Check internet connectivity\n"
+                        
+                except Exception as query_error:
+                    self.logger.warning(f"ARCO query failed for {monument_name}: {query_error}")
+                    arco_output += f"⚠️ Query failed: {str(query_error)}\n\n"
+                
+                self.logger.info("ARCO processing completed")
+                print("✅ ARCO processing complete")
+                return arco_output
+                
+            except Exception as e:
+                self.logger.error(f"ARCO processing failed (attempt {attempt + 1}): {str(e)}")
+                
+                if attempt == max_retries:
+                    error_details = f"❌ ARCO Error (after {max_retries + 1} attempts)\n"
+                    error_details += f"Error Type: {type(e).__name__}\n"
+                    error_details += f"Error Message: {str(e)}\n\n"
+                    error_details += "Possible Solutions:\n"
+                    error_details += "- Check internet connectivity for ARCO database access\n"
+                    error_details += "- Verify SPARQL endpoints are accessible\n"
+                    error_details += "- Try again later if database is temporarily unavailable\n"
+                    if self.verbose:
+                        error_details += f"\nTraceback:\n{traceback.format_exc()}"
+                    return error_details
+                else:
+                    print(f"⚠️ ARCO processing failed, retrying in {2 + attempt} seconds...")
+                    time.sleep(2 + attempt)
+
+    def OLD_process_with_agent(self, image_path, question, max_retries=2):
         """Process image with the agent system with enhanced error handling"""
         if not self.agent:
             error_msg = "❌ Agent system not available - initialization failed"
@@ -242,7 +474,8 @@ class AgenticTravelerCLI:
                     print(f"⚠️ Agent processing failed, retrying in {1 + attempt} seconds...")
                     time.sleep(1 + attempt)  # Progressive backoff
     
-    def process_with_rag(self, agent_output, question, max_retries=2):
+    # METODI VECCHI (NON PIU' UTILIZZATI NEL NUOVO WORKFLOW)
+    def OLD_process_with_rag(self, agent_output, question, max_retries=2):
         """Process with RAG system using agent output as context with enhanced error handling"""
         if not self.rag_system:
             error_msg = "❌ RAG system not available - initialization failed"
@@ -341,7 +574,7 @@ class AgenticTravelerCLI:
                     print(f"⚠️ RAG processing failed, retrying in {1 + attempt} seconds...")
                     time.sleep(1 + attempt)
     
-    def process_with_arco(self, agent_output, max_retries=2):
+    def OLD_process_with_arco(self, agent_output, max_retries=2):
         """Process with ARCO knowledge graph with enhanced error handling"""
         print("🏛️ Processing with ARCO database...")
         
@@ -531,7 +764,7 @@ class AgenticTravelerCLI:
             return None
     
     def analyze_image(self, image_path, question, export_file=None):
-        """Main analysis function that processes image through all three systems"""
+        """Main analysis function using the NEW WORKFLOW"""
         start_time = time.time()
         
         print(f"🖼️ Analyzing image: {image_path}")
@@ -548,31 +781,48 @@ class AgenticTravelerCLI:
         optimized_image_path = self.optimize_image_for_processing(image_path)
         
         try:
-            # Step 1: Agent Analysis
+            # === NUOVO WORKFLOW ===
+            # Step 1: Segmentazione e riconoscimento monumento
             print("\n" + "=" * 80)
-            agent_result = self.process_with_agent(optimized_image_path, question)
-            print(f"\n📊 AGENT ANALYSIS RESULTS:")
+            print("🎯 STEP 1: Monument Recognition")
             print("-" * 40)
-            print(agent_result)
+            monument_result = self.process_monument_recognition(optimized_image_path)
+            print(f"📊 MONUMENT RECOGNITION RESULTS:")
+            print(monument_result)
             
-            # Step 2: RAG Processing
+            # Parse monument info
+            monument_info = parse_monument_info(monument_result)
+            monument_name = monument_info.get('monument_name', 'Unknown')
+            monument_description = monument_info.get('monument_description', 'No description available')
+            
+            # Step 2: RAG Processing con informazioni monumento
             print("\n" + "=" * 80)
-            rag_result = self.process_with_rag(agent_result, question)
-            print(f"\n📊 RAG SYSTEM RESULTS:")
+            print("🎯 STEP 2: RAG Analysis")
             print("-" * 40)
+            rag_result = self.process_with_monument_rag(monument_name, monument_description, question)
+            print(f"📊 RAG SYSTEM RESULTS:")
             print(rag_result)
             
-            # Step 3: ARCO Database
+            # Step 3: ARCO Database query
             print("\n" + "=" * 80)
-            arco_result = self.process_with_arco(agent_result)
-            print(f"\n📊 ARCO DATABASE RESULTS:")
+            print("🎯 STEP 3: ARCO Database Query")
             print("-" * 40)
+            arco_result = self.process_with_monument_arco(monument_name)
+            print(f"📊 ARCO DATABASE RESULTS:")
             print(arco_result)
+            
+            # Step 4: Localization (opzionale)
+            print("\n" + "=" * 80)
+            print("🎯 STEP 4: Geolocation (Optional)")
+            print("-" * 40)
+            localization_result = self.process_localization(optimized_image_path)
+            print(f"📊 LOCALIZATION RESULTS:")
+            print(localization_result)
             
             # Export results if requested
             if export_file:
                 print("\n" + "=" * 80)
-                exported_file = self.export_results(agent_result, rag_result, arco_result, export_file)
+                exported_file = self.export_results(monument_result, rag_result, arco_result, export_file)
                 if exported_file:
                     print(f"📁 Results available in: {exported_file}")
             
@@ -581,12 +831,14 @@ class AgenticTravelerCLI:
             processing_time = end_time - start_time
             print("\n" + "=" * 80)
             print(f"✅ Analysis completed in {processing_time:.1f} seconds")
-            print(f"🧠 Systems used: Agent: {'✅' if self.agent else '❌'} | RAG: {'✅' if self.rag_system else '❌'} | ARCO: ✅")
+            print(f"🏛️ Monument: {monument_name}")
+            print(f"🧠 Systems used: Image: {'✅' if self.image_retrieval_tool else '❌'} | RAG: {'✅' if self.rag_system else '❌'} | ARCO: ✅ | Geo: {'✅' if self.localizator else '❌'}")
             
             return {
-                "agent_result": agent_result,
+                "monument_result": monument_result,
                 "rag_result": rag_result,
                 "arco_result": arco_result,
+                "localization_result": localization_result,
                 "processing_time": processing_time
             }
             

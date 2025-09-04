@@ -13,7 +13,8 @@ import gc
 from contextlib import contextmanager
 
 
-ROOT_PATH = "/leonardo_work/uTS25_Pinna/phd_proj/TurismAgent/TurismAgent/src/"
+# Configurabile per diversi ambienti
+ROOT_PATH = os.environ.get('AGENTIC_ROOT_PATH', "/leonardo_work/uTS25_Pinna/phd_proj/TurismAgent/TurismAgent/src/")
 
 # ==== CONFIGURAZIONE OTTIMIZZATA ====
 device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -46,10 +47,12 @@ class ModelManager:
     def __init__(self):
         self.models = {}
         self.processors = {}
+        # Path configurabili tramite variabili d'ambiente
+        base_model_path = os.environ.get('AGENTIC_MODEL_PATH', "/leonardo_work/uTS25_Pinna/phd_proj/TurismAgent/TurismAgent/model")
         self.model_paths = {
-            'clip': "/leonardo_work/uTS25_Pinna/phd_proj/TurismAgent/TurismAgent/model/clip-vit-base-patch32",
-            'streetclip': "/leonardo_work/uTS25_Pinna/phd_proj/TurismAgent/TurismAgent/model/StreetCLIP",
-            'segformer': "/leonardo_work/uTS25_Pinna/phd_proj/TurismAgent/TurismAgent/model/segformer"
+            'clip': os.path.join(base_model_path, "clip-vit-base-patch32"),
+            'streetclip': os.path.join(base_model_path, "StreetCLIP"),
+            'segformer': os.path.join(base_model_path, "segformer")
         }
         
     def get_model(self, model_name):
@@ -199,32 +202,70 @@ def embed_image_optimized(image: Image.Image):
 # ==== INIZIALIZZAZIONE MONUMENTI OTTIMIZZATA ====
 def initialize_monuments():
     """Inizializza il database dei monumenti in modo lazy"""
+    base_data_path = os.environ.get('AGENTIC_DATA_PATH', "/leonardo_work/uTS25_Pinna/phd_proj/TurismAgent/TurismAgent/data")
+    
     monuments = [
-        ("big_ben.png", "Big Ben", "/leonardo_work/uTS25_Pinna/phd_proj/TurismAgent/TurismAgent/data/test.jpg"),
-        ("statue_liberty.png", "Statua della Libertà", "/leonardo_work/uTS25_Pinna/phd_proj/TurismAgent/TurismAgent/data/statua_liberta.jpg"),
-        ("tour_eiffel.png", "Tour Eiffel", "/leonardo_work/uTS25_Pinna/phd_proj/TurismAgent/TurismAgent/data/tour_eiffel.jpg"),
-        ("colosseo.png", "Colosseo", "/leonardo_work/uTS25_Pinna/phd_proj/TurismAgent/TurismAgent/data/colosseo.jpg"),
-        ("cristo_redentor.png", "Cristo Redentore", "/leonardo_work/uTS25_Pinna/phd_proj/TurismAgent/TurismAgent/data/cristo_redentor.jpg"),
+        ("big_ben.png", "Big Ben", "Big Ben is a famous clock tower in London, England. It's part of the Palace of Westminster and is one of London's most iconic landmarks."),
+        ("statue_liberty.png", "Statua della Libertà", "The Statue of Liberty is a neoclassical sculpture on Liberty Island in New York Harbor. It was a gift from France to the United States."),
+        ("tour_eiffel.png", "Tour Eiffel", "The Eiffel Tower is a wrought-iron lattice tower on the Champ de Mars in Paris, France. It was built in 1889 for the World's Fair."),
+        ("colosseo.png", "Colosseo", "The Colosseum is an oval amphitheatre in the centre of Rome, Italy. Built of travertine limestone, it was the largest amphitheatre ever built."),
+        ("cristo_redentor.png", "Cristo Redentore", "Christ the Redeemer is an Art Deco statue of Jesus Christ in Rio de Janeiro, Brazil. It overlooks the city from atop Mount Corcovado."),
     ]
 
-    for filename, name, url in monuments:
-        if os.path.exists(url):
-            img = Image.open(url).convert("RGB")
-            emb = embed_image_optimized(img)
-            image_db.add_image(filename, name, emb)
+    # Prova diversi path per le immagini di esempio
+    possible_paths = [
+        os.path.join(base_data_path, "test.jpg"),
+        os.path.join(base_data_path, "statua_liberta.jpg"),
+        os.path.join(base_data_path, "tour_eiffel.jpg"),
+        os.path.join(base_data_path, "colosseo.jpg"),
+        os.path.join(base_data_path, "cristo_redentor.jpg")
+    ]
+    
+    # Fallback per directory locali
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    fallback_paths = [
+        os.path.join(current_dir, "..", "..", "..", "data_test", "colosseum.jpg"),
+        os.path.join(current_dir, "..", "..", "..", "data_test", "statue_liberty.jpg"),
+        os.path.join(current_dir, "..", "..", "..", "data_test", "eiffel_tower.jpg"),
+        os.path.join(current_dir, "..", "..", "..", "data_test", "big_ben.jpg"),
+        os.path.join(current_dir, "..", "..", "..", "data_test", "christ_redeemer.jpg")
+    ]
+
+    for i, (filename, name, description) in enumerate(monuments):
+        # Prova prima il path originale
+        image_path = possible_paths[i] if i < len(possible_paths) else None
+        
+        # Se non esiste, prova i fallback
+        if not (image_path and os.path.exists(image_path)):
+            if i < len(fallback_paths):
+                image_path = fallback_paths[i]
+        
+        # Se l'immagine esiste, crea l'embedding
+        if image_path and os.path.exists(image_path):
+            try:
+                img = Image.open(image_path).convert("RGB")
+                emb = embed_image_optimized(img)
+                # Usa la descrizione invece del solo nome
+                image_db.add_image(filename, f"{name}: {description}", emb)
+                print(f"✅ Caricato esempio: {name} da {image_path}")
+            except Exception as e:
+                print(f"⚠️ Errore caricamento {name}: {e}")
+        else:
+            print(f"⚠️ Immagine non trovata per {name}")
     
     # Forza la pulizia della memoria dopo l'inizializzazione
     if torch.cuda.is_available():
         torch.cuda.empty_cache()
     gc.collect()
+    print(f"📊 Database monumenti inizializzato con {len(image_db.embeddings)} esempi")
 
 
 # ==== TOOL OTTIMIZZATO ====
 class ImageRetrievalTool(Tool):
     name = "image_retrieval"
-    description = """Tool for extract information, name and description from image."""
+    description = """Tool for monument recognition through image segmentation and embedding matching. Returns the best monument match with its description."""
     inputs = {
-        "image_path": {"type": "string", "description": "Path of the image to analyze and retrieve information."}
+        "image_path": {"type": "string", "description": "Path of the image to analyze and retrieve monument information."}
     }
     output_type = "string"
 
@@ -237,35 +278,80 @@ class ImageRetrievalTool(Tool):
         os.makedirs(output_dir, exist_ok=True)
         segments_info = self.segment_image_and_get_paths(image_path, output_dir, conf_threshold=0.7)
 
-        print(f"Segment info: {segments_info}")
+        print(f"🔍 Segmenti trovati: {len(segments_info)}")
         
-        results_str = []
+        # Lista per memorizzare tutti i match trovati
+        all_matches = []
+        
         for seg_path, label_text, seg_conf in segments_info:
-            query_img = Image.open(ROOT_PATH + seg_path).convert("RGB")
-            query_emb = embed_image_optimized(query_img)
+            try:
+                # Costruisci il path completo considerando se è già assoluto o relativo
+                if os.path.isabs(seg_path):
+                    full_seg_path = seg_path
+                else:
+                    full_seg_path = os.path.join(ROOT_PATH, seg_path) if ROOT_PATH else seg_path
+                
+                if os.path.exists(full_seg_path):
+                    query_img = Image.open(full_seg_path).convert("RGB")
+                    query_emb = embed_image_optimized(query_img)
 
-            matches = image_db.search(query_emb, threshold=0.7)
-            # print(f"Matches for {seg_path}: {matches}")
-            match_desc = (
-                ", ".join([f"{name} ({score:.2f})" for score, name in matches])
-                if matches else "No matches above similarity threshold"
-            )
-
-            segment_report = (
-                f"Segment Path: {seg_path}\n"
-                f"Description: {label_text}\n"
-                f"Confidence: {seg_conf:.2f}\n"
-                f"Matches: {match_desc}\n"
-                "----------------------------------------"
-            )
-            results_str.append(segment_report)
+                    matches = image_db.search(query_emb, threshold=0.6)  # Soglia più permissiva
+                    
+                    for score, monument_info in matches:
+                        # Dividi nome e descrizione
+                        if ": " in monument_info:
+                            monument_name, monument_desc = monument_info.split(": ", 1)
+                        else:
+                            monument_name = monument_info
+                            monument_desc = f"Informazioni su {monument_name}"
+                        
+                        all_matches.append({
+                            'score': score,
+                            'segment': label_text,
+                            'segment_conf': seg_conf,
+                            'monument_name': monument_name,
+                            'monument_description': monument_desc,
+                            'segment_path': seg_path
+                        })
+                        print(f"✅ Match trovato: {monument_name} (score: {score:.3f})")
+                else:
+                    print(f"⚠️ File segmento non trovato: {full_seg_path}")
+            except Exception as e:
+                print(f"❌ Errore processamento segmento {seg_path}: {e}")
 
         # Pulizia memoria dopo l'elaborazione
         if torch.cuda.is_available():
             torch.cuda.empty_cache()
         gc.collect()
 
-        return "\n".join(results_str)
+        # Seleziona il miglior match
+        if all_matches:
+            best_match = max(all_matches, key=lambda x: x['score'])
+            
+            result = {
+                'monument_name': best_match['monument_name'],
+                'monument_description': best_match['monument_description'],
+                'confidence_score': best_match['score'],
+                'segment_type': best_match['segment'],
+                'segment_confidence': best_match['segment_conf'],
+                'total_segments': len(segments_info),
+                'total_matches': len(all_matches)
+            }
+            
+            print(f"🏆 Miglior match: {result['monument_name']} (score: {result['confidence_score']:.3f})")
+            return str(result)  # Restituisce dizionario come stringa per l'agent
+        else:
+            result = {
+                'monument_name': 'Unknown',
+                'monument_description': 'No monument matches found in the database',
+                'confidence_score': 0.0,
+                'segment_type': 'N/A',
+                'segment_confidence': 0.0,
+                'total_segments': len(segments_info),
+                'total_matches': 0
+            }
+            print("❌ Nessun match trovato nel database")
+            return str(result)
 
     def segment_image_and_get_paths(self, image_path, output_dir="output_segments", conf_threshold=0.5):
         os.makedirs(output_dir, exist_ok=True)
@@ -488,10 +574,12 @@ def create_agent():
     retrieval_tool = ImageRetrievalTool()
     localizator = Localizator()
     
+    qwen_model_path = os.environ.get('QWEN_MODEL_PATH', "/leonardo_work/uTS25_Pinna/phd_proj/TurismAgent/TurismAgent/model/Qwen2.5-Coder-7B-Instruct")
+    
     agent_model = TransformersModel(
-        model_id="/leonardo_work/uTS25_Pinna/phd_proj/TurismAgent/TurismAgent/model/Qwen2.5-Coder-7B-Instruct",
+        model_id=qwen_model_path,
         trust_remote_code=True,
-        device_map="cuda",
+        device_map="cuda" if torch.cuda.is_available() else "cpu",
         # torch_dtype=torch.float16 if torch.cuda.is_available() else torch.float32,
         # max_memory={0: "6GB"} if torch.cuda.is_available() else None  # Limita memoria GPU
     )
@@ -508,6 +596,38 @@ def create_agent():
 
 
 # ==== FUNZIONE DI TEST OTTIMIZZATA ====
+# ==== UTILITY FUNCTIONS ====
+def parse_monument_info(agent_result_str):
+    """Parse del risultato dell'agent per estrarre informazioni sul monumento"""
+    import ast
+    try:
+        # L'agent restituisce una stringa che rappresenta un dizionario
+        result_dict = ast.literal_eval(agent_result_str.strip())
+        return result_dict
+    except:
+        # Fallback parsing se il formato non è un dizionario valido
+        return {
+            'monument_name': 'Unknown',
+            'monument_description': agent_result_str,
+            'confidence_score': 0.0
+        }
+
+def get_monument_coordinates(monument_name):
+    """Ottiene coordinate approssimative di monumenti famosi"""
+    monument_coords = {
+        'Big Ben': (51.5007, -0.1246),
+        'Statue of Liberty': (40.6892, -74.0445), 
+        'Statua della Libertà': (40.6892, -74.0445),
+        'Tour Eiffel': (48.8584, 2.2945),
+        'Eiffel Tower': (48.8584, 2.2945),
+        'Colosseo': (41.8902, 12.4922),
+        'Colosseum': (41.8902, 12.4922),
+        'Cristo Redentore': (-22.9519, -43.2105),
+        'Christ the Redeemer': (-22.9519, -43.2105)
+    }
+    
+    return monument_coords.get(monument_name, (0.0, 0.0))
+
 def run_optimized_test():
     """Esegue un test ottimizzato"""
     # Pulizia iniziale
@@ -516,11 +636,19 @@ def run_optimized_test():
     gc.collect()
     
     agent = create_agent()
-    file_path = "/leonardo_work/uTS25_Pinna/phd_proj/TurismAgent/TurismAgent/data/new_test.jpg"
-    # file_path = "/leonardo_work/uTS25_Pinna/phd_proj/TurismAgent/TurismAgent/data/img_segm/building_center.png"
+    base_data_path = os.environ.get('AGENTIC_DATA_PATH', "/leonardo_work/uTS25_Pinna/phd_proj/TurismAgent/TurismAgent/data")
+    file_path = os.path.join(base_data_path, "new_test.jpg")
+    
+    # Fallback per percorsi locali
+    if not os.path.exists(file_path):
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        fallback_path = os.path.join(current_dir, "..", "..", "..", "data_test", "colosseum.jpg")
+        if os.path.exists(fallback_path):
+            file_path = fallback_path
     
     try:
-        result = agent.run(f"Localize the image: {file_path} and then give some info about it.")
+        # Usa solo l'ImageRetrievalTool per il riconoscimento
+        result = agent.run(f"Use the image_retrieval tool to identify the monument in this image: {file_path}")
         return result
     finally:
         # Pulizia finale
