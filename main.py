@@ -352,6 +352,308 @@ class AgenticTravelerCLI:
                     print(f"⚠️ RAG processing failed, retrying in {1 + attempt} seconds...")
                     time.sleep(1 + attempt)
     
+    def extract_coordinates_from_localization(self, localization_result):
+        """Estrae coordinate dal risultato della geolocalizzazione"""
+        import re
+        coordinates = {"lat": None, "lon": None, "source": "unknown"}
+        
+        try:
+            # Cerca pattern di coordinate nel testo
+            # Pattern per "Lat: X.XXX, Lon: Y.YYY"
+            coord_pattern = r'Lat:\s*([-+]?\d*\.?\d+),\s*Lon:\s*([-+]?\d*\.?\d+)'
+            matches = re.findall(coord_pattern, localization_result)
+            
+            if matches:
+                lat, lon = matches[0]  # Prende la prima coppia trovata
+                coordinates["lat"] = float(lat)
+                coordinates["lon"] = float(lon)
+                
+                # Determina la fonte
+                if "StreetCLIP" in localization_result:
+                    coordinates["source"] = "StreetCLIP"
+                elif "GeoCLIP" in localization_result:
+                    coordinates["source"] = "GeoCLIP"
+                
+                print(f"✅ Coordinate estratte: {coordinates}")
+            else:
+                print("⚠️ Nessuna coordinata trovata nel risultato della geolocalizzazione")
+                
+        except Exception as e:
+            print(f"❌ Errore nell'estrazione delle coordinate: {e}")
+            
+        return coordinates
+    
+    def process_with_monument_rag_predefined(self, monument_name, monument_description, question, max_retries=2):
+        """Process with RAG system using predefined texts from rag_system_smolagent.py"""
+        if not self.rag_system:
+            error_msg = "❌ RAG system not available - initialization failed"
+            self.logger.error(error_msg)
+            return error_msg
+        
+        print("🔍 Processing with RAG system using predefined monument texts...")
+        
+        for attempt in range(max_retries + 1):
+            try:
+                self.logger.info(f"Processing with predefined RAG (attempt {attempt + 1}/{max_retries + 1})")
+                
+                # Validate inputs
+                if not monument_name or monument_name.strip() == "" or monument_name == "Unknown":
+                    raise ValueError("Monument name is empty or unknown")
+                
+                if not question or question.strip() == "":
+                    raise ValueError("Question is empty or invalid")
+                
+                if self.verbose:
+                    print(f"🏛️ Monument: {monument_name}")
+                    print(f"📝 Using predefined texts from monument database")
+                
+                # Usa i testi predefiniti dal file rag_system_smolagent.py
+                # Questi sono i testi di esempio del Colosseo già presenti nel file
+                predefined_monument_text = """
+                The image shows the Colosseum in Rome, Italy, under a clear blue sky. 
+                The ancient amphitheater, built of stone and concrete, stands majestically with its iconic arches and partially ruined outer walls. 
+                Tourists are gathered around the base, some taking photographs, while others listen to guides explaining the history of the site. 
+                Green grass and a few scattered trees surround the monument, and the sunlight casts dramatic shadows on the structure. 
+                In the background, parts of the Roman Forum are visible, hinting at the city's rich historical past. 
+                Vendors selling souvenirs can be seen near the entrance, and a group of school children is sketching the Colosseum from a distance. 
+                The overall atmosphere is vibrant, blending the grandeur of ancient architecture with the lively presence of modern visitors.
+                
+                The Colosseum is an oval amphitheatre in the centre of Rome, Italy. Built of travertine limestone, it was the largest amphitheatre ever built.
+                The Eiffel Tower is a wrought-iron lattice tower on the Champ de Mars in Paris, France. It was built in 1889 for the World's Fair.
+                The Statue of Liberty is a neoclassical sculpture on Liberty Island in New York Harbor. It was a gift from France to the United States.
+                Big Ben is a famous clock tower in London, England. It's part of the Palace of Westminster and is one of London's most iconic landmarks.
+                Christ the Redeemer is an Art Deco statue of Jesus Christ in Rio de Janeiro, Brazil. It overlooks the city from atop Mount Corcovado.
+                """
+                
+                # Aggiungi le informazioni specifiche del monumento identificato
+                combined_text = f"""
+                IDENTIFIED MONUMENT: {monument_name}
+                DESCRIPTION: {monument_description}
+                
+                CONTEXTUAL INFORMATION:
+                {predefined_monument_text}
+                """
+                
+                # Crea chunks dal testo combinato
+                passages = self.rag_system.split_text(combined_text, chunk_size=200, overlap=50)
+                
+                if not passages:
+                    raise ValueError("No valid text passages found from predefined texts")
+                
+                self.logger.info(f"Created {len(passages)} text passages from predefined texts")
+                if self.verbose:
+                    print(f"📚 Created {len(passages)} text passages from predefined texts")
+                
+                # Build index with the passages
+                self.rag_system.build_index(passages)
+                
+                # Query the RAG system
+                top_results = self.rag_system.query(question, top_k=3)
+                
+                if not top_results:
+                    raise ValueError("No relevant passages found in RAG query")
+                
+                # Try to generate answer with Smolagents
+                try:
+                    context_passages = [passage for _, passage in top_results]
+                    system_prompt = (
+                        f"You are a knowledgeable tourist guide specializing in monuments and cultural heritage. "
+                        f"You have identified the monument as '{monument_name}'. "
+                        f"Use the context information to provide detailed answers about this monument and related landmarks."
+                    )
+                    
+                    smolagent_answer = self.rag_system.generate_with_smolagent(
+                        system_prompt=system_prompt,
+                        user_query=question,
+                        context_passages=context_passages
+                    )
+                    
+                    result = f"🔍 **RAG Analysis with Predefined Texts**\n\n"
+                    result += f"**Monument:** {monument_name}\n"
+                    result += f"**Query:** {question}\n\n"
+                    result += f"**Retrieved Context:**\n"
+                    for i, (score, passage) in enumerate(top_results, 1):
+                        result += f"{i}. Similarity: {score:.4f}\n{passage[:100]}...\n\n"
+                    result += f"**Generated Answer:**\n{smolagent_answer}"
+                    
+                    self.logger.info("RAG processing completed successfully with predefined texts")
+                    
+                except Exception as smolagent_error:
+                    self.logger.warning(f"Smolagents generation failed: {smolagent_error}")
+                    # Fallback without Smolagents
+                    result = f"🔍 **RAG Analysis with Predefined Texts**\n\n"
+                    result += f"**Monument:** {monument_name}\n"
+                    result += f"**Query:** {question}\n\n"
+                    result += f"**Retrieved Context:**\n"
+                    for i, (score, passage) in enumerate(top_results, 1):
+                        result += f"{i}. Similarity: {score:.4f}\n{passage}\n\n"
+                    result += f"⚠️ Note: Could not generate answer with Smolagents: {smolagent_error}"
+                
+                print("✅ RAG processing complete")
+                return result
+                
+            except Exception as e:
+                self.logger.error(f"RAG processing failed (attempt {attempt + 1}): {str(e)}")
+                
+                if attempt == max_retries:
+                    error_details = f"❌ RAG Error (after {max_retries + 1} attempts)\n"
+                    error_details += f"Error Type: {type(e).__name__}\n"
+                    error_details += f"Error Message: {str(e)}\n\n"
+                    error_details += "Possible Solutions:\n"
+                    error_details += "- Check if monument information is valid\n"
+                    error_details += "- Ensure HF_TOKEN is set and Smolagents models are available\n"
+                    error_details += "- Verify sentence-transformers models are available\n"
+                    if self.verbose:
+                        error_details += f"\nTraceback:\n{traceback.format_exc()}"
+                    return error_details
+                else:
+                    print(f"⚠️ RAG processing failed, retrying in {1 + attempt} seconds...")
+                    time.sleep(1 + attempt)
+    
+    def process_with_arco_and_coordinates(self, monument_name, coordinates, max_retries=2):
+        """Process with ARCO using monument name, fallback to coordinates if needed"""
+        print("🏛️ Processing with ARCO database (with coordinate fallback)...")
+        
+        for attempt in range(max_retries + 1):
+            try:
+                self.logger.info(f"Processing with ARCO database (attempt {attempt + 1}/{max_retries + 1})")
+                
+                arco_output = "🏛️ **ARCO Database Results with Coordinate Fallback**\n\n"
+                
+                # Prima prova con il nome del monumento
+                if monument_name and monument_name.strip() != "" and monument_name != "Unknown":
+                    self.logger.info(f"Querying ARCO database for monument: {monument_name}")
+                    arco_output += f"**Primary Search: {monument_name}**\n"
+                    
+                    try:
+                        results = query_by_name(monument_name)
+                        
+                        if results:
+                            arco_output += f"✅ Found {len(results)} results by monument name:\n"
+                            
+                            for i, result in enumerate(results[:5], 1):  # Limit to 5 results
+                                try:
+                                    entity = result.get("entity", {}).get("value", "N/A")
+                                    label = result.get("label", {}).get("value", "N/A")
+                                    arco_output += f"  {i}. **{label}**\n"
+                                    arco_output += f"     URI: {entity}\n"
+                                except Exception as result_error:
+                                    self.logger.warning(f"Error processing ARCO result {i}: {result_error}")
+                                    arco_output += f"  {i}. **Error processing result**\n"
+                            arco_output += "\n"
+                            
+                            print("✅ ARCO processing complete (found by monument name)")
+                            return arco_output
+                            
+                        else:
+                            arco_output += "❌ No results found by monument name\n\n"
+                            
+                    except Exception as query_error:
+                        self.logger.warning(f"ARCO query failed for {monument_name}: {query_error}")
+                        arco_output += f"⚠️ Monument name query failed: {str(query_error)}\n\n"
+                
+                # Fallback: prova con le coordinate
+                if coordinates.get("lat") is not None and coordinates.get("lon") is not None:
+                    arco_output += f"**Fallback Search: Geographic Coordinates**\n"
+                    arco_output += f"Latitude: {coordinates['lat']}, Longitude: {coordinates['lon']}\n"
+                    arco_output += f"Source: {coordinates['source']}\n\n"
+                    
+                    # Determina la città/regione dalle coordinate (approximazione)
+                    location_name = self.get_location_name_from_coordinates(coordinates)
+                    
+                    if location_name:
+                        self.logger.info(f"Querying ARCO database for location: {location_name}")
+                        arco_output += f"**Searching ARCO for location: {location_name}**\n"
+                        
+                        try:
+                            location_results = query_by_name(location_name)
+                            
+                            if location_results:
+                                arco_output += f"✅ Found {len(location_results)} results by location:\n"
+                                
+                                for i, result in enumerate(location_results[:3], 1):  # Limit to 3 results
+                                    try:
+                                        entity = result.get("entity", {}).get("value", "N/A")
+                                        label = result.get("label", {}).get("value", "N/A")
+                                        arco_output += f"  {i}. **{label}**\n"
+                                        arco_output += f"     URI: {entity}\n"
+                                    except Exception as result_error:
+                                        self.logger.warning(f"Error processing location result {i}: {result_error}")
+                                        arco_output += f"  {i}. **Error processing result**\n"
+                                arco_output += "\n"
+                            else:
+                                arco_output += "❌ No results found by geographic location\n\n"
+                                
+                        except Exception as location_error:
+                            self.logger.warning(f"ARCO location query failed for {location_name}: {location_error}")
+                            arco_output += f"⚠️ Location query failed: {str(location_error)}\n\n"
+                    else:
+                        arco_output += "❌ Could not determine location name from coordinates\n\n"
+                else:
+                    arco_output += "❌ No valid coordinates available for fallback search\n\n"
+                
+                # Se arriviamo qui, nessuna strategia ha funzionato
+                arco_output += "💡 **Suggestions:**\n"
+                arco_output += "- Verify monument name spelling\n"
+                arco_output += "- Check internet connectivity\n"
+                arco_output += "- Try manual search in ARCO database\n"
+                
+                self.logger.info("ARCO processing completed (no results found)")
+                print("⚠️ ARCO processing complete (no results found)")
+                return arco_output
+                
+            except Exception as e:
+                self.logger.error(f"ARCO processing failed (attempt {attempt + 1}): {str(e)}")
+                
+                if attempt == max_retries:
+                    error_details = f"❌ **ARCO Error** (after {max_retries + 1} attempts)\n\n"
+                    error_details += f"**Error Type:** {type(e).__name__}\n"
+                    error_details += f"**Error Message:** {str(e)}\n\n"
+                    error_details += "**Possible Solutions:**\n"
+                    error_details += "- Check internet connectivity for ARCO database access\n"
+                    error_details += "- Verify SPARQL endpoints are accessible\n"
+                    error_details += "- Try again later if database is temporarily unavailable\n"
+                    if self.verbose:
+                        error_details += f"\nTraceback:\n{traceback.format_exc()}"
+                    return error_details
+                else:
+                    print(f"⚠️ ARCO processing failed, retrying in {2 + attempt} seconds...")
+                    time.sleep(2 + attempt)
+    
+    def get_location_name_from_coordinates(self, coordinates):
+        """Determina il nome della località dalle coordinate"""
+        lat, lon = coordinates.get("lat"), coordinates.get("lon")
+        
+        # Mapping approssimativo di famosi monumenti per coordinate
+        famous_locations = [
+            ((41.8902, 12.4922), "Roma"),       # Colosseo
+            ((48.8584, 2.2945), "Parigi"),      # Tour Eiffel  
+            ((40.6892, -74.0445), "New York"), # Statua della Libertà
+            ((51.5007, -0.1246), "Londra"),    # Big Ben
+            ((-22.9519, -43.2105), "Rio de Janeiro")  # Cristo Redentore
+        ]
+        
+        # Trova la località più vicina (con tolleranza di ~50km)
+        tolerance = 0.5  # Circa 50km
+        
+        for (ref_lat, ref_lon), location in famous_locations:
+            if (abs(lat - ref_lat) < tolerance and abs(lon - ref_lon) < tolerance):
+                return location
+        
+        # Fallback generico basato su continente/regione
+        if 40 <= lat <= 50 and -10 <= lon <= 30:
+            return "Italia"
+        elif 45 <= lat <= 55 and -5 <= lon <= 10:
+            return "Francia" 
+        elif 50 <= lat <= 60 and -10 <= lon <= 2:
+            return "Regno Unito"
+        elif 35 <= lat <= 45 and -80 <= lon <= -70:
+            return "New York"
+        elif -25 <= lat <= -20 and -45 <= lon <= -40:
+            return "Brasile"
+        
+        return None
+    
     def process_with_monument_arco(self, monument_name, max_retries=2):
         """Process with ARCO knowledge graph using monument name"""
         print("🏛️ Processing with ARCO database...")
@@ -795,29 +1097,32 @@ class AgenticTravelerCLI:
             monument_name = monument_info.get('monument_name', 'Unknown')
             monument_description = monument_info.get('monument_description', 'No description available')
             
-            # Step 2: RAG Processing con informazioni monumento
+            # Step 2: Geolocation
             print("\n" + "=" * 80)
-            print("🎯 STEP 2: RAG Analysis")
+            print("🎯 STEP 2: Geolocation")
             print("-" * 40)
-            rag_result = self.process_with_monument_rag(monument_name, monument_description, question)
+            localization_result = self.process_localization(optimized_image_path)
+            print(f"📊 GEOLOCATION RESULTS:")
+            print(localization_result)
+            
+            # Extract coordinates from localization result
+            coordinates = self.extract_coordinates_from_localization(localization_result)
+            
+            # Step 3: RAG Processing con informazioni monumento (usa testi predefiniti)
+            print("\n" + "=" * 80)
+            print("🎯 STEP 3: RAG Analysis with Predefined Texts")
+            print("-" * 40)
+            rag_result = self.process_with_monument_rag_predefined(monument_name, monument_description, question)
             print(f"📊 RAG SYSTEM RESULTS:")
             print(rag_result)
             
-            # Step 3: ARCO Database query
+            # Step 4: ARCO Database query con fallback coordinate
             print("\n" + "=" * 80)
-            print("🎯 STEP 3: ARCO Database Query")
+            print("🎯 STEP 4: ARCO Database Query (with coordinate fallback)")
             print("-" * 40)
-            arco_result = self.process_with_monument_arco(monument_name)
+            arco_result = self.process_with_arco_and_coordinates(monument_name, coordinates)
             print(f"📊 ARCO DATABASE RESULTS:")
             print(arco_result)
-            
-            # Step 4: Localization (opzionale)
-            print("\n" + "=" * 80)
-            print("🎯 STEP 4: Geolocation (Optional)")
-            print("-" * 40)
-            localization_result = self.process_localization(optimized_image_path)
-            print(f"📊 LOCALIZATION RESULTS:")
-            print(localization_result)
             
             # Export results if requested
             if export_file:
