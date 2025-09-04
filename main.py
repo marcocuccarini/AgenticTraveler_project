@@ -421,250 +421,250 @@ class AgenticTravelerCLI:
                     print(f"⚠️ ARCO processing failed, retrying in {2 + attempt} seconds...")
                     time.sleep(2 + attempt)
 
-    def OLD_process_with_agent(self, image_path, question, max_retries=2):
-        """Process image with the agent system with enhanced error handling"""
-        if not self.agent:
-            error_msg = "❌ Agent system not available - initialization failed"
-            self.logger.error(error_msg)
-            return error_msg
+    # def OLD_process_with_agent(self, image_path, question, max_retries=2):
+    #     """Process image with the agent system with enhanced error handling"""
+    #     if not self.agent:
+    #         error_msg = "❌ Agent system not available - initialization failed"
+    #         self.logger.error(error_msg)
+    #         return error_msg
         
-        print("🤖 Processing with Agent system...")
+    #     print("🤖 Processing with Agent system...")
         
-        for attempt in range(max_retries + 1):
-            try:
-                self.logger.info(f"Processing image with agent (attempt {attempt + 1}/{max_retries + 1}): {image_path}")
+    #     for attempt in range(max_retries + 1):
+    #         try:
+    #             self.logger.info(f"Processing image with agent (attempt {attempt + 1}/{max_retries + 1}): {image_path}")
                 
-                # Validate image file exists and is readable
-                if not os.path.exists(image_path):
-                    raise FileNotFoundError(f"Image file not found: {image_path}")
+    #             # Validate image file exists and is readable
+    #             if not os.path.exists(image_path):
+    #                 raise FileNotFoundError(f"Image file not found: {image_path}")
                 
-                # Check file size (limit to 10MB)
-                file_size = os.path.getsize(image_path)
-                if file_size > 10 * 1024 * 1024:
-                    raise ValueError(f"Image file too large: {file_size / (1024*1024):.1f}MB (max 10MB)")
+    #             # Check file size (limit to 10MB)
+    #             file_size = os.path.getsize(image_path)
+    #             if file_size > 10 * 1024 * 1024:
+    #                 raise ValueError(f"Image file too large: {file_size / (1024*1024):.1f}MB (max 10MB)")
                 
-                # The agent expects a command that includes both localization and info extraction
-                command = f"Localize the image: {image_path} and then give some info about it."
+    #             # The agent expects a command that includes both localization and info extraction
+    #             command = f"Localize the image: {image_path} and then give some info about it."
                 
-                if self.verbose:
-                    print(f"🔍 Executing agent command: {command}")
+    #             if self.verbose:
+    #                 print(f"🔍 Executing agent command: {command}")
                 
-                result = self.agent.run(command)
-                self.logger.info("Agent processing completed successfully")
-                print("✅ Agent analysis complete")
-                return result
+    #             result = self.agent.run(command)
+    #             self.logger.info("Agent processing completed successfully")
+    #             print("✅ Agent analysis complete")
+    #             return result
                 
-            except Exception as e:
-                self.logger.error(f"Agent processing failed (attempt {attempt + 1}): {str(e)}")
+    #         except Exception as e:
+    #             self.logger.error(f"Agent processing failed (attempt {attempt + 1}): {str(e)}")
                 
-                if attempt == max_retries:
-                    # Final attempt failed
-                    error_details = f"❌ Agent Error (after {max_retries + 1} attempts)\n"
-                    error_details += f"Error Type: {type(e).__name__}\n"
-                    error_details += f"Error Message: {str(e)}\n\n"
-                    error_details += "Possible Solutions:\n"
-                    error_details += "- Check if the image file is valid and not corrupted\n"
-                    error_details += "- Ensure sufficient GPU/CPU memory is available\n"
-                    error_details += "- Verify all required models are properly loaded\n"
-                    if self.verbose:
-                        error_details += f"\nTraceback:\n{traceback.format_exc()}"
-                    return error_details
-                else:
-                    # Wait before retry
-                    print(f"⚠️ Agent processing failed, retrying in {1 + attempt} seconds...")
-                    time.sleep(1 + attempt)  # Progressive backoff
+    #             if attempt == max_retries:
+    #                 # Final attempt failed
+    #                 error_details = f"❌ Agent Error (after {max_retries + 1} attempts)\n"
+    #                 error_details += f"Error Type: {type(e).__name__}\n"
+    #                 error_details += f"Error Message: {str(e)}\n\n"
+    #                 error_details += "Possible Solutions:\n"
+    #                 error_details += "- Check if the image file is valid and not corrupted\n"
+    #                 error_details += "- Ensure sufficient GPU/CPU memory is available\n"
+    #                 error_details += "- Verify all required models are properly loaded\n"
+    #                 if self.verbose:
+    #                     error_details += f"\nTraceback:\n{traceback.format_exc()}"
+    #                 return error_details
+    #             else:
+    #                 # Wait before retry
+    #                 print(f"⚠️ Agent processing failed, retrying in {1 + attempt} seconds...")
+    #                 time.sleep(1 + attempt)  # Progressive backoff
     
-    # METODI VECCHI (NON PIU' UTILIZZATI NEL NUOVO WORKFLOW)
-    def OLD_process_with_rag(self, agent_output, question, max_retries=2):
-        """Process with RAG system using agent output as context with enhanced error handling"""
-        if not self.rag_system:
-            error_msg = "❌ RAG system not available - initialization failed"
-            self.logger.error(error_msg)
-            return error_msg
+    # # METODI VECCHI (NON PIU' UTILIZZATI NEL NUOVO WORKFLOW)
+    # def OLD_process_with_rag(self, agent_output, question, max_retries=2):
+    #     """Process with RAG system using agent output as context with enhanced error handling"""
+    #     if not self.rag_system:
+    #         error_msg = "❌ RAG system not available - initialization failed"
+    #         self.logger.error(error_msg)
+    #         return error_msg
         
-        print("🔍 Processing with RAG system...")
+    #     print("🔍 Processing with RAG system...")
         
-        for attempt in range(max_retries + 1):
-            try:
-                self.logger.info(f"Processing with RAG system (attempt {attempt + 1}/{max_retries + 1})")
+    #     for attempt in range(max_retries + 1):
+    #         try:
+    #             self.logger.info(f"Processing with RAG system (attempt {attempt + 1}/{max_retries + 1})")
                 
-                # Validate inputs
-                if not agent_output or agent_output.strip() == "":
-                    raise ValueError("Agent output is empty or invalid")
+    #             # Validate inputs
+    #             if not agent_output or agent_output.strip() == "":
+    #                 raise ValueError("Agent output is empty or invalid")
                 
-                if not question or question.strip() == "":
-                    raise ValueError("Question is empty or invalid")
+    #             if not question or question.strip() == "":
+    #                 raise ValueError("Question is empty or invalid")
                 
-                # Extract meaningful text from agent output for RAG processing
-                clean_agent_output = self._clean_text_for_rag(agent_output)
+    #             # Extract meaningful text from agent output for RAG processing
+    #             clean_agent_output = self._clean_text_for_rag(agent_output)
                 
-                if len(clean_agent_output.strip()) < 10:
-                    raise ValueError("Cleaned agent output is too short for meaningful RAG processing")
+    #             if len(clean_agent_output.strip()) < 10:
+    #                 raise ValueError("Cleaned agent output is too short for meaningful RAG processing")
                 
-                # Create passages from agent output
-                passages = self.rag_system.split_text(clean_agent_output, chunk_size=200, overlap=50)
+    #             # Create passages from agent output
+    #             passages = self.rag_system.split_text(clean_agent_output, chunk_size=200, overlap=50)
                 
-                if not passages:
-                    raise ValueError("No valid text passages found from agent output")
+    #             if not passages:
+    #                 raise ValueError("No valid text passages found from agent output")
                 
-                self.logger.info(f"Created {len(passages)} text passages for RAG indexing")
-                if self.verbose:
-                    print(f"📚 Created {len(passages)} text passages for RAG indexing")
+    #             self.logger.info(f"Created {len(passages)} text passages for RAG indexing")
+    #             if self.verbose:
+    #                 print(f"📚 Created {len(passages)} text passages for RAG indexing")
                 
-                # Build index with the passages
-                self.rag_system.build_index(passages)
+    #             # Build index with the passages
+    #             self.rag_system.build_index(passages)
                 
-                # Query the RAG system
-                top_results = self.rag_system.query(question, top_k=3)
+    #             # Query the RAG system
+    #             top_results = self.rag_system.query(question, top_k=3)
                 
-                if not top_results:
-                    raise ValueError("No relevant passages found in RAG query")
+    #             if not top_results:
+    #                 raise ValueError("No relevant passages found in RAG query")
                 
-                # Format results
-                rag_output = f"🔍 RAG System Results\n\n"
-                rag_output += f"Query: {question}\n"
-                rag_output += f"Processed {len(passages)} passages from agent output\n\n"
-                rag_output += "Top Retrieved Passages:\n\n"
+    #             # Format results
+    #             rag_output = f"🔍 RAG System Results\n\n"
+    #             rag_output += f"Query: {question}\n"
+    #             rag_output += f"Processed {len(passages)} passages from agent output\n\n"
+    #             rag_output += "Top Retrieved Passages:\n\n"
                 
-                for i, (score, passage) in enumerate(top_results, 1):
-                    rag_output += f"{i}. Similarity: {score:.4f}\n"
-                    rag_output += f"{passage}\n\n"
+    #             for i, (score, passage) in enumerate(top_results, 1):
+    #                 rag_output += f"{i}. Similarity: {score:.4f}\n"
+    #                 rag_output += f"{passage}\n\n"
                 
-                # Try to generate answer with Ollama if available
-                try:
-                    context_passages = [passage for _, passage in top_results]
-                    system_prompt = ("You are a helpful assistant specializing in monuments and cultural heritage. "
-                                   "Use the provided context to answer the user's question about the monument or landmark.")
+    #             # Try to generate answer with Ollama if available
+    #             try:
+    #                 context_passages = [passage for _, passage in top_results]
+    #                 system_prompt = ("You are a helpful assistant specializing in monuments and cultural heritage. "
+    #                                "Use the provided context to answer the user's question about the monument or landmark.")
                     
-                    smolagent_answer = self.rag_system.generate_with_smolagent(
-                        system_prompt=system_prompt,
-                        user_query=question,
-                        context_passages=context_passages
-                    )
+    #                 smolagent_answer = self.rag_system.generate_with_smolagent(
+    #                     system_prompt=system_prompt,
+    #                     user_query=question,
+    #                     context_passages=context_passages
+    #                 )
                     
-                    rag_output += f"🧠 Generated Answer:\n{smolagent_answer}"
-                    self.logger.info("RAG processing completed successfully with Smolagents generation")
+    #                 rag_output += f"🧠 Generated Answer:\n{smolagent_answer}"
+    #                 self.logger.info("RAG processing completed successfully with Smolagents generation")
                     
-                except Exception as smolagent_error:
-                    self.logger.warning(f"Smolagents generation failed: {smolagent_error}")
-                    rag_output += f"\n⚠️ Note: Could not generate answer with Smolagents: {smolagent_error}"
-                    rag_output += f"\n💡 Tip: Ensure HF_TOKEN is set and Smolagents models are available"
+    #             except Exception as smolagent_error:
+    #                 self.logger.warning(f"Smolagents generation failed: {smolagent_error}")
+    #                 rag_output += f"\n⚠️ Note: Could not generate answer with Smolagents: {smolagent_error}"
+    #                 rag_output += f"\n💡 Tip: Ensure HF_TOKEN is set and Smolagents models are available"
                 
-                print("✅ RAG processing complete")
-                return rag_output
+    #             print("✅ RAG processing complete")
+    #             return rag_output
                 
-            except Exception as e:
-                self.logger.error(f"RAG processing failed (attempt {attempt + 1}): {str(e)}")
+    #         except Exception as e:
+    #             self.logger.error(f"RAG processing failed (attempt {attempt + 1}): {str(e)}")
                 
-                if attempt == max_retries:
-                    # Final attempt failed
-                    error_details = f"❌ RAG Error (after {max_retries + 1} attempts)\n"
-                    error_details += f"Error Type: {type(e).__name__}\n"
-                    error_details += f"Error Message: {str(e)}\n\n"
-                    error_details += "Possible Solutions:\n"
-                    error_details += "- Check if agent output contains meaningful text\n"
-                    error_details += "- Ensure HF_TOKEN is set and Smolagents models are available\n"
-                    error_details += "- Verify sentence-transformers models are available\n"
-                    error_details += "- Check available memory for FAISS indexing\n"
-                    if self.verbose:
-                        error_details += f"\nTraceback:\n{traceback.format_exc()}"
-                    return error_details
-                else:
-                    # Wait before retry
-                    print(f"⚠️ RAG processing failed, retrying in {1 + attempt} seconds...")
-                    time.sleep(1 + attempt)
+    #             if attempt == max_retries:
+    #                 # Final attempt failed
+    #                 error_details = f"❌ RAG Error (after {max_retries + 1} attempts)\n"
+    #                 error_details += f"Error Type: {type(e).__name__}\n"
+    #                 error_details += f"Error Message: {str(e)}\n\n"
+    #                 error_details += "Possible Solutions:\n"
+    #                 error_details += "- Check if agent output contains meaningful text\n"
+    #                 error_details += "- Ensure HF_TOKEN is set and Smolagents models are available\n"
+    #                 error_details += "- Verify sentence-transformers models are available\n"
+    #                 error_details += "- Check available memory for FAISS indexing\n"
+    #                 if self.verbose:
+    #                     error_details += f"\nTraceback:\n{traceback.format_exc()}"
+    #                 return error_details
+    #             else:
+    #                 # Wait before retry
+    #                 print(f"⚠️ RAG processing failed, retrying in {1 + attempt} seconds...")
+    #                 time.sleep(1 + attempt)
     
-    def OLD_process_with_arco(self, agent_output, max_retries=2):
-        """Process with ARCO knowledge graph with enhanced error handling"""
-        print("🏛️ Processing with ARCO database...")
+    # def OLD_process_with_arco(self, agent_output, max_retries=2):
+    #     """Process with ARCO knowledge graph with enhanced error handling"""
+    #     print("🏛️ Processing with ARCO database...")
         
-        for attempt in range(max_retries + 1):
-            try:
-                self.logger.info(f"Processing with ARCO database (attempt {attempt + 1}/{max_retries + 1})")
+    #     for attempt in range(max_retries + 1):
+    #         try:
+    #             self.logger.info(f"Processing with ARCO database (attempt {attempt + 1}/{max_retries + 1})")
                 
-                # Validate input
-                if not agent_output or agent_output.strip() == "":
-                    raise ValueError("Agent output is empty or invalid for ARCO processing")
+    #             # Validate input
+    #             if not agent_output or agent_output.strip() == "":
+    #                 raise ValueError("Agent output is empty or invalid for ARCO processing")
                 
-                # Extract monument/landmark names from agent output for ARCO query
-                monument_names = self._extract_monument_names(agent_output)
+    #             # Extract monument/landmark names from agent output for ARCO query
+    #             monument_names = self._extract_monument_names(agent_output)
                 
-                if not monument_names:
-                    self.logger.warning("No monument names found in agent output")
-                    return ("❌ ARCO Results: No monument names found in agent output\n\n"
-                           "💡 Tip: Ensure the agent successfully identified monuments or landmarks in the image")
+    #             if not monument_names:
+    #                 self.logger.warning("No monument names found in agent output")
+    #                 return ("❌ ARCO Results: No monument names found in agent output\n\n"
+    #                        "💡 Tip: Ensure the agent successfully identified monuments or landmarks in the image")
                 
-                self.logger.info(f"Extracted {len(monument_names)} monument names: {monument_names[:3]}")
-                if self.verbose:
-                    print(f"🏛️ Found monument names: {', '.join(monument_names[:3])}")
+    #             self.logger.info(f"Extracted {len(monument_names)} monument names: {monument_names[:3]}")
+    #             if self.verbose:
+    #                 print(f"🏛️ Found monument names: {', '.join(monument_names[:3])}")
                 
-                arco_output = "🏛️ ARCO Database Results\n\n"
-                total_results = 0
+    #             arco_output = "🏛️ ARCO Database Results\n\n"
+    #             total_results = 0
                 
-                for monument_name in monument_names[:3]:  # Limit to top 3 names
-                    arco_output += f"Searching for: {monument_name}\n"
-                    self.logger.info(f"Querying ARCO database for: {monument_name}")
+    #             for monument_name in monument_names[:3]:  # Limit to top 3 names
+    #                 arco_output += f"Searching for: {monument_name}\n"
+    #                 self.logger.info(f"Querying ARCO database for: {monument_name}")
                     
-                    # Add timeout and connection handling
-                    try:
-                        results = query_by_name(monument_name)
+    #                 # Add timeout and connection handling
+    #                 try:
+    #                     results = query_by_name(monument_name)
                         
-                        if results:
-                            arco_output += f"✅ Found {len(results)} results:\n"
-                            total_results += len(results)
+    #                     if results:
+    #                         arco_output += f"✅ Found {len(results)} results:\n"
+    #                         total_results += len(results)
                             
-                            for i, result in enumerate(results[:5], 1):  # Limit to 5 results per monument
-                                try:
-                                    entity = result.get("entity", {}).get("value", "N/A")
-                                    label = result.get("label", {}).get("value", "N/A")
-                                    arco_output += f"  {i}. {label}\n"
-                                    arco_output += f"     URI: {entity}\n"
-                                except Exception as result_error:
-                                    self.logger.warning(f"Error processing ARCO result {i}: {result_error}")
-                                    arco_output += f"  {i}. Error processing result\n"
-                            arco_output += "\n"
-                        else:
-                            arco_output += "❌ No results found in ARCO database\n\n"
+    #                         for i, result in enumerate(results[:5], 1):  # Limit to 5 results per monument
+    #                             try:
+    #                                 entity = result.get("entity", {}).get("value", "N/A")
+    #                                 label = result.get("label", {}).get("value", "N/A")
+    #                                 arco_output += f"  {i}. {label}\n"
+    #                                 arco_output += f"     URI: {entity}\n"
+    #                             except Exception as result_error:
+    #                                 self.logger.warning(f"Error processing ARCO result {i}: {result_error}")
+    #                                 arco_output += f"  {i}. Error processing result\n"
+    #                         arco_output += "\n"
+    #                     else:
+    #                         arco_output += "❌ No results found in ARCO database\n\n"
                             
-                    except Exception as query_error:
-                        self.logger.warning(f"ARCO query failed for {monument_name}: {query_error}")
-                        arco_output += f"⚠️ Query failed: {str(query_error)}\n\n"
+    #                 except Exception as query_error:
+    #                     self.logger.warning(f"ARCO query failed for {monument_name}: {query_error}")
+    #                     arco_output += f"⚠️ Query failed: {str(query_error)}\n\n"
                 
-                if total_results == 0:
-                    arco_output += "\n💡 Suggestions:\n"
-                    arco_output += "- Try different search terms or monument names\n"
-                    arco_output += "- Check internet connectivity for ARCO database access\n"
-                    arco_output += "- Verify ARCO endpoints are accessible\n"
+    #             if total_results == 0:
+    #                 arco_output += "\n💡 Suggestions:\n"
+    #                 arco_output += "- Try different search terms or monument names\n"
+    #                 arco_output += "- Check internet connectivity for ARCO database access\n"
+    #                 arco_output += "- Verify ARCO endpoints are accessible\n"
                 
-                self.logger.info(f"ARCO processing completed. Total results found: {total_results}")
-                print("✅ ARCO processing complete")
-                return arco_output
+    #             self.logger.info(f"ARCO processing completed. Total results found: {total_results}")
+    #             print("✅ ARCO processing complete")
+    #             return arco_output
                 
-            except Exception as e:
-                self.logger.error(f"ARCO processing failed (attempt {attempt + 1}): {str(e)}")
+    #         except Exception as e:
+    #             self.logger.error(f"ARCO processing failed (attempt {attempt + 1}): {str(e)}")
                 
-                if attempt == max_retries:
-                    # Final attempt failed
-                    error_details = f"❌ ARCO Error (after {max_retries + 1} attempts)\n"
-                    error_details += f"Error Type: {type(e).__name__}\n"
-                    error_details += f"Error Message: {str(e)}\n\n"
-                    error_details += "Possible Solutions:\n"
-                    error_details += "- Check internet connectivity for ARCO database access\n"
-                    error_details += "- Verify SPARQL endpoints are accessible\n"
-                    error_details += "- Ensure agent output contains monument/landmark names\n"
-                    error_details += "- Try again later if database is temporarily unavailable\n\n"
+    #             if attempt == max_retries:
+    #                 # Final attempt failed
+    #                 error_details = f"❌ ARCO Error (after {max_retries + 1} attempts)\n"
+    #                 error_details += f"Error Type: {type(e).__name__}\n"
+    #                 error_details += f"Error Message: {str(e)}\n\n"
+    #                 error_details += "Possible Solutions:\n"
+    #                 error_details += "- Check internet connectivity for ARCO database access\n"
+    #                 error_details += "- Verify SPARQL endpoints are accessible\n"
+    #                 error_details += "- Ensure agent output contains monument/landmark names\n"
+    #                 error_details += "- Try again later if database is temporarily unavailable\n\n"
                     
-                    # Add endpoint status information
-                    error_details += "ARCO Endpoints:\n"
-                    error_details += "- Primary: http://wit.istc.cnr.it/arco/virtuoso/sparql\n"
-                    error_details += "- Backup: https://dati.beniculturali.it/sparql\n"
-                    if self.verbose:
-                        error_details += f"\nTraceback:\n{traceback.format_exc()}"
-                    return error_details
-                else:
-                    # Wait before retry
-                    print(f"⚠️ ARCO processing failed, retrying in {2 + attempt} seconds...")
-                    time.sleep(2 + attempt)
+    #                 # Add endpoint status information
+    #                 error_details += "ARCO Endpoints:\n"
+    #                 error_details += "- Primary: http://wit.istc.cnr.it/arco/virtuoso/sparql\n"
+    #                 error_details += "- Backup: https://dati.beniculturali.it/sparql\n"
+    #                 if self.verbose:
+    #                     error_details += f"\nTraceback:\n{traceback.format_exc()}"
+    #                 return error_details
+    #             else:
+    #                 # Wait before retry
+    #                 print(f"⚠️ ARCO processing failed, retrying in {2 + attempt} seconds...")
+    #                 time.sleep(2 + attempt)
     
     def _clean_text_for_rag(self, text):
         """Clean text by removing emojis and excessive formatting for RAG processing"""
