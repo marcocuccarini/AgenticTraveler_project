@@ -1,0 +1,3837 @@
+[
+  {
+    "uri": "http://dbpedia.org/resource/Caddo_Parish_Confederate_Monument",
+    "label": "Caddo Parish Confederate Monument",
+    "class": [
+      "Monument"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q4989906",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/ontology/Monument"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Calamba_Claypot",
+    "label": "Calamba Claypot",
+    "class": [
+      "Monument"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q4989906",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Memorial103743902",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Building",
+        "http://dbpedia.org/ontology/Monument",
+        "http://dbpedia.org/class/yago/Structure104341686",
+        "http://dbpedia.org/class/yago/Whole100003553"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/California_Volunteers_(sculpture)",
+    "label": "California Volunteers (sculpture)",
+    "class": [
+      "Monument"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q4989906",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/ontology/Artwork",
+        "http://dbpedia.org/ontology/Monument",
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q4989906",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/ontology/Artwork",
+        "http://dbpedia.org/ontology/Monument"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Calvaire_de_la_Rivi\u00e8re-\u00e0-Veillet",
+    "label": "Calvaire de la Rivi\u00e8re-\u00e0-Veillet",
+    "class": [
+      "Monument"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q4989906",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/ontology/Monument"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Camp_Merritt_Memorial_Monument",
+    "label": "Camp Merritt Memorial Monument",
+    "class": [
+      "Monument"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q4989906",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/ontology/Monument"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Camphill_Column,_Alnwick",
+    "label": "Camphill Column, Alnwick",
+    "class": [
+      "Monument"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://dbpedia.org/ontology/Place",
+        "http://www.wikidata.org/entity/Q4989906",
+        "http://dbpedia.org/class/yago/WikicatMonumentsAndMemorialsInNorthumberland",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Memorial103743902",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Monument",
+        "http://dbpedia.org/class/yago/Structure104341686",
+        "http://dbpedia.org/class/yago/Whole100003553"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Canberra_Centenary_Column",
+    "label": "Canberra Centenary Column",
+    "class": [
+      "Monument"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q4989906",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/ontology/Artwork",
+        "http://dbpedia.org/ontology/Monument",
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q4989906",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/ontology/Artwork",
+        "http://dbpedia.org/ontology/Monument"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Capitoline_Wolf,_Chi\u0219in\u0103u",
+    "label": "Capitoline Wolf, Chi\u0219in\u0103u",
+    "class": [
+      "Monument"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://dbpedia.org/ontology/Place",
+        "http://www.wikidata.org/entity/Q4989906",
+        "http://dbpedia.org/class/yago/WikicatMonumentsAndMemorialsInChi\u015fin\u0103u",
+        "http://dbpedia.org/class/yago/WikicatMonumentsAndMemorialsInMoldova",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Memorial103743902",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Monument",
+        "http://dbpedia.org/class/yago/Structure104341686",
+        "http://dbpedia.org/class/yago/Whole100003553"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Capitoline_Wolf,_Timi\u0219oara",
+    "label": "Capitoline Wolf, Timi\u0219oara",
+    "class": [
+      "Monument"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q4989906",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/ontology/Monument"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Carefree_sundial",
+    "label": "Carefree sundial",
+    "class": [
+      "Monument"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q4989906",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/class/yago/WikicatSundials",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Device103183080",
+        "http://dbpedia.org/class/yago/Instrument103574816",
+        "http://dbpedia.org/class/yago/Instrumentality103575240",
+        "http://dbpedia.org/class/yago/MeasuringInstrument103733925",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/ontology/Monument",
+        "http://dbpedia.org/class/yago/Sundial104355338",
+        "http://dbpedia.org/class/yago/Timepiece104437953",
+        "http://dbpedia.org/class/yago/Whole100003553"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Carew_Cross",
+    "label": "Carew Cross",
+    "class": [
+      "Monument"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q4989906",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/ontology/Monument"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Casa_Guazzoni",
+    "label": "Casa Guazzoni",
+    "class": [
+      "Monument"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q4989906",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/ontology/Monument"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Casamar",
+    "label": "Casamar",
+    "class": [
+      "Monument"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q4989906",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/ontology/Monument"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Castillo_de_Colomares",
+    "label": "Castillo de Colomares",
+    "class": [
+      "Monument"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q4989906",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/ontology/Monument"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Castle_of_Capdepera",
+    "label": "Castle of Capdepera",
+    "class": [
+      "Monument"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q4989906",
+        "http://dbpedia.org/class/yago/WikicatTreatiesOfTheKingdomOfMajorca",
+        "http://dbpedia.org/class/yago/WikicatTreatiesOfTheSpanishEmpire",
+        "http://dbpedia.org/class/yago/WikicatVisitorAttractionsInMajorca",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/class/yago/Abstraction100002137",
+        "http://dbpedia.org/class/yago/Agreement106770275",
+        "http://dbpedia.org/class/yago/Attraction106615561",
+        "http://dbpedia.org/class/yago/Communication100033020",
+        "http://dbpedia.org/class/yago/Document106470073",
+        "http://dbpedia.org/class/yago/Event100029378",
+        "http://dbpedia.org/class/yago/LegalDocument106479665",
+        "http://dbpedia.org/class/yago/Message106598915",
+        "http://dbpedia.org/class/yago/PsychologicalFeature100023100",
+        "http://dbpedia.org/class/yago/Writing106362953",
+        "http://dbpedia.org/class/yago/WrittenAgreement106771653",
+        "http://dbpedia.org/class/yago/WrittenCommunication106349220",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/MilitaryStructure",
+        "http://dbpedia.org/ontology/Monument",
+        "http://dbpedia.org/class/yago/Show106619065",
+        "http://dbpedia.org/class/yago/SocialEvent107288639",
+        "http://dbpedia.org/class/yago/Statement106722453",
+        "http://dbpedia.org/class/yago/Treaty106773434"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Castle_of_Marracq",
+    "label": "Castle of Marracq",
+    "class": [
+      "Monument"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q4989906",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/ontology/Monument"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Catacombs_of_Kom_El_Shoqafa",
+    "label": "Catacombs of Kom El Shoqafa",
+    "class": [
+      "Monument"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q4989906",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/ontology/Monument"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Amiri_Diwan_of_the_State_of_Qatar",
+    "label": "Amiri Diwan of the State of Qatar",
+    "class": [
+      "Monument"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q4989906",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/ontology/Monument"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Benavides_Monument",
+    "label": "Benavides Monument",
+    "class": [
+      "Monument"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q4989906",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/ontology/Monument"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Preah_Thong_and_Neang_Neak",
+    "label": "Preah Thong and Neang Neak",
+    "class": [
+      "Monument"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://dbpedia.org/ontology/Software",
+        "http://www.wikidata.org/entity/Q4989906",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/ontology/Monument"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Prince_Alfred's_Guard_Memorial",
+    "label": "Prince Alfred's Guard Memorial",
+    "class": [
+      "Monument"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://dbpedia.org/ontology/Place",
+        "http://www.wikidata.org/entity/Q4989906",
+        "http://dbpedia.org/class/yago/WikicatMonumentsAndMemorialsInSouthAfrica",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/class/yago/WikicatSouthAfricanHeritageSites",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/GeographicalArea108574314",
+        "http://dbpedia.org/class/yago/Location100027167",
+        "http://dbpedia.org/class/yago/Memorial103743902",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/Region108630985",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoLegalActorGeo",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Monument",
+        "http://dbpedia.org/class/yago/Site108651247",
+        "http://dbpedia.org/class/yago/Structure104341686",
+        "http://dbpedia.org/class/yago/Tract108673395",
+        "http://dbpedia.org/class/yago/Whole100003553"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Prince_Henry_the_Navigator_(statue)",
+    "label": "Prince Henry the Navigator (statue)",
+    "class": [
+      "Monument"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q4989906",
+        "http://dbpedia.org/class/yago/WikicatMonumentsAndMemorialsInMassachusetts",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Memorial103743902",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Artwork",
+        "http://dbpedia.org/ontology/Monument",
+        "http://dbpedia.org/class/yago/Structure104341686",
+        "http://dbpedia.org/class/yago/Whole100003553"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Profitable_house_of_A._D._Sidamon-Eristov",
+    "label": "Profitable house of A. D. Sidamon-Eristov",
+    "class": [
+      "Monument"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Thing"
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Ca'_Loredan",
+    "label": "Ca' Loredan",
+    "class": [
+      "Building"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q41176",
+        "http://dbpedia.org/class/yago/WikicatPalacesInVenice",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Building102913152",
+        "http://dbpedia.org/class/yago/Dwelling103259505",
+        "http://dbpedia.org/class/yago/House103544360",
+        "http://dbpedia.org/class/yago/Housing103546340",
+        "http://dbpedia.org/class/yago/Mansion103719053",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/Palace103878066",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/WikicatHousesCompletedInThe15thCentury",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Building",
+        "http://dbpedia.org/class/yago/Structure104341686",
+        "http://dbpedia.org/class/yago/Whole100003553"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Ca'_Pesaro",
+    "label": "Ca' Pesaro",
+    "class": [
+      "Building"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q33506",
+        "http://www.wikidata.org/entity/Q41176",
+        "http://dbpedia.org/class/yago/WikicatArtMuseumsAndGalleriesInItaly",
+        "http://dbpedia.org/class/yago/WikicatArtMuseumsAndGalleriesInVenice",
+        "http://dbpedia.org/class/yago/WikicatArtMuseumsEstablishedIn1902",
+        "http://dbpedia.org/class/yago/WikicatAsianArtMuseums",
+        "http://dbpedia.org/class/yago/WikicatModernArtMuseums",
+        "http://dbpedia.org/class/yago/WikicatMuseumsInVenice",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Depository103177349",
+        "http://dbpedia.org/class/yago/Facility103315023",
+        "http://dbpedia.org/class/yago/Museum103800563",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Building",
+        "http://dbpedia.org/ontology/Museum",
+        "http://dbpedia.org/class/yago/Whole100003553",
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q33506",
+        "http://www.wikidata.org/entity/Q41176",
+        "http://dbpedia.org/class/yago/WikicatArtMuseumsAndGalleriesInItaly",
+        "http://dbpedia.org/class/yago/WikicatArtMuseumsAndGalleriesInVenice",
+        "http://dbpedia.org/class/yago/WikicatArtMuseumsEstablishedIn1902",
+        "http://dbpedia.org/class/yago/WikicatAsianArtMuseums",
+        "http://dbpedia.org/class/yago/WikicatModernArtMuseums",
+        "http://dbpedia.org/class/yago/WikicatMuseumsInVenice",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Depository103177349",
+        "http://dbpedia.org/class/yago/Facility103315023",
+        "http://dbpedia.org/class/yago/Museum103800563",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Building",
+        "http://dbpedia.org/ontology/Museum",
+        "http://dbpedia.org/class/yago/Whole100003553"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Ca'_Rezzonico",
+    "label": "Ca' Rezzonico",
+    "class": [
+      "Building"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://dbpedia.org/ontology/Place",
+        "http://www.wikidata.org/entity/Q33506",
+        "http://www.wikidata.org/entity/Q41176",
+        "http://dbpedia.org/class/yago/WikicatArtMuseumsAndGalleriesInItaly",
+        "http://dbpedia.org/class/yago/WikicatArtMuseumsAndGalleriesInVenice",
+        "http://dbpedia.org/class/yago/WikicatArtMuseumsEstablishedIn1936",
+        "http://dbpedia.org/class/yago/WikicatMuseumsInVenice",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Depository103177349",
+        "http://dbpedia.org/class/yago/Facility103315023",
+        "http://dbpedia.org/class/yago/Memorial103743902",
+        "http://dbpedia.org/class/yago/Museum103800563",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Building",
+        "http://dbpedia.org/ontology/Museum",
+        "http://dbpedia.org/class/yago/Structure104341686",
+        "http://dbpedia.org/class/yago/Whole100003553",
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://dbpedia.org/ontology/Place",
+        "http://www.wikidata.org/entity/Q33506",
+        "http://www.wikidata.org/entity/Q41176",
+        "http://dbpedia.org/class/yago/WikicatArtMuseumsAndGalleriesInItaly",
+        "http://dbpedia.org/class/yago/WikicatArtMuseumsAndGalleriesInVenice",
+        "http://dbpedia.org/class/yago/WikicatArtMuseumsEstablishedIn1936",
+        "http://dbpedia.org/class/yago/WikicatMuseumsInVenice",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Depository103177349",
+        "http://dbpedia.org/class/yago/Facility103315023",
+        "http://dbpedia.org/class/yago/Memorial103743902",
+        "http://dbpedia.org/class/yago/Museum103800563",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Building",
+        "http://dbpedia.org/ontology/Museum",
+        "http://dbpedia.org/class/yago/Structure104341686",
+        "http://dbpedia.org/class/yago/Whole100003553"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Ca'_Vendramin_Calergi",
+    "label": "Ca' Vendramin Calergi",
+    "class": [
+      "Building"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q41176",
+        "http://dbpedia.org/class/yago/WikicatBuildingsAndStructuresCompletedIn1509",
+        "http://dbpedia.org/class/yago/WikicatBuildingsAndStructuresInVenice",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/class/yago/WikicatPalacesInItaly",
+        "http://dbpedia.org/class/yago/WikicatPalacesInVenice",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Building102913152",
+        "http://dbpedia.org/class/yago/Dwelling103259505",
+        "http://dbpedia.org/class/yago/House103544360",
+        "http://dbpedia.org/class/yago/Housing103546340",
+        "http://dbpedia.org/class/yago/Mansion103719053",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/Palace103878066",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Building",
+        "http://dbpedia.org/class/yago/Structure104341686",
+        "http://dbpedia.org/class/yago/Whole100003553"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Ca'_d'Oro",
+    "label": "Ca' d'Oro",
+    "class": [
+      "Building"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q41176",
+        "http://dbpedia.org/class/yago/WikicatArtMuseumsAndGalleriesInItaly",
+        "http://dbpedia.org/class/yago/WikicatArtMuseumsAndGalleriesInVenice",
+        "http://dbpedia.org/class/yago/WikicatMuseumsInVenice",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Depository103177349",
+        "http://dbpedia.org/class/yago/Facility103315023",
+        "http://dbpedia.org/class/yago/Memorial103743902",
+        "http://dbpedia.org/class/yago/Museum103800563",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/WikicatHistoricHouseMuseumsInItaly",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Building",
+        "http://dbpedia.org/class/yago/Structure104341686",
+        "http://dbpedia.org/class/yago/Whole100003553"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cab_(locomotive)",
+    "label": "Cab (locomotive)",
+    "class": [
+      "Building"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://dbpedia.org/class/yago/WikicatLocomotiveParts",
+        "http://dbpedia.org/class/yago/Abstraction100002137",
+        "http://dbpedia.org/class/yago/Act100030358",
+        "http://dbpedia.org/class/yago/Activity100407535",
+        "http://dbpedia.org/class/yago/Application100949134",
+        "http://dbpedia.org/class/yago/Event100029378",
+        "http://dbpedia.org/class/yago/Occupation100582388",
+        "http://dbpedia.org/class/yago/Part113809207",
+        "http://dbpedia.org/class/yago/Profession100609953",
+        "http://dbpedia.org/class/yago/PsychologicalFeature100023100",
+        "http://dbpedia.org/class/yago/RailTechnology100951037",
+        "http://dbpedia.org/class/yago/Relation100031921",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Building",
+        "http://dbpedia.org/class/yago/Technology100949619",
+        "http://dbpedia.org/class/yago/Use100947128",
+        "http://dbpedia.org/class/yago/WikicatRailTechnologies"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cabanatuan_Cathedral",
+    "label": "Cabanatuan Cathedral",
+    "class": [
+      "Building"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://schema.org/LandmarksOrHistoricalBuildings",
+        "http://www.wikidata.org/entity/Q41176",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/ontology/Building",
+        "http://dbpedia.org/ontology/HistoricBuilding",
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://schema.org/LandmarksOrHistoricalBuildings",
+        "http://www.wikidata.org/entity/Q41176",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/ontology/Building",
+        "http://dbpedia.org/ontology/HistoricBuilding"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cabangu_Museum",
+    "label": "Cabangu Museum",
+    "class": [
+      "Building"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q33506",
+        "http://www.wikidata.org/entity/Q41176",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/ontology/Building",
+        "http://dbpedia.org/ontology/Museum",
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q33506",
+        "http://www.wikidata.org/entity/Q41176",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/ontology/Building",
+        "http://dbpedia.org/ontology/Museum"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cabaniss-Hanberry_House",
+    "label": "Cabaniss-Hanberry House",
+    "class": [
+      "Building"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q41176",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/ontology/Building"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cabaniss_Field",
+    "label": "Cabaniss Field",
+    "class": [
+      "Building"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q41176",
+        "http://dbpedia.org/class/yago/WikicatBaseballVenuesInTexas",
+        "http://dbpedia.org/class/yago/WikicatBaseballVenuesInTheCoastalBend(Texas)",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/class/yago/WikicatSportsVenuesInCorpusChristi,Texas",
+        "http://dbpedia.org/ontology/Stadium",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/class/yago/Area108497294",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Location100027167",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/Region108630985",
+        "http://dbpedia.org/class/yago/WikicatHighSchoolFootballVenuesInTexas",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoLegalActorGeo",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Building",
+        "http://dbpedia.org/ontology/Venue",
+        "http://dbpedia.org/class/yago/Scene108645963",
+        "http://dbpedia.org/class/yago/Stadium104295881",
+        "http://dbpedia.org/class/yago/Structure104341686",
+        "http://dbpedia.org/class/yago/Venue108677628",
+        "http://dbpedia.org/class/yago/Whole100003553",
+        "http://umbel.org/umbel/rc/Stadium"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cabanon_de_vacances",
+    "label": "Cabanon de vacances",
+    "class": [
+      "Building"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q41176",
+        "http://dbpedia.org/class/yago/WikicatLeCorbusierBuildingsInFrance",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Building102913152",
+        "http://dbpedia.org/class/yago/Dwelling103259505",
+        "http://dbpedia.org/class/yago/House103544360",
+        "http://dbpedia.org/class/yago/Housing103546340",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/WikicatHousesCompletedIn1951",
+        "http://dbpedia.org/class/yago/WikicatHousesInAlpes-Maritimes",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Building",
+        "http://dbpedia.org/class/yago/Structure104341686",
+        "http://dbpedia.org/class/yago/Whole100003553"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cabarrus_County_Courthouse",
+    "label": "Cabarrus County Courthouse",
+    "class": [
+      "Building"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q41176",
+        "http://dbpedia.org/class/yago/WikicatBuildingsAndStructuresInCabarrusCounty,NorthCarolina",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Building102913152",
+        "http://dbpedia.org/class/yago/GovernmentBuilding103449564",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/WikicatGovernmentBuildingsCompletedIn1875",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Ca'_d'Zan",
+    "label": "Ca' d'Zan",
+    "class": [
+      "HistoricPlace"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://dbpedia.org/ontology/Place",
+        "http://dbpedia.org/ontology/Location",
+        "http://schema.org/LandmarksOrHistoricalBuildings",
+        "http://schema.org/Place",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/HistoricPlace"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cabin_Ben",
+    "label": "Cabin Ben",
+    "class": [
+      "HistoricPlace"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://dbpedia.org/ontology/Place",
+        "http://dbpedia.org/ontology/Location",
+        "http://schema.org/LandmarksOrHistoricalBuildings",
+        "http://schema.org/Place",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/Building",
+        "http://dbpedia.org/ontology/HistoricPlace"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cabin_Branch_Pyrite_Mine_Historic_District",
+    "label": "Cabin Branch Pyrite Mine Historic District",
+    "class": [
+      "HistoricPlace"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://dbpedia.org/ontology/Place",
+        "http://dbpedia.org/ontology/Location",
+        "http://schema.org/LandmarksOrHistoricalBuildings",
+        "http://schema.org/Place",
+        "http://dbpedia.org/class/yago/WikicatBuildingsAndStructuresOnTheNationalRegisterOfHistoricPlacesInVirginia",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Building102913152",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/HistoricPlace",
+        "http://dbpedia.org/class/yago/Structure104341686",
+        "http://dbpedia.org/class/yago/Whole100003553"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cabins_Historic_District",
+    "label": "Cabins Historic District",
+    "class": [
+      "HistoricPlace"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://dbpedia.org/ontology/Place",
+        "http://dbpedia.org/ontology/Location",
+        "http://schema.org/LandmarksOrHistoricalBuildings",
+        "http://schema.org/Place",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/HistoricPlace"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cable_House_and_Station",
+    "label": "Cable House and Station",
+    "class": [
+      "HistoricPlace"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://dbpedia.org/ontology/Company",
+        "http://dbpedia.org/ontology/Place",
+        "http://dbpedia.org/ontology/Location",
+        "http://schema.org/LandmarksOrHistoricalBuildings",
+        "http://schema.org/Place",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/HistoricPlace"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cabo_de_Rama",
+    "label": "Cabo de Rama",
+    "class": [
+      "HistoricPlace"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://dbpedia.org/ontology/Place",
+        "http://dbpedia.org/ontology/Location",
+        "http://schema.org/LandmarksOrHistoricalBuildings",
+        "http://schema.org/Place",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Facility103315023",
+        "http://dbpedia.org/class/yago/Garrison103420559",
+        "http://dbpedia.org/class/yago/GeographicalArea108574314",
+        "http://dbpedia.org/class/yago/Location100027167",
+        "http://dbpedia.org/class/yago/MilitaryInstallation103763133",
+        "http://dbpedia.org/class/yago/MilitaryPost103763403",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/Region108630985",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoLegalActorGeo",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/HistoricPlace",
+        "http://dbpedia.org/ontology/MilitaryStructure",
+        "http://dbpedia.org/class/yago/Site108651247",
+        "http://dbpedia.org/class/yago/Tract108673395",
+        "http://dbpedia.org/class/yago/Whole100003553",
+        "http://dbpedia.org/class/yago/WikicatFortsInGoa"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Caboonbah_Homestead",
+    "label": "Caboonbah Homestead",
+    "class": [
+      "HistoricPlace"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://dbpedia.org/ontology/Place",
+        "http://dbpedia.org/ontology/Location",
+        "http://schema.org/LandmarksOrHistoricalBuildings",
+        "http://schema.org/Place",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/HistoricPlace"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cabotville_Common_Historic_District",
+    "label": "Cabotville Common Historic District",
+    "class": [
+      "HistoricPlace"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://dbpedia.org/ontology/Place",
+        "http://dbpedia.org/ontology/Location",
+        "http://schema.org/LandmarksOrHistoricalBuildings",
+        "http://schema.org/Place",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/class/yago/District108552138",
+        "http://dbpedia.org/class/yago/Location100027167",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/Region108630985",
+        "http://dbpedia.org/class/yago/WikicatHistoricDistrictsInHampdenCounty,Massachusetts",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoLegalActorGeo",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/HistoricPlace"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cabragh_Wedge_Tomb",
+    "label": "Cabragh Wedge Tomb",
+    "class": [
+      "HistoricPlace"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://dbpedia.org/ontology/Place",
+        "http://dbpedia.org/ontology/Location",
+        "http://schema.org/LandmarksOrHistoricalBuildings",
+        "http://schema.org/Place",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/HistoricPlace"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cabrillo_National_Monument",
+    "label": "Cabrillo National Monument",
+    "class": [
+      "HistoricPlace"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://dbpedia.org/class/yago/WikicatLandmarksInSanDiego,California",
+        "http://dbpedia.org/class/yago/WikicatMuseumsInSanDiego,California",
+        "http://dbpedia.org/class/yago/WikicatNationalHistoricLandmarksInCalifornia",
+        "http://dbpedia.org/class/yago/WikicatNationalMonumentsInCalifornia",
+        "http://dbpedia.org/class/yago/WikicatNationalMonumentsOfTheUnitedStates",
+        "http://dbpedia.org/class/yago/WikicatNationalParkServiceNationalMonumentsInCalifornia",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/class/yago/WikicatParksInSanDiego,California",
+        "http://dbpedia.org/class/yago/Area108497294",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Depository103177349",
+        "http://dbpedia.org/class/yago/District108552138",
+        "http://dbpedia.org/class/yago/Facility103315023",
+        "http://dbpedia.org/class/yago/GeographicalArea108574314",
+        "http://dbpedia.org/class/yago/Landmark108624891",
+        "http://dbpedia.org/class/yago/Location100027167",
+        "http://dbpedia.org/class/yago/Memorial103743902",
+        "http://dbpedia.org/class/yago/Museum103800563",
+        "http://dbpedia.org/class/yago/NationalMonument103810952",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/Park108615149",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/Point108620061",
+        "http://dbpedia.org/class/yago/Position108621598",
+        "http://dbpedia.org/class/yago/Region108630985",
+        "http://dbpedia.org/class/yago/WikicatHistoricDistrictsInCalifornia",
+        "http://dbpedia.org/class/yago/WikicatHistoryMuseumsInCalifornia",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoLegalActorGeo",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/HistoricPlace",
+        "http://dbpedia.org/class/yago/Structure104341686",
+        "http://dbpedia.org/class/yago/Tract108673395",
+        "http://dbpedia.org/class/yago/Whole100003553",
+        "http://dbpedia.org/class/yago/WikicatProtectedAreasEstablishedIn1913",
+        "http://dbpedia.org/class/yago/WikicatProtectedAreasOfCalifornia",
+        "http://dbpedia.org/class/yago/WikicatProtectedAreasOfSanDiegoCounty,California",
+        "http://umbel.org/umbel/rc/Place"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Caccia_Birch_House",
+    "label": "Caccia Birch House",
+    "class": [
+      "HistoricPlace"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q41176",
+        "http://dbpedia.org/class/yago/WikicatBuildingsAndStructuresInManawatu-Wanganui",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Building102913152",
+        "http://dbpedia.org/class/yago/Dwelling103259505",
+        "http://dbpedia.org/class/yago/House103544360",
+        "http://dbpedia.org/class/yago/Housing103546340",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/WikicatHousesInNewZealand",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Building",
+        "http://dbpedia.org/ontology/HistoricPlace",
+        "http://dbpedia.org/class/yago/Structure104341686",
+        "http://dbpedia.org/class/yago/Whole100003553"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cactoblastis_Memorial_Hall",
+    "label": "Cactoblastis Memorial Hall",
+    "class": [
+      "HistoricPlace"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://dbpedia.org/ontology/Place",
+        "http://dbpedia.org/ontology/Location",
+        "http://schema.org/LandmarksOrHistoricalBuildings",
+        "http://schema.org/Place",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/HistoricPlace"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cactus_Motor_Lodge",
+    "label": "Cactus Motor Lodge",
+    "class": [
+      "HistoricPlace"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://dbpedia.org/ontology/Place",
+        "http://dbpedia.org/ontology/Location",
+        "http://schema.org/LandmarksOrHistoricalBuildings",
+        "http://schema.org/Place",
+        "http://dbpedia.org/class/yago/WikicatBuildingsAndStructuresInQuayCounty,NewMexico",
+        "http://dbpedia.org/class/yago/WikicatBuildingsAndStructuresOnU.S.Route66",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Building102913152",
+        "http://dbpedia.org/class/yago/Hotel103542333",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/WikicatHotelBuildingsCompletedIn1941",
+        "http://dbpedia.org/class/yago/WikicatHotelBuildingsOnTheNationalRegisterOfHistoricPlacesInNewMexico",
+        "http://dbpedia.org/class/yago/WikicatHotelsEstablishedIn1941",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Building",
+        "http://dbpedia.org/ontology/HistoricPlace",
+        "http://dbpedia.org/class/yago/Structure104341686",
+        "http://dbpedia.org/class/yago/Whole100003553"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cactus_Press-Plaza_Paint_Building",
+    "label": "Cactus Press-Plaza Paint Building",
+    "class": [
+      "HistoricPlace"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://dbpedia.org/ontology/Place",
+        "http://dbpedia.org/ontology/Location",
+        "http://schema.org/LandmarksOrHistoricalBuildings",
+        "http://schema.org/Place",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/HistoricPlace"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cadbury_Camp",
+    "label": "Cadbury Camp",
+    "class": [
+      "HistoricPlace"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://dbpedia.org/ontology/Place",
+        "http://dbpedia.org/ontology/Location",
+        "http://schema.org/LandmarksOrHistoricalBuildings",
+        "http://schema.org/Place"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cab_Gallery",
+    "label": "Cab Gallery",
+    "class": [
+      "Artwork"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://schema.org/CreativeWork",
+        "http://dbpedia.org/ontology/Work",
+        "http://www.wikidata.org/entity/Q386724",
+        "http://dbpedia.org/class/yago/WikicatArtExhibitionsInTheUnitedKingdom",
+        "http://dbpedia.org/class/yago/WikicatContemporaryArtExhibitions",
+        "http://dbpedia.org/class/yago/Abstraction100002137",
+        "http://dbpedia.org/class/yago/ArtExhibition108407839",
+        "http://dbpedia.org/class/yago/Artwork106998748",
+        "http://dbpedia.org/class/yago/Collection107951464",
+        "http://dbpedia.org/class/yago/Communication100033020",
+        "http://dbpedia.org/class/yago/Event100029378",
+        "http://dbpedia.org/class/yago/Exhibition108407619",
+        "http://dbpedia.org/class/yago/Group100031264",
+        "http://dbpedia.org/class/yago/PsychologicalFeature100023100",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Artwork",
+        "http://dbpedia.org/ontology/Band",
+        "http://dbpedia.org/class/yago/VisualCommunication106873252",
+        "http://dbpedia.org/class/yago/WikicatEventsInLondon"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cable_Street_Mural",
+    "label": "Cable Street Mural",
+    "class": [
+      "Artwork"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://schema.org/CreativeWork",
+        "http://dbpedia.org/ontology/Work",
+        "http://www.wikidata.org/entity/Q386724",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/Artwork"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cactus_modulaire",
+    "label": "Cactus modulaire",
+    "class": [
+      "Artwork"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://schema.org/CreativeWork",
+        "http://dbpedia.org/ontology/Work",
+        "http://www.wikidata.org/entity/Q386724",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/Artwork"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cadbury_Castle,_Somerset",
+    "label": "Cadbury Castle, Somerset",
+    "class": [
+      "Artwork"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://dbpedia.org/class/yago/WikicatArchaeologicalSitesInSomerset",
+        "http://dbpedia.org/class/yago/WikicatArthurianLocations",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/class/yago/WikicatScheduledAncientMonumentsInSomerset",
+        "http://dbpedia.org/class/yago/WikicatScheduledAncientMonumentsInSouthSomerset",
+        "http://dbpedia.org/class/yago/WikicatStructuresOnTheHeritageAtRiskRegisterInSomerset",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Facility103315023",
+        "http://dbpedia.org/class/yago/Garrison103420559",
+        "http://dbpedia.org/class/yago/GeographicalArea108574314",
+        "http://dbpedia.org/class/yago/Location100027167",
+        "http://dbpedia.org/class/yago/Memorial103743902",
+        "http://dbpedia.org/class/yago/MilitaryInstallation103763133",
+        "http://dbpedia.org/class/yago/MilitaryPost103763403",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/Region108630985",
+        "http://dbpedia.org/class/yago/WikicatHillFortsInSomerset",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoLegalActorGeo",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Artwork",
+        "http://dbpedia.org/class/yago/Site108651247",
+        "http://dbpedia.org/class/yago/Structure104341686",
+        "http://dbpedia.org/class/yago/Tract108673395",
+        "http://dbpedia.org/class/yago/Whole100003553"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cadran_solaire",
+    "label": "Cadran solaire",
+    "class": [
+      "Artwork"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://schema.org/CreativeWork",
+        "http://dbpedia.org/ontology/Work",
+        "http://www.wikidata.org/entity/Q386724",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/Artwork"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cafe_Neon_(Night)",
+    "label": "Cafe Neon (Night)",
+    "class": [
+      "Artwork"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://schema.org/CreativeWork",
+        "http://dbpedia.org/ontology/Work",
+        "http://www.wikidata.org/entity/Q386724",
+        "http://dbpedia.org/ontology/Artwork"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Caf\u00e9_Terrace_at_Night",
+    "label": "Caf\u00e9 Terrace at Night",
+    "class": [
+      "Artwork"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://schema.org/CreativeWork",
+        "http://dbpedia.org/ontology/Work",
+        "http://www.wikidata.org/entity/Q386724",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/Artwork"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cain_and_Abel_(Tintoretto)",
+    "label": "Cain and Abel (Tintoretto)",
+    "class": [
+      "Artwork"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://schema.org/CreativeWork",
+        "http://dbpedia.org/ontology/Work",
+        "http://www.wikidata.org/entity/Q386724",
+        "http://dbpedia.org/ontology/Artwork"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cain_and_Abel_(Titian)",
+    "label": "Cain and Abel (Titian)",
+    "class": [
+      "Artwork"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://schema.org/CreativeWork",
+        "http://dbpedia.org/ontology/Work",
+        "http://www.wikidata.org/entity/Q386724",
+        "http://dbpedia.org/ontology/Artwork"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cairn_in_Snow",
+    "label": "Cairn in Snow",
+    "class": [
+      "Artwork"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://schema.org/CreativeWork",
+        "http://dbpedia.org/ontology/Work",
+        "http://www.wikidata.org/entity/Q386724",
+        "http://dbpedia.org/ontology/Artwork"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cairns_(sculpture)",
+    "label": "Cairns (sculpture)",
+    "class": [
+      "Artwork"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://schema.org/CreativeWork",
+        "http://dbpedia.org/ontology/Work",
+        "http://www.wikidata.org/entity/Q386724",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/Artwork",
+        "http://dbpedia.org/ontology/MilitaryStructure"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/California_Spring_(painting)",
+    "label": "California Spring (painting)",
+    "class": [
+      "Artwork"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://schema.org/CreativeWork",
+        "http://dbpedia.org/ontology/Work",
+        "http://www.wikidata.org/entity/Q386724",
+        "http://dbpedia.org/ontology/Artwork"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Calligraphic_Galleon",
+    "label": "Calligraphic Galleon",
+    "class": [
+      "Artwork"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://schema.org/CreativeWork",
+        "http://dbpedia.org/ontology/Work",
+        "http://www.wikidata.org/entity/Q386724",
+        "http://dbpedia.org/ontology/Artwork"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Calm_Waters",
+    "label": "Calm Waters",
+    "class": [
+      "Artwork"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://schema.org/CreativeWork",
+        "http://dbpedia.org/ontology/Work",
+        "http://www.wikidata.org/entity/Q386724",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/Artwork"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Calvary,_Charles_Bridge",
+    "label": "Calvary, Charles Bridge",
+    "class": [
+      "Artwork"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://schema.org/CreativeWork",
+        "http://dbpedia.org/ontology/Work",
+        "http://www.wikidata.org/entity/Q386724",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/Artwork"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Calvary_(sculpture)",
+    "label": "Calvary (sculpture)",
+    "class": [
+      "Artwork"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://dbpedia.org/class/yago/WikicatBuildingsAndStructuresByType",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Building102913152",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Artwork",
+        "http://dbpedia.org/class/yago/Structure104341686",
+        "http://dbpedia.org/class/yago/Whole100003553"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Calvin_Fletcher_(bust)",
+    "label": "Calvin Fletcher (bust)",
+    "class": [
+      "Artwork"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://dbpedia.org/class/yago/Abstraction100002137",
+        "http://dbpedia.org/class/yago/Artwork106998748",
+        "http://dbpedia.org/class/yago/Communication100033020",
+        "http://dbpedia.org/ontology/Artwork",
+        "http://dbpedia.org/class/yago/VisualCommunication106873252"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Campbell's_Soup_Cans",
+    "label": "Campbell's Soup Cans",
+    "class": [
+      "Artwork"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://schema.org/CreativeWork",
+        "http://dbpedia.org/ontology/Work",
+        "http://www.wikidata.org/entity/Q386724",
+        "http://dbpedia.org/class/yago/WikicatAmericanPaintings",
+        "http://dbpedia.org/class/yago/WikicatPaintings",
+        "http://dbpedia.org/class/yago/WikicatPaintingsByAndyWarhol",
+        "http://dbpedia.org/class/yago/WikicatPaintingsOfTheMuseumOfModernArt",
+        "http://dbpedia.org/class/yago/Art102743547",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Creation103129123",
+        "http://dbpedia.org/class/yago/GraphicArt103453809",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/Painting103876519",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/ontology/Artwork",
+        "http://dbpedia.org/ontology/Book",
+        "http://dbpedia.org/class/yago/Whole100003553",
+        "http://dbpedia.org/class/yago/Wikicat1960sPaintings",
+        "http://dbpedia.org/class/yago/Wikicat1962Paintings"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Canadian_Historical_Dinner_Service",
+    "label": "Canadian Historical Dinner Service",
+    "class": [
+      "Artwork"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://schema.org/CreativeWork",
+        "http://dbpedia.org/ontology/Work",
+        "http://www.wikidata.org/entity/Q386724",
+        "http://dbpedia.org/ontology/Artwork"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Canadian_Tribute_to_Human_Rights",
+    "label": "Canadian Tribute to Human Rights",
+    "class": [
+      "Artwork"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://dbpedia.org/class/yago/WikicatMonumentsAndMemorialsInOttawa",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Memorial103743902",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Artwork",
+        "http://dbpedia.org/class/yago/Structure104341686",
+        "http://dbpedia.org/class/yago/Whole100003553"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cancer,_There_Is_Hope",
+    "label": "Cancer, There Is Hope",
+    "class": [
+      "Artwork"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://schema.org/CreativeWork",
+        "http://dbpedia.org/ontology/Work",
+        "http://www.wikidata.org/entity/Q386724",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/Artwork"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Candoro_Marble_Works",
+    "label": "Candoro Marble Works",
+    "class": [
+      "Artwork"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q41176",
+        "http://dbpedia.org/class/yago/WikicatBuildingsAndStructuresInKnoxville,Tennessee",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Building102913152",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Artwork",
+        "http://dbpedia.org/ontology/Building"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cabinet_des_estampes_et_des_dessins",
+    "label": "Cabinet des estampes et des dessins",
+    "class": [
+      "Museum"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q33506",
+        "http://www.wikidata.org/entity/Q41176",
+        "http://dbpedia.org/class/yago/WikicatArtMuseumsAndGalleriesInFrance",
+        "http://dbpedia.org/class/yago/WikicatArtMuseumsAndGalleriesInStrasbourg",
+        "http://dbpedia.org/class/yago/WikicatArtMuseumsEstablishedIn1890",
+        "http://dbpedia.org/class/yago/WikicatMuseumsInStrasbourg",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Depository103177349",
+        "http://dbpedia.org/class/yago/Facility103315023",
+        "http://dbpedia.org/class/yago/Museum103800563",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Building",
+        "http://dbpedia.org/ontology/Museum",
+        "http://dbpedia.org/class/yago/Whole100003553",
+        "http://dbpedia.org/class/yago/WikicatFRAMEMuseums"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cabot's_Pueblo_Museum",
+    "label": "Cabot's Pueblo Museum",
+    "class": [
+      "Museum"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q33506",
+        "http://www.wikidata.org/entity/Q41176",
+        "http://dbpedia.org/class/yago/WikicatAmericanWestMuseumsInCalifornia",
+        "http://dbpedia.org/class/yago/WikicatBiographicalMuseumsInTheUnitedStates",
+        "http://dbpedia.org/class/yago/WikicatLandmarksOfRiversideCounty,California",
+        "http://dbpedia.org/class/yago/WikicatMuseumsEstablishedIn1945",
+        "http://dbpedia.org/class/yago/WikicatMuseumsInRiversideCounty,California",
+        "http://dbpedia.org/class/yago/WikicatNativeAmericanMuseumsInCalifornia",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/class/yago/WikicatSculptureGardens,TrailsAndParksInTheUnitedStates",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Depository103177349",
+        "http://dbpedia.org/class/yago/Facility103315023",
+        "http://dbpedia.org/class/yago/Landmark108624891",
+        "http://dbpedia.org/class/yago/Line108593262",
+        "http://dbpedia.org/class/yago/Location100027167",
+        "http://dbpedia.org/class/yago/Museum103800563",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/Path109387222",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/Point108620061",
+        "http://dbpedia.org/class/yago/Position108621598",
+        "http://dbpedia.org/class/yago/WikicatHistoricHouseMuseumsInCalifornia",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoLegalActorGeo",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Building",
+        "http://dbpedia.org/ontology/Museum",
+        "http://dbpedia.org/class/yago/Trail109460312",
+        "http://dbpedia.org/class/yago/Whole100003553"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cadbury_World",
+    "label": "Cadbury World",
+    "class": [
+      "Museum"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q33506",
+        "http://www.wikidata.org/entity/Q41176",
+        "http://dbpedia.org/class/yago/WikicatChocolateMuseums",
+        "http://dbpedia.org/class/yago/WikicatMuseumsInBirmingham,WestMidlands",
+        "http://dbpedia.org/class/yago/WikicatMuseumsInDunedin",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Depository103177349",
+        "http://dbpedia.org/class/yago/Facility103315023",
+        "http://dbpedia.org/class/yago/Museum103800563",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/AmusementParkAttraction",
+        "http://dbpedia.org/ontology/Building",
+        "http://dbpedia.org/ontology/Museum",
+        "http://dbpedia.org/class/yago/Whole100003553",
+        "http://dbpedia.org/class/yago/WikicatFoodMuseums",
+        "http://dbpedia.org/class/yago/WikicatFoodMuseumsInTheUnitedKingdom"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cade_Museum_for_Creativity_and_Invention",
+    "label": "Cade Museum for Creativity and Invention",
+    "class": [
+      "Museum"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q33506",
+        "http://www.wikidata.org/entity/Q41176",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/ontology/Building",
+        "http://dbpedia.org/ontology/Museum"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Caerleon_Roman_Fortress_and_Baths",
+    "label": "Caerleon Roman Fortress and Baths",
+    "class": [
+      "Museum"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q33506",
+        "http://www.wikidata.org/entity/Q41176",
+        "http://dbpedia.org/class/yago/WikicatAncientRomanFortsInNewport,Wales",
+        "http://dbpedia.org/class/yago/WikicatArchaeologicalMuseumsInWales",
+        "http://dbpedia.org/class/yago/WikicatMuseumsInNewport,Wales",
+        "http://dbpedia.org/class/yago/WikicatMuseumsOfAncientRomeInWales",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Depository103177349",
+        "http://dbpedia.org/class/yago/Facility103315023",
+        "http://dbpedia.org/class/yago/Garrison103420559",
+        "http://dbpedia.org/class/yago/MilitaryInstallation103763133",
+        "http://dbpedia.org/class/yago/MilitaryPost103763403",
+        "http://dbpedia.org/class/yago/Museum103800563",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Building",
+        "http://dbpedia.org/ontology/Museum",
+        "http://dbpedia.org/class/yago/Whole100003553"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Caesar's_Creek_Pioneer_Village",
+    "label": "Caesar's Creek Pioneer Village",
+    "class": [
+      "Museum"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q33506",
+        "http://www.wikidata.org/entity/Q41176",
+        "http://dbpedia.org/class/yago/WikicatMuseumsInWarrenCounty,Ohio",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/class/yago/WikicatOpenAirMuseumsInOhio",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Depository103177349",
+        "http://dbpedia.org/class/yago/Facility103315023",
+        "http://dbpedia.org/class/yago/Museum103800563",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Building",
+        "http://dbpedia.org/ontology/Museum",
+        "http://dbpedia.org/class/yago/Whole100003553"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cafesjian_Museum_of_Art",
+    "label": "Cafesjian Museum of Art",
+    "class": [
+      "Museum"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q33506",
+        "http://www.wikidata.org/entity/Q41176",
+        "http://dbpedia.org/class/yago/WikicatArtMuseumsAndGalleriesInArmenia",
+        "http://dbpedia.org/class/yago/WikicatArtMuseumsEstablishedIn2009",
+        "http://dbpedia.org/class/yago/WikicatMuseumsInYerevan",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Depository103177349",
+        "http://dbpedia.org/class/yago/Facility103315023",
+        "http://dbpedia.org/class/yago/Museum103800563",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Building",
+        "http://dbpedia.org/ontology/Museum",
+        "http://dbpedia.org/class/yago/Whole100003553"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cahit_S\u0131tk\u0131_Taranc\u0131_Museum",
+    "label": "Cahit S\u0131tk\u0131 Taranc\u0131 Museum",
+    "class": [
+      "Museum"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q33506",
+        "http://www.wikidata.org/entity/Q41176",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/ontology/Building",
+        "http://dbpedia.org/ontology/Museum"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Caergwrle_Castle",
+    "label": "Caergwrle Castle",
+    "class": [
+      "Castle"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q41176",
+        "http://www.wikidata.org/entity/Q23413",
+        "http://dbpedia.org/ontology/Castle",
+        "http://dbpedia.org/class/yago/WikicatCastlesInFlintshire",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Building102913152",
+        "http://dbpedia.org/class/yago/Dwelling103259505",
+        "http://dbpedia.org/class/yago/House103544360",
+        "http://dbpedia.org/class/yago/Housing103546340",
+        "http://dbpedia.org/class/yago/Mansion103719053",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/Palace103878066",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/WikicatGradeIListedCastlesInWales",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Building",
+        "http://dbpedia.org/class/yago/Structure104341686",
+        "http://dbpedia.org/class/yago/Whole100003553"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Caerlaverock_Castle",
+    "label": "Caerlaverock Castle",
+    "class": [
+      "Castle"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://dbpedia.org/ontology/Castle",
+        "http://dbpedia.org/class/yago/WikicatCastlesInDumfriesAndGalloway",
+        "http://dbpedia.org/class/yago/WikicatCastlesInDumfriesshire",
+        "http://dbpedia.org/class/yago/WikicatCastlesInScotland",
+        "http://dbpedia.org/class/yago/WikicatCategoryAListedBuildingsInDumfriesAndGalloway",
+        "http://dbpedia.org/class/yago/WikicatCategoryAListedBuildingsInScotland",
+        "http://dbpedia.org/class/yago/WikicatListedBuildingsInDumfriesAndGalloway",
+        "http://dbpedia.org/class/yago/WikicatListedCastlesInScotland",
+        "http://dbpedia.org/class/yago/WikicatWaterCastles",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Building102913152",
+        "http://dbpedia.org/class/yago/Dwelling103259505",
+        "http://dbpedia.org/class/yago/House103544360",
+        "http://dbpedia.org/class/yago/Housing103546340",
+        "http://dbpedia.org/class/yago/Mansion103719053",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/Palace103878066",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/MilitaryStructure",
+        "http://dbpedia.org/class/yago/Structure104341686",
+        "http://dbpedia.org/class/yago/Whole100003553"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Caernarfon_Castle",
+    "label": "Caernarfon Castle",
+    "class": [
+      "Castle"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q41176",
+        "http://www.wikidata.org/entity/Q23413",
+        "http://dbpedia.org/ontology/Castle",
+        "http://dbpedia.org/class/yago/WikicatMuseumsInGwynedd",
+        "http://dbpedia.org/class/yago/WikicatWorldHeritageSitesInWales",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Depository103177349",
+        "http://dbpedia.org/class/yago/Facility103315023",
+        "http://dbpedia.org/class/yago/GeographicalArea108574314",
+        "http://dbpedia.org/class/yago/Location100027167",
+        "http://dbpedia.org/class/yago/Museum103800563",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/Region108630985",
+        "http://dbpedia.org/class/yago/WikicatHistoricHouseMuseumsInWales",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoLegalActorGeo",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Building",
+        "http://dbpedia.org/ontology/MilitaryStructure",
+        "http://dbpedia.org/class/yago/Site108651247",
+        "http://dbpedia.org/class/yago/Structure104341686",
+        "http://dbpedia.org/class/yago/Tract108673395",
+        "http://dbpedia.org/class/yago/Whole100003553"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Caerphilly_Castle",
+    "label": "Caerphilly Castle",
+    "class": [
+      "Castle"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q41176",
+        "http://www.wikidata.org/entity/Q23413",
+        "http://dbpedia.org/ontology/Castle",
+        "http://dbpedia.org/class/yago/WikicatCastlesInCaerphillyCountyBorough",
+        "http://dbpedia.org/class/yago/WikicatCastlesInWales",
+        "http://dbpedia.org/class/yago/WikicatListedBuildingsInWales",
+        "http://dbpedia.org/class/yago/WikicatWaterCastles",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Building102913152",
+        "http://dbpedia.org/class/yago/Dwelling103259505",
+        "http://dbpedia.org/class/yago/House103544360",
+        "http://dbpedia.org/class/yago/Housing103546340",
+        "http://dbpedia.org/class/yago/Mansion103719053",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/Palace103878066",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/WikicatGradeIListedBuildingsInCaerphillyCountyBorough",
+        "http://dbpedia.org/class/yago/WikicatGradeIListedCastlesInWales",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Building",
+        "http://dbpedia.org/ontology/MilitaryStructure",
+        "http://dbpedia.org/class/yago/Structure104341686",
+        "http://dbpedia.org/class/yago/Whole100003553"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cagliatscha_Castle",
+    "label": "Cagliatscha Castle",
+    "class": [
+      "Castle"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q41176",
+        "http://www.wikidata.org/entity/Q23413",
+        "http://dbpedia.org/ontology/Castle",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/ontology/Building"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cahir_Castle",
+    "label": "Cahir Castle",
+    "class": [
+      "Castle"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q41176",
+        "http://www.wikidata.org/entity/Q23413",
+        "http://dbpedia.org/ontology/Castle",
+        "http://dbpedia.org/class/yago/WikicatMuseumsInCountyTipperary",
+        "http://dbpedia.org/class/yago/WikicatNationalMonumentsInCountyTipperary",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Depository103177349",
+        "http://dbpedia.org/class/yago/Facility103315023",
+        "http://dbpedia.org/class/yago/Memorial103743902",
+        "http://dbpedia.org/class/yago/Museum103800563",
+        "http://dbpedia.org/class/yago/NationalMonument103810952",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/WikicatHistoricHouseMuseumsInTheRepublicOfIreland",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Building",
+        "http://dbpedia.org/ontology/Ship",
+        "http://dbpedia.org/class/yago/Structure104341686",
+        "http://dbpedia.org/class/yago/Whole100003553"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cainhoe_Castle",
+    "label": "Cainhoe Castle",
+    "class": [
+      "Castle"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q41176",
+        "http://www.wikidata.org/entity/Q23413",
+        "http://dbpedia.org/ontology/Castle",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/class/yago/WikicatScheduledAncientMonumentsInBedfordshire",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Memorial103743902",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Building",
+        "http://dbpedia.org/class/yago/Structure104341686",
+        "http://dbpedia.org/class/yago/Whole100003553"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cair_Paravel",
+    "label": "Cair Paravel",
+    "class": [
+      "Castle"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://dbpedia.org/ontology/Castle",
+        "http://dbpedia.org/class/yago/Location100027167",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoLegalActorGeo",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Calatubo_Castle",
+    "label": "Calatubo Castle",
+    "class": [
+      "Castle"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q41176",
+        "http://www.wikidata.org/entity/Q23413",
+        "http://dbpedia.org/ontology/Castle",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/ontology/Building",
+        "http://dbpedia.org/ontology/MilitaryStructure"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Caldicot_Castle",
+    "label": "Caldicot Castle",
+    "class": [
+      "Castle"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q33506",
+        "http://www.wikidata.org/entity/Q41176",
+        "http://dbpedia.org/ontology/Castle",
+        "http://dbpedia.org/class/yago/WikicatCastlesInMonmouthshire",
+        "http://dbpedia.org/class/yago/WikicatCastlesInWales",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Building102913152",
+        "http://dbpedia.org/class/yago/Dwelling103259505",
+        "http://dbpedia.org/class/yago/House103544360",
+        "http://dbpedia.org/class/yago/Housing103546340",
+        "http://dbpedia.org/class/yago/Mansion103719053",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/Palace103878066",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/WikicatGradeIListedBuildingsInMonmouthshire",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Building",
+        "http://dbpedia.org/ontology/Museum",
+        "http://dbpedia.org/class/yago/Structure104341686",
+        "http://dbpedia.org/class/yago/Whole100003553"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Calenberg_Castle",
+    "label": "Calenberg Castle",
+    "class": [
+      "Castle"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q41176",
+        "http://dbpedia.org/ontology/Castle",
+        "http://dbpedia.org/class/yago/WikicatCastlesInLowerSaxony",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Building102913152",
+        "http://dbpedia.org/class/yago/Dwelling103259505",
+        "http://dbpedia.org/class/yago/House103544360",
+        "http://dbpedia.org/class/yago/Housing103546340",
+        "http://dbpedia.org/class/yago/Mansion103719053",
+        "http://dbpedia.org/class/yago/Object100002684"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Caesareum_of_Alexandria",
+    "label": "Caesareum of Alexandria",
+    "class": [
+      "HistoricBuilding"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q41176",
+        "http://dbpedia.org/class/yago/WikicatBuildingsAndStructuresInAlexandria,Louisiana",
+        "http://dbpedia.org/class/yago/WikicatChurchesInAlexandria",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Building102913152",
+        "http://dbpedia.org/class/yago/Church103028079",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/PlaceOfWorship103953416",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Building",
+        "http://dbpedia.org/ontology/HistoricBuilding",
+        "http://dbpedia.org/class/yago/Structure104341686",
+        "http://dbpedia.org/class/yago/Temple104407435",
+        "http://dbpedia.org/class/yago/Whole100003553",
+        "http://dbpedia.org/class/yago/WikicatEgyptianTemples",
+        "http://dbpedia.org/class/yago/WikicatFormerBuildingsAndStructuresInEgypt"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cahors_Cathedral",
+    "label": "Cahors Cathedral",
+    "class": [
+      "HistoricBuilding"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q41176",
+        "http://www.wikidata.org/entity/Q1370598",
+        "http://dbpedia.org/class/yago/WikicatCathedralsInFrance",
+        "http://dbpedia.org/class/yago/WikicatChurchesInLot(department)",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Building102913152",
+        "http://dbpedia.org/class/yago/Cathedral102984061",
+        "http://dbpedia.org/class/yago/Church103028079",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/PlaceOfWorship103953416",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Building",
+        "http://dbpedia.org/ontology/HistoricBuilding",
+        "http://dbpedia.org/ontology/ReligiousBuilding",
+        "http://dbpedia.org/class/yago/Structure104341686",
+        "http://dbpedia.org/class/yago/Whole100003553",
+        "http://dbpedia.org/class/yago/Wikicat11th-centuryChurchBuildings",
+        "http://dbpedia.org/class/yago/WikicatFortifiedChurches"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cainta_Church",
+    "label": "Cainta Church",
+    "class": [
+      "HistoricBuilding"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://schema.org/LandmarksOrHistoricalBuildings",
+        "http://www.wikidata.org/entity/Q41176",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/ontology/Building",
+        "http://dbpedia.org/ontology/HistoricBuilding"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cairns_Masonic_Temple",
+    "label": "Cairns Masonic Temple",
+    "class": [
+      "HistoricBuilding"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://dbpedia.org/ontology/Place",
+        "http://dbpedia.org/ontology/Location",
+        "http://schema.org/LandmarksOrHistoricalBuildings",
+        "http://schema.org/Place",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/HistoricBuilding",
+        "http://dbpedia.org/ontology/HistoricPlace"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Calahorra_Cathedral",
+    "label": "Calahorra Cathedral",
+    "class": [
+      "HistoricBuilding"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://dbpedia.org/ontology/Place",
+        "http://dbpedia.org/ontology/Location",
+        "http://schema.org/LandmarksOrHistoricalBuildings",
+        "http://schema.org/Place",
+        "http://dbpedia.org/class/yago/WikicatBienDeInter\u00e9sCulturalLandmarksInLaRioja(Spain)",
+        "http://dbpedia.org/class/yago/WikicatCathedralsInSpain",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Building102913152",
+        "http://dbpedia.org/class/yago/Cathedral102984061",
+        "http://dbpedia.org/class/yago/Church103028079",
+        "http://dbpedia.org/class/yago/GeographicalArea108574314",
+        "http://dbpedia.org/class/yago/Landmark108624891",
+        "http://dbpedia.org/class/yago/Location100027167",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/PlaceOfWorship103953416",
+        "http://dbpedia.org/class/yago/Point108620061",
+        "http://dbpedia.org/class/yago/Position108621598",
+        "http://dbpedia.org/class/yago/Region108630985",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoLegalActorGeo",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/HistoricBuilding",
+        "http://dbpedia.org/ontology/HistoricPlace",
+        "http://dbpedia.org/class/yago/Site108651247",
+        "http://dbpedia.org/class/yago/Structure104341686",
+        "http://dbpedia.org/class/yago/Tract108673395",
+        "http://dbpedia.org/class/yago/Whole100003553"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Calapan_Cathedral",
+    "label": "Calapan Cathedral",
+    "class": [
+      "HistoricBuilding"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://schema.org/LandmarksOrHistoricalBuildings",
+        "http://www.wikidata.org/entity/Q41176",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/ontology/Building",
+        "http://dbpedia.org/ontology/HistoricBuilding"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Calbayog_Cathedral",
+    "label": "Calbayog Cathedral",
+    "class": [
+      "HistoricBuilding"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://schema.org/LandmarksOrHistoricalBuildings",
+        "http://www.wikidata.org/entity/Q41176",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/ontology/Building",
+        "http://dbpedia.org/ontology/HistoricBuilding"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Calcutta_Jain_Temple",
+    "label": "Calcutta Jain Temple",
+    "class": [
+      "HistoricBuilding"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q41176",
+        "http://www.wikidata.org/entity/Q1370598",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Building102913152",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/PlaceOfWorship103953416",
+        "http://dbpedia.org/class/yago/WikicatJainTemplesInWestBengal",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Building",
+        "http://dbpedia.org/ontology/HistoricBuilding",
+        "http://dbpedia.org/ontology/ReligiousBuilding",
+        "http://dbpedia.org/class/yago/Structure104341686",
+        "http://dbpedia.org/class/yago/Temple104407435",
+        "http://dbpedia.org/class/yago/Whole100003553",
+        "http://dbpedia.org/class/yago/WikicatPlacesOfWorshipInKolkata"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Caldey_Abbey",
+    "label": "Caldey Abbey",
+    "class": [
+      "HistoricBuilding"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://schema.org/LandmarksOrHistoricalBuildings",
+        "http://www.wikidata.org/entity/Q41176",
+        "http://dbpedia.org/class/yago/WikicatMonasteriesInWalesByOrder",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Building102913152",
+        "http://dbpedia.org/class/yago/Church103028079",
+        "http://dbpedia.org/class/yago/Dwelling103259505",
+        "http://dbpedia.org/class/yago/House103544360",
+        "http://dbpedia.org/class/yago/Housing103546340",
+        "http://dbpedia.org/class/yago/Monastery103781244",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/PlaceOfWorship103953416",
+        "http://dbpedia.org/class/yago/ReligiousResidence104073948",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Building",
+        "http://dbpedia.org/ontology/HistoricBuilding",
+        "http://dbpedia.org/ontology/ReligiousBuilding",
+        "http://dbpedia.org/class/yago/Residence104079244",
+        "http://dbpedia.org/class/yago/Structure104341686",
+        "http://dbpedia.org/class/yago/Whole100003553"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Caldey_Priory",
+    "label": "Caldey Priory",
+    "class": [
+      "HistoricBuilding"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://schema.org/LandmarksOrHistoricalBuildings",
+        "http://www.wikidata.org/entity/Q41176",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/ontology/Building",
+        "http://dbpedia.org/ontology/HistoricBuilding"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Caledonia_Place,_Bristol",
+    "label": "Caledonia Place, Bristol",
+    "class": [
+      "HistoricBuilding"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://dbpedia.org/ontology/Place",
+        "http://dbpedia.org/ontology/Location",
+        "http://schema.org/Place",
+        "http://www.wikidata.org/entity/Q486972",
+        "http://dbpedia.org/ontology/PopulatedPlace",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/class/yago/WikicatStreetsInBristol",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/GeographicalArea108574314",
+        "http://dbpedia.org/class/yago/Location100027167",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/Region108630985",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoLegalActorGeo",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/HistoricBuilding",
+        "http://dbpedia.org/ontology/Settlement",
+        "http://dbpedia.org/class/yago/Road104096066",
+        "http://dbpedia.org/class/yago/Site108651247",
+        "http://dbpedia.org/class/yago/Street104334599",
+        "http://dbpedia.org/class/yago/Thoroughfare104426618",
+        "http://dbpedia.org/class/yago/Tract108673395",
+        "http://dbpedia.org/class/yago/Way104564698",
+        "http://dbpedia.org/class/yago/Whole100003553"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Calfaria,_Aberdare",
+    "label": "Calfaria, Aberdare",
+    "class": [
+      "HistoricBuilding"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://dbpedia.org/class/yago/WikicatChapelsInWales",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Building102913152",
+        "http://dbpedia.org/class/yago/Chapel103007130",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/PlaceOfWorship103953416",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/HistoricBuilding",
+        "http://dbpedia.org/class/yago/Structure104341686",
+        "http://dbpedia.org/class/yago/Whole100003553"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Calgary_True_Buddha_Pai_Yuin_Temple",
+    "label": "Calgary True Buddha Pai Yuin Temple",
+    "class": [
+      "HistoricBuilding"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://dbpedia.org/class/yago/WikicatBuddhistTemplesInCanada"
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cabin_Run_Covered_Bridge",
+    "label": "Cabin Run Covered Bridge",
+    "class": [
+      "Bridge"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q41176",
+        "http://dbpedia.org/class/yago/WikicatBridgesCompletedIn1871",
+        "http://dbpedia.org/class/yago/WikicatBridgesInBucksCounty,Pennsylvania",
+        "http://dbpedia.org/class/yago/WikicatBridgesOnTheNationalRegisterOfHistoricPlacesInPennsylvania",
+        "http://dbpedia.org/class/yago/WikicatCoveredBridgesInPennsylvania",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Bridge102898711",
+        "http://dbpedia.org/class/yago/CoveredBridge103122073",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Bridge",
+        "http://dbpedia.org/ontology/Building",
+        "http://dbpedia.org/class/yago/Structure104341686",
+        "http://dbpedia.org/class/yago/Whole100003553",
+        "http://dbpedia.org/class/yago/WikicatRoadBridgesInPennsylvania"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cable_Bridge",
+    "label": "Cable Bridge",
+    "class": [
+      "Bridge"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://dbpedia.org/ontology/Infrastructure",
+        "http://dbpedia.org/ontology/RouteOfTransportation",
+        "http://www.wikidata.org/entity/Q12280",
+        "http://dbpedia.org/class/yago/WikicatBridgesCompletedIn1978",
+        "http://dbpedia.org/class/yago/WikicatBridgesOnTheNationalRegisterOfHistoricPlacesInWashington(state)",
+        "http://dbpedia.org/class/yago/WikicatCable-stayedBridgesInTheUnitedStates",
+        "http://dbpedia.org/class/yago/WikicatTowersInWashington(state)",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Bridge102898711",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Bridge",
+        "http://dbpedia.org/class/yago/Structure104341686",
+        "http://dbpedia.org/class/yago/Tower104460130",
+        "http://dbpedia.org/class/yago/Whole100003553",
+        "http://dbpedia.org/class/yago/WikicatRoadBridgesInWashington(state)",
+        "http://umbel.org/umbel/rc/Bridge",
+        "http://umbel.org/umbel/rc/Building"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cable_Bridge_(Surat,_India)",
+    "label": "Cable Bridge (Surat, India)",
+    "class": [
+      "Bridge"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://dbpedia.org/ontology/Infrastructure",
+        "http://dbpedia.org/ontology/RouteOfTransportation",
+        "http://www.wikidata.org/entity/Q12280",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/ontology/Bridge"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cabrillo_Bridge",
+    "label": "Cabrillo Bridge",
+    "class": [
+      "Bridge"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://dbpedia.org/ontology/Infrastructure",
+        "http://dbpedia.org/ontology/RouteOfTransportation",
+        "http://www.wikidata.org/entity/Q12280",
+        "http://dbpedia.org/class/yago/WikicatBridgesInSanDiegoCounty,California",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/class/yago/WikicatPedestrianBridgesInCalifornia",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Bridge102898711",
+        "http://dbpedia.org/class/yago/Footbridge103379828",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Bridge",
+        "http://dbpedia.org/class/yago/Structure104341686",
+        "http://dbpedia.org/class/yago/Whole100003553",
+        "http://dbpedia.org/class/yago/WikicatRoadBridgesInCalifornia",
+        "http://umbel.org/umbel/rc/Bridge"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cache_River_Bridge",
+    "label": "Cache River Bridge",
+    "class": [
+      "Bridge"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://dbpedia.org/ontology/Infrastructure",
+        "http://dbpedia.org/ontology/RouteOfTransportation",
+        "http://www.wikidata.org/entity/Q12280",
+        "http://dbpedia.org/class/yago/WikicatBridgesCompletedIn1934",
+        "http://dbpedia.org/class/yago/WikicatBridgesOnTheNationalRegisterOfHistoricPlacesInArkansas",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Bridge102898711",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Bridge",
+        "http://dbpedia.org/class/yago/Structure104341686",
+        "http://dbpedia.org/class/yago/Whole100003553"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Caddo_Lake_Drawbridge",
+    "label": "Caddo Lake Drawbridge",
+    "class": [
+      "Bridge"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q41176",
+        "http://dbpedia.org/class/yago/WikicatBridgesCompletedIn1914",
+        "http://dbpedia.org/class/yago/WikicatBridgesOnTheNationalRegisterOfHistoricPlacesInLouisiana",
+        "http://dbpedia.org/class/yago/WikicatVerticalLiftBridges",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/class/yago/WikicatPedestrianBridgesInTheUnitedStates",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Bridge102898711",
+        "http://dbpedia.org/class/yago/Drawbridge103233744",
+        "http://dbpedia.org/class/yago/Footbridge103379828",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Bridge",
+        "http://dbpedia.org/ontology/Building",
+        "http://dbpedia.org/class/yago/Structure104341686",
+        "http://dbpedia.org/class/yago/Whole100003553",
+        "http://dbpedia.org/class/yago/WikicatFormerRoadBridgesInTheUnitedStates",
+        "http://dbpedia.org/class/yago/WikicatRoadBridgesInLouisiana",
+        "http://umbel.org/umbel/rc/Place"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cadishead_Viaduct",
+    "label": "Cadishead Viaduct",
+    "class": [
+      "Bridge"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://dbpedia.org/ontology/Infrastructure",
+        "http://dbpedia.org/ontology/RouteOfTransportation",
+        "http://www.wikidata.org/entity/Q12280",
+        "http://dbpedia.org/class/yago/WikicatBridgesCompletedIn1893",
+        "http://dbpedia.org/class/yago/WikicatBridgesInGreaterManchester",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Bridge102898711",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Bridge",
+        "http://dbpedia.org/class/yago/Structure104341686",
+        "http://dbpedia.org/class/yago/Whole100003553",
+        "http://dbpedia.org/class/yago/WikicatRailwayBridgesInEngland"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cadore_Viaduct",
+    "label": "Cadore Viaduct",
+    "class": [
+      "Bridge"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://dbpedia.org/ontology/Infrastructure",
+        "http://dbpedia.org/ontology/RouteOfTransportation",
+        "http://www.wikidata.org/entity/Q12280",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/ontology/Bridge"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Caerhowel_Bridge",
+    "label": "Caerhowel Bridge",
+    "class": [
+      "Bridge"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://dbpedia.org/ontology/Infrastructure",
+        "http://dbpedia.org/ontology/RouteOfTransportation",
+        "http://www.wikidata.org/entity/Q12280",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/ontology/Bridge"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Caine_Road_Covered_Bridge",
+    "label": "Caine Road Covered Bridge",
+    "class": [
+      "Bridge"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://dbpedia.org/ontology/Infrastructure",
+        "http://dbpedia.org/ontology/RouteOfTransportation",
+        "http://www.wikidata.org/entity/Q12280",
+        "http://dbpedia.org/class/yago/WikicatBridgesCompletedIn1986",
+        "http://dbpedia.org/class/yago/WikicatCoveredBridgesInAshtabulaCounty,Ohio",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Bridge102898711",
+        "http://dbpedia.org/class/yago/CoveredBridge103122073",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Bridge",
+        "http://dbpedia.org/class/yago/Structure104341686",
+        "http://dbpedia.org/class/yago/Whole100003553",
+        "http://dbpedia.org/class/yago/WikicatRoadBridgesInOhio",
+        "http://umbel.org/umbel/rc/Bridge"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cairo_I-57_Bridge",
+    "label": "Cairo I-57 Bridge",
+    "class": [
+      "Bridge"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://dbpedia.org/ontology/Infrastructure",
+        "http://dbpedia.org/ontology/RouteOfTransportation",
+        "http://www.wikidata.org/entity/Q12280",
+        "http://dbpedia.org/class/yago/WikicatBridgesCompletedIn1978",
+        "http://dbpedia.org/class/yago/WikicatBridgesOnTheInterstateHighwaySystem",
+        "http://dbpedia.org/class/yago/WikicatThroughArchBridges",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Bridge102898711",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Bridge",
+        "http://dbpedia.org/class/yago/Structure104341686",
+        "http://dbpedia.org/class/yago/Whole100003553",
+        "http://dbpedia.org/class/yago/WikicatRoadBridgesInIllinois",
+        "http://dbpedia.org/class/yago/WikicatRoadBridgesInMissouri",
+        "http://umbel.org/umbel/rc/Bridge"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cairo_Mississippi_River_Bridge",
+    "label": "Cairo Mississippi River Bridge",
+    "class": [
+      "Bridge"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://dbpedia.org/ontology/Infrastructure",
+        "http://dbpedia.org/ontology/RouteOfTransportation",
+        "http://www.wikidata.org/entity/Q12280",
+        "http://dbpedia.org/class/yago/WikicatBridgesCompletedIn1929",
+        "http://dbpedia.org/class/yago/WikicatBridgesOnTheU.S.HighwaySystem",
+        "http://dbpedia.org/class/yago/WikicatCantileverBridges",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Bridge102898711",
+        "http://dbpedia.org/class/yago/CantileverBridge102953197",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Bridge"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cabilla_and_Redrice_Woods",
+    "label": "Cabilla and Redrice Woods",
+    "class": [
+      "Park"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://dbpedia.org/ontology/Place",
+        "http://dbpedia.org/ontology/Location",
+        "http://schema.org/Park",
+        "http://schema.org/Place",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/Park"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cabot_Square,_Montreal",
+    "label": "Cabot Square, Montreal",
+    "class": [
+      "Park"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://dbpedia.org/ontology/Place",
+        "http://dbpedia.org/ontology/Location",
+        "http://schema.org/Park",
+        "http://schema.org/Place",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/class/yago/WikicatParksInMontreal",
+        "http://dbpedia.org/class/yago/WikicatSquaresInMontreal",
+        "http://dbpedia.org/class/yago/GeographicalArea108574314",
+        "http://dbpedia.org/class/yago/Location100027167",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/Park108615149",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/PublicSquare108619620",
+        "http://dbpedia.org/class/yago/Region108630985",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoLegalActorGeo",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Park",
+        "http://dbpedia.org/class/yago/Tract108673395",
+        "http://umbel.org/umbel/rc/Park"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cabots_Landing_Provincial_Park",
+    "label": "Cabots Landing Provincial Park",
+    "class": [
+      "Park"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://dbpedia.org/ontology/Place",
+        "http://dbpedia.org/ontology/Location",
+        "http://schema.org/Park",
+        "http://schema.org/Place",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/class/yago/GeographicalArea108574314",
+        "http://dbpedia.org/class/yago/Location100027167",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/Park108615149",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/Region108630985",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoLegalActorGeo",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Park",
+        "http://dbpedia.org/class/yago/Tract108673395",
+        "http://dbpedia.org/class/yago/WikicatProvincialParksOfNovaScotia"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cadman_Plaza",
+    "label": "Cadman Plaza",
+    "class": [
+      "Park"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://dbpedia.org/ontology/Place",
+        "http://dbpedia.org/ontology/Location",
+        "http://schema.org/Park",
+        "http://schema.org/Place",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/class/yago/WikicatParksInBrooklyn",
+        "http://dbpedia.org/class/yago/WikicatStreetsInBrooklyn",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/GeographicalArea108574314",
+        "http://dbpedia.org/class/yago/Location100027167",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/Park108615149",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/Region108630985",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoLegalActorGeo",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Park",
+        "http://dbpedia.org/class/yago/Road104096066",
+        "http://dbpedia.org/class/yago/Street104334599",
+        "http://dbpedia.org/class/yago/Thoroughfare104426618",
+        "http://dbpedia.org/class/yago/Tract108673395",
+        "http://dbpedia.org/class/yago/Way104564698",
+        "http://dbpedia.org/class/yago/Whole100003553"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Caesar_Creek_State_Park",
+    "label": "Caesar Creek State Park",
+    "class": [
+      "Park"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://dbpedia.org/ontology/Place",
+        "http://dbpedia.org/ontology/Location",
+        "http://schema.org/Park",
+        "http://schema.org/Place",
+        "http://dbpedia.org/class/yago/WikicatDamsCompletedIn1976",
+        "http://dbpedia.org/class/yago/WikicatDamsInOhio",
+        "http://dbpedia.org/class/yago/WikicatNatureCentersInOhio",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/class/yago/WikicatStateParksOfOhio",
+        "http://dbpedia.org/class/yago/Area108497294",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Barrier102796623",
+        "http://dbpedia.org/class/yago/BodyOfWater109225146",
+        "http://dbpedia.org/class/yago/Center108523483",
+        "http://dbpedia.org/class/yago/Dam103160309",
+        "http://dbpedia.org/class/yago/GeographicalArea108574314",
+        "http://dbpedia.org/class/yago/Lake109328904",
+        "http://dbpedia.org/class/yago/Location100027167",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/Obstruction103839993",
+        "http://dbpedia.org/class/yago/Park108615149",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/Region108630985",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoLegalActorGeo",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Park",
+        "http://dbpedia.org/class/yago/Structure104341686",
+        "http://dbpedia.org/class/yago/Thing100002452",
+        "http://dbpedia.org/class/yago/Tract108673395",
+        "http://dbpedia.org/class/yago/Whole100003553",
+        "http://dbpedia.org/class/yago/WikicatProtectedAreasEstablishedIn1978",
+        "http://dbpedia.org/class/yago/WikicatProtectedAreasOfClintonCounty,Ohio",
+        "http://dbpedia.org/class/yago/WikicatProtectedAreasOfGreeneCounty,Ohio",
+        "http://dbpedia.org/class/yago/WikicatProtectedAreasOfWarrenCounty,Ohio",
+        "http://umbel.org/umbel/rc/GeographicalRegion"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Caesars_Head_State_Park",
+    "label": "Caesars Head State Park",
+    "class": [
+      "Park"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://dbpedia.org/ontology/Place",
+        "http://dbpedia.org/ontology/Location",
+        "http://schema.org/Park",
+        "http://schema.org/Place",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/class/yago/WikicatStateParksOfSouthCarolina",
+        "http://dbpedia.org/class/yago/Area108497294",
+        "http://dbpedia.org/class/yago/GeographicalArea108574314",
+        "http://dbpedia.org/class/yago/Location100027167",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/Park108615149",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/Region108630985",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoLegalActorGeo",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Park",
+        "http://dbpedia.org/class/yago/Tract108673395",
+        "http://dbpedia.org/class/yago/WikicatProtectedAreasOfGreenvilleCounty,SouthCarolina"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cahermurphy_Nature_Reserve",
+    "label": "Cahermurphy Nature Reserve",
+    "class": [
+      "Park"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://dbpedia.org/ontology/Place",
+        "http://dbpedia.org/ontology/Location",
+        "http://schema.org/Park",
+        "http://schema.org/Place",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/Park"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cahill_Park",
+    "label": "Cahill Park",
+    "class": [
+      "Park"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://dbpedia.org/ontology/Place",
+        "http://dbpedia.org/ontology/Location",
+        "http://schema.org/Park",
+        "http://schema.org/Place",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/Park"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cal_Anderson_Park",
+    "label": "Cal Anderson Park",
+    "class": [
+      "Park"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://dbpedia.org/ontology/Place",
+        "http://dbpedia.org/ontology/Location",
+        "http://schema.org/Park",
+        "http://schema.org/Place",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/class/yago/WikicatParksInSeattle,Washington",
+        "http://dbpedia.org/class/yago/GeographicalArea108574314",
+        "http://dbpedia.org/class/yago/Location100027167",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/Park108615149",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/Region108630985",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoLegalActorGeo",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Park",
+        "http://dbpedia.org/class/yago/Tract108673395",
+        "http://umbel.org/umbel/rc/Park"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Calamba_Island",
+    "label": "Calamba Island",
+    "class": [
+      "Park"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://dbpedia.org/ontology/Place",
+        "http://dbpedia.org/ontology/Location",
+        "http://schema.org/Park",
+        "http://schema.org/Place",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/Park"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Calderglen_Country_Park",
+    "label": "Calderglen Country Park",
+    "class": [
+      "Park"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://dbpedia.org/ontology/Place",
+        "http://dbpedia.org/ontology/Location",
+        "http://schema.org/Park",
+        "http://schema.org/Place",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/Park"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Calderstones_Park",
+    "label": "Calderstones Park",
+    "class": [
+      "Park"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://dbpedia.org/ontology/Place",
+        "http://dbpedia.org/ontology/Location",
+        "http://schema.org/Park",
+        "http://schema.org/Place",
+        "http://dbpedia.org/class/yago/WikicatBotanicalGardensInTheUnitedKingdom",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/class/yago/WikicatParksAndCommonsInLiverpool",
+        "http://dbpedia.org/class/yago/WikicatParksInEngland",
+        "http://dbpedia.org/class/yago/Arboretum102733075",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Facility103315023",
+        "http://dbpedia.org/class/yago/GeographicalArea108574314",
+        "http://dbpedia.org/class/yago/Location100027167",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/Park108615149",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/Region108630985",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoLegalActorGeo",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Park",
+        "http://dbpedia.org/class/yago/Site108651247",
+        "http://dbpedia.org/class/yago/Tract108673395",
+        "http://dbpedia.org/class/yago/Whole100003553"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cabarrus_County_Public_Library",
+    "label": "Cabarrus County Public Library",
+    "class": [
+      "Library"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://schema.org/EducationalOrganization",
+        "http://schema.org/Library",
+        "http://schema.org/Organization",
+        "http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent",
+        "http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson",
+        "http://dbpedia.org/ontology/Agent",
+        "http://www.wikidata.org/entity/Q2385804",
+        "http://www.wikidata.org/entity/Q24229398",
+        "http://www.wikidata.org/entity/Q43229",
+        "http://www.wikidata.org/entity/Q7075",
+        "http://dbpedia.org/ontology/EducationalInstitution",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/class/yago/Area102735688",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Library103660909",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Library",
+        "http://dbpedia.org/ontology/Organisation",
+        "http://dbpedia.org/ontology/Settlement",
+        "http://dbpedia.org/class/yago/Room104105893",
+        "http://dbpedia.org/class/yago/Structure104341686",
+        "http://dbpedia.org/class/yago/Whole100003553"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cahuenga_Branch",
+    "label": "Cahuenga Branch",
+    "class": [
+      "Library"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://dbpedia.org/class/yago/WikicatCarnegieLibrariesInCalifornia",
+        "http://dbpedia.org/class/yago/WikicatLibrariesInLosAngeles,California",
+        "http://dbpedia.org/class/yago/WikicatLibrariesOnTheNationalRegisterOfHistoricPlacesInLosAngeles,California",
+        "http://dbpedia.org/class/yago/WikicatLosAngelesHistoric-CulturalMonuments",
+        "http://dbpedia.org/class/yago/Area102735688",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Library103660909",
+        "http://dbpedia.org/class/yago/Memorial103743902",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Library",
+        "http://dbpedia.org/class/yago/Room104105893",
+        "http://dbpedia.org/class/yago/Structure104341686",
+        "http://dbpedia.org/class/yago/Whole100003553"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cairo_(graphics)",
+    "label": "Cairo (graphics)",
+    "class": [
+      "Library"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://dbpedia.org/ontology/Software",
+        "http://schema.org/CreativeWork",
+        "http://dbpedia.org/ontology/Work",
+        "http://www.wikidata.org/entity/Q386724",
+        "http://www.wikidata.org/entity/Q7397",
+        "http://dbpedia.org/class/yago/WikicatCLibraries",
+        "http://dbpedia.org/class/yago/WikicatComputerLibraries",
+        "http://dbpedia.org/class/yago/Area102735688",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Library103660909",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/WikicatGNOMELibraries",
+        "http://dbpedia.org/class/yago/WikicatGraphicsLibraries",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Library",
+        "http://dbpedia.org/class/yago/Room104105893",
+        "http://dbpedia.org/class/yago/Structure104341686",
+        "http://dbpedia.org/class/yago/Whole100003553",
+        "http://dbpedia.org/class/yago/WikicatFreeComputerLibraries",
+        "http://dbpedia.org/class/yago/WikicatFreedesktop.orgLibraries",
+        "http://umbel.org/umbel/rc/SoftwareObject"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cal_Poly_Pomona_University_Library",
+    "label": "Cal Poly Pomona University Library",
+    "class": [
+      "Library"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://schema.org/EducationalOrganization",
+        "http://schema.org/Library",
+        "http://schema.org/Organization",
+        "http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent",
+        "http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson",
+        "http://dbpedia.org/ontology/Agent",
+        "http://www.wikidata.org/entity/Q2385804",
+        "http://www.wikidata.org/entity/Q24229398",
+        "http://www.wikidata.org/entity/Q43229",
+        "http://www.wikidata.org/entity/Q7075",
+        "http://dbpedia.org/ontology/EducationalInstitution",
+        "http://dbpedia.org/class/yago/WikicatLibrariesInCalifornia",
+        "http://dbpedia.org/class/yago/WikicatLink+Libraries",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/class/yago/Area102735688",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Depository103177349",
+        "http://dbpedia.org/class/yago/Facility103315023",
+        "http://dbpedia.org/class/yago/Library103660664",
+        "http://dbpedia.org/class/yago/Library103660909",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Library",
+        "http://dbpedia.org/ontology/Organisation",
+        "http://dbpedia.org/class/yago/Room104105893",
+        "http://dbpedia.org/class/yago/Structure104341686",
+        "http://dbpedia.org/class/yago/Whole100003553",
+        "http://dbpedia.org/class/yago/WikicatFederalDepositoryLibraries"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Calais_Free_Library",
+    "label": "Calais Free Library",
+    "class": [
+      "Library"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://xmlns.com/foaf/0.1/Organization",
+        "http://schema.org/EducationalOrganization",
+        "http://schema.org/Library",
+        "http://schema.org/Organization",
+        "http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent",
+        "http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson",
+        "http://dbpedia.org/ontology/Agent",
+        "http://www.wikidata.org/entity/Q2385804",
+        "http://www.wikidata.org/entity/Q24229398",
+        "http://www.wikidata.org/entity/Q43229",
+        "http://www.wikidata.org/entity/Q7075",
+        "http://dbpedia.org/ontology/EducationalInstitution",
+        "http://dbpedia.org/class/yago/WikicatLibrariesInWashingtonCounty,Maine",
+        "http://dbpedia.org/class/yago/WikicatLibrariesOnTheNationalRegisterOfHistoricPlacesInMaine",
+        "http://dbpedia.org/class/yago/Area102735688",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Library103660909",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Library",
+        "http://dbpedia.org/ontology/Organisation",
+        "http://dbpedia.org/class/yago/Room104105893",
+        "http://dbpedia.org/class/yago/Structure104341686",
+        "http://dbpedia.org/class/yago/Whole100003553"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Caledonia_Public_Library",
+    "label": "Caledonia Public Library",
+    "class": [
+      "Library"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://schema.org/EducationalOrganization",
+        "http://schema.org/Library",
+        "http://schema.org/Organization",
+        "http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent",
+        "http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson",
+        "http://dbpedia.org/ontology/Agent",
+        "http://www.wikidata.org/entity/Q2385804",
+        "http://www.wikidata.org/entity/Q24229398",
+        "http://www.wikidata.org/entity/Q43229",
+        "http://www.wikidata.org/entity/Q7075",
+        "http://dbpedia.org/ontology/EducationalInstitution",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/class/yago/Area102735688",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Library103660909",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Library",
+        "http://dbpedia.org/ontology/Organisation",
+        "http://dbpedia.org/class/yago/Room104105893",
+        "http://dbpedia.org/class/yago/Structure104341686",
+        "http://dbpedia.org/class/yago/Whole100003553"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Calexico_Carnegie_Library",
+    "label": "Calexico Carnegie Library",
+    "class": [
+      "Library"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q41176",
+        "http://dbpedia.org/class/yago/WikicatBuildingsAndStructuresInImperialCounty,California",
+        "http://dbpedia.org/class/yago/WikicatLibraryBuildingsCompletedIn1918",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Building102913152",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Building",
+        "http://dbpedia.org/ontology/Library",
+        "http://dbpedia.org/class/yago/Structure104341686",
+        "http://dbpedia.org/class/yago/Whole100003553"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Calgary_Public_Library",
+    "label": "Calgary Public Library",
+    "class": [
+      "Library"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://schema.org/EducationalOrganization",
+        "http://schema.org/Library",
+        "http://schema.org/Organization",
+        "http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent",
+        "http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson",
+        "http://dbpedia.org/ontology/Agent",
+        "http://www.wikidata.org/entity/Q2385804",
+        "http://www.wikidata.org/entity/Q24229398",
+        "http://www.wikidata.org/entity/Q43229",
+        "http://www.wikidata.org/entity/Q7075",
+        "http://dbpedia.org/ontology/EducationalInstitution",
+        "http://dbpedia.org/class/yago/WikicatCarnegieLibrariesInCanada",
+        "http://dbpedia.org/class/yago/Area102735688",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Library103660909",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Library",
+        "http://dbpedia.org/ontology/Organisation",
+        "http://dbpedia.org/class/yago/Room104105893",
+        "http://dbpedia.org/class/yago/Structure104341686",
+        "http://dbpedia.org/class/yago/Whole100003553"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Calgary_Tool_Library",
+    "label": "Calgary Tool Library",
+    "class": [
+      "Library"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://schema.org/EducationalOrganization",
+        "http://schema.org/Library",
+        "http://schema.org/Organization",
+        "http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent",
+        "http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson",
+        "http://dbpedia.org/ontology/Agent",
+        "http://www.wikidata.org/entity/Q2385804",
+        "http://www.wikidata.org/entity/Q24229398",
+        "http://www.wikidata.org/entity/Q43229"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Caffe_Cino",
+    "label": "Caffe Cino",
+    "class": [
+      "Theatre"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q24354",
+        "http://www.wikidata.org/entity/Q41176",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/ontology/Building",
+        "http://dbpedia.org/ontology/Theatre",
+        "http://dbpedia.org/ontology/Venue"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Caf\u00e9_de_la_Gare",
+    "label": "Caf\u00e9 de la Gare",
+    "class": [
+      "Theatre"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q24354",
+        "http://www.wikidata.org/entity/Q41176",
+        "http://dbpedia.org/class/yago/WikicatTheatresInParis",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Building102913152",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Building",
+        "http://dbpedia.org/ontology/Theatre",
+        "http://dbpedia.org/ontology/Venue",
+        "http://dbpedia.org/class/yago/Structure104341686",
+        "http://dbpedia.org/class/yago/Theater104417809",
+        "http://dbpedia.org/class/yago/Whole100003553"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cambridge_Theatre",
+    "label": "Cambridge Theatre",
+    "class": [
+      "Theatre"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q24354",
+        "http://www.wikidata.org/entity/Q41176",
+        "http://dbpedia.org/class/yago/WikicatListedBuildingsInLondon",
+        "http://dbpedia.org/class/yago/WikicatTheatresCompletedIn1930",
+        "http://dbpedia.org/class/yago/WikicatTheatresInCamden",
+        "http://dbpedia.org/class/yago/WikicatTheatresInLondon",
+        "http://dbpedia.org/class/yago/WikicatWestEndTheatres",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Building102913152",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/WikicatGradeIIListedBuildingsInLondon",
+        "http://dbpedia.org/class/yago/WikicatGradeIIListedTheatres",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/AmericanFootballPlayer",
+        "http://dbpedia.org/ontology/Building",
+        "http://dbpedia.org/ontology/Theatre",
+        "http://dbpedia.org/ontology/Venue",
+        "http://dbpedia.org/class/yago/Structure104341686",
+        "http://dbpedia.org/class/yago/Theater104417809",
+        "http://dbpedia.org/class/yago/Whole100003553"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cameo_Theater",
+    "label": "Cameo Theater",
+    "class": [
+      "Theatre"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q24354",
+        "http://www.wikidata.org/entity/Q41176",
+        "http://dbpedia.org/class/yago/WikicatBuildingsAndStructuresInMiami,Florida",
+        "http://dbpedia.org/class/yago/WikicatTheatresInFlorida",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Building102913152",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Building",
+        "http://dbpedia.org/ontology/Theatre",
+        "http://dbpedia.org/ontology/Venue",
+        "http://dbpedia.org/class/yago/Structure104341686",
+        "http://dbpedia.org/class/yago/Theater104417809",
+        "http://dbpedia.org/class/yago/Whole100003553"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Canadian_Opera_Company",
+    "label": "Canadian Opera Company",
+    "class": [
+      "Theatre"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://dbpedia.org/ontology/Company",
+        "http://www.wikidata.org/entity/Q24354",
+        "http://www.wikidata.org/entity/Q41176",
+        "http://dbpedia.org/class/yago/WikicatCanadianOperaCompanies",
+        "http://dbpedia.org/class/yago/WikicatMusicalGroupsEstablishedIn1950",
+        "http://dbpedia.org/class/yago/WikicatMusicalGroupsFromToronto",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/class/yago/Abstraction100002137",
+        "http://dbpedia.org/class/yago/Company108187033",
+        "http://dbpedia.org/class/yago/Group100031264",
+        "http://dbpedia.org/class/yago/MusicalOrganization108246613",
+        "http://dbpedia.org/class/yago/OperaCompany108187370",
+        "http://dbpedia.org/class/yago/Organization108008335",
+        "http://dbpedia.org/class/yago/YagoLegalActor",
+        "http://dbpedia.org/class/yago/YagoLegalActorGeo",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Building",
+        "http://dbpedia.org/ontology/Theatre",
+        "http://dbpedia.org/ontology/Venue",
+        "http://dbpedia.org/class/yago/SocialGroup107950920"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Cape_Cod_Melody_Tent",
+    "label": "Cape Cod Melody Tent",
+    "class": [
+      "Theatre"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q24354",
+        "http://www.wikidata.org/entity/Q41176",
+        "http://dbpedia.org/class/yago/WikicatAmphitheatersInTheUnitedStates",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/class/yago/Amphitheater102705201",
+        "http://dbpedia.org/class/yago/Area108497294",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Balcony102777734",
+        "http://dbpedia.org/class/yago/Gallery103411544",
+        "http://dbpedia.org/class/yago/Location100027167",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/Region108630985",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoLegalActorGeo",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Building",
+        "http://dbpedia.org/ontology/Theatre",
+        "http://dbpedia.org/ontology/Venue",
+        "http://dbpedia.org/class/yago/Scene108645963",
+        "http://dbpedia.org/class/yago/Structure104341686",
+        "http://dbpedia.org/class/yago/Venue108677628",
+        "http://dbpedia.org/class/yago/Whole100003553"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Capitol_Theatre,_Singapore",
+    "label": "Capitol Theatre, Singapore",
+    "class": [
+      "Theatre"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q24354",
+        "http://www.wikidata.org/entity/Q41176",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/ontology/Building",
+        "http://dbpedia.org/ontology/Theatre",
+        "http://dbpedia.org/ontology/Venue"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Capitol_Theatre,_Sydney",
+    "label": "Capitol Theatre, Sydney",
+    "class": [
+      "Theatre"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q24354",
+        "http://www.wikidata.org/entity/Q41176",
+        "http://dbpedia.org/class/yago/WikicatTheatresInSydney",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Building102913152",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Building",
+        "http://dbpedia.org/ontology/Theatre",
+        "http://dbpedia.org/ontology/Venue",
+        "http://dbpedia.org/class/yago/Structure104341686",
+        "http://dbpedia.org/class/yago/Theater104417809",
+        "http://dbpedia.org/class/yago/Whole100003553"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Capitol_Theatre_(Rome,_New_York)",
+    "label": "Capitol Theatre (Rome, New York)",
+    "class": [
+      "Theatre"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q24354",
+        "http://www.wikidata.org/entity/Q41176",
+        "http://dbpedia.org/class/yago/WikicatTheatresInNewYork",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Building102913152",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Building",
+        "http://dbpedia.org/ontology/Theatre",
+        "http://dbpedia.org/ontology/Venue",
+        "http://dbpedia.org/class/yago/Structure104341686",
+        "http://dbpedia.org/class/yago/Theater104417809",
+        "http://dbpedia.org/class/yago/Whole100003553"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Caravan_Farm_Theatre",
+    "label": "Caravan Farm Theatre",
+    "class": [
+      "Theatre"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q24354",
+        "http://www.wikidata.org/entity/Q41176",
+        "http://dbpedia.org/class/yago/WikicatTheatresInBritishColumbia",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Building102913152",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Building",
+        "http://dbpedia.org/ontology/Theatre",
+        "http://dbpedia.org/ontology/Venue",
+        "http://dbpedia.org/class/yago/Structure104341686",
+        "http://dbpedia.org/class/yago/Theater104417809",
+        "http://dbpedia.org/class/yago/Whole100003553"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Carter_Barron_Amphitheatre",
+    "label": "Carter Barron Amphitheatre",
+    "class": [
+      "Theatre"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q24354",
+        "http://www.wikidata.org/entity/Q41176",
+        "http://dbpedia.org/class/yago/WikicatTheatresInWashington,D.C.",
+        "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing",
+        "http://dbpedia.org/ontology/ArchitecturalStructure",
+        "http://dbpedia.org/class/yago/Artifact100021939",
+        "http://dbpedia.org/class/yago/Building102913152",
+        "http://dbpedia.org/class/yago/Object100002684",
+        "http://dbpedia.org/class/yago/PhysicalEntity100001930",
+        "http://dbpedia.org/class/yago/YagoGeoEntity",
+        "http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity",
+        "http://dbpedia.org/ontology/Building",
+        "http://dbpedia.org/ontology/Theatre",
+        "http://dbpedia.org/ontology/Venue",
+        "http://dbpedia.org/class/yago/Structure104341686",
+        "http://dbpedia.org/class/yago/Theater104417809",
+        "http://dbpedia.org/class/yago/Whole100003553"
+      ]
+    }
+  },
+  {
+    "uri": "http://dbpedia.org/resource/Amethyst_Theatre",
+    "label": "Amethyst Theatre",
+    "class": [
+      "Theatre"
+    ],
+    "properties": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.wikidata.org/entity/Q24354",
+        "http://www.wikidata.org/entity/Q41176",
+        "http://dbpedia.org/class/yago/WikicatBuildingsAndStructuresInNewBrunswick"
+      ]
+    }
+  }
+]
